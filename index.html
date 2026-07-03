@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anubhav Mishra | Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon/android-chrome-512x512.png">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<body>
+<canvas id="bg-canvas"></canvas> 
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav>
+    <a class="logo" href="#home">
+      <div class="logo-box">AM</div>
+      Aspiring Electronics Engineer
+    </a>
+  <div class="nav-wrap">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <span class="nav-indicator" id="navIndicator"></span>
+  </div>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+  <i class="fa-solid fa-moon"></i>
+</button>
+    <div class="hamburger" id="hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-overlay" id="navOverlay"></div>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section id="home">
+    <!-- Decorative background elements -->
+    <div class="hero-bg-dots">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="hero-bg-circle c1"></div>
+    <div class="hero-bg-circle c2"></div>
+    <div class="hero-bg-dots2">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="hero-inner">
+      <!-- Photo -->
+      <div class="hero-img-wrap fade-in">
+        <div class="hero-img-ring">
+          <!-- REPLACE src with your actual photo, e.g. src="assets/anubhav.jpg" -->
+          <img src="images/anubhav.png" alt="Anubhav Mishra"
+               onerror="this.style.background='linear-gradient(135deg,#1e244a,#2a3060)'; this.style.opacity='.4'"/>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="hero-text fade-in">
+        <p class="hero-greeting">Hello, I'm</p>
+        <h1 class="hero-name" id="typed-name"></h1>
+        <p class="hero-role">Senior Student Chair IEEE EDS</p>
+        <div class="hero-divider"></div>
+        
+        <div class="hero-btns">
+          <a href="https://drive.google.com/file/d/1eNhZFJVpieS6m2jU7yMWePd3DBiadI3a/view?usp=sharing" target="_blank" class="btn btn-primary"><i class="fa-regular fa-file"></i> Resume</a>
+          <a href="https://github.com/" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a href="https://linkedin.com/" target="_blank" class="btn btn-outline"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+        </div>
+        
+        
+        
+      </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ABOUT ══ -->
+  <section id="about">
+    
+    <div class="about-grid fade-in">
+      <div>
+        <div class="section-label"><i class="fa-regular fa-user"></i> About Me</div>
+        <h2 class="section-title">About Me</h2>
+        <div class="section-underline"></div>
+        <p class="about-bio">
+          I am a final year B.Tech student in Electronics and Communication Engineering with a
+          specialization in Data Science at SRM Institute of Science and Technology, Chennai.
+          I am passionate about building innovative solutions and solving real-world problems
+          using technology.
+        </p>
+        <p class="about-bio">
+          My experience spans embedded systems, machine learning, and full-stack web development.
+          As Senior Student Chair of IEEE EDS, I lead initiatives that bridge academics with
+          industry practice and community impact.
+        </p>
+      </div>
+      <div class="about-cards">
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div>
+            <p class="info-card-label">Education</p>
+            <p class="info-card-value">B.Tech ECE (Data Science)</p>
+            <p class="info-card-value info-card-sub">SRMIST, Chennai</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fa-regular fa-calendar"></i></div>
+          <div>
+            <p class="info-card-label">Year</p>
+            <p class="info-card-value">Final Year (2027)</p>
+          </div>
+        </div>
+         <div class="info-card">
+          <div class="info-card-icon"><i class="fa-regular fa-calendar"></i></div>
+          <div>
+            <p class="info-card-label">CGPA</p>
+            <p class="info-card-value">9.42/10</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <p class="info-card-label">Location</p>
+            <p class="info-card-value">Chennai, Tamil Nadu, India</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <p class="info-card-label">Email</p>
+            <p class="info-card-value">am3359@srmist.edu.in</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SKILLS ══ -->
+  <section id="skills">
+    <div class="skills-inner">
+      <div class="section-label fade-in"><i class="fa-solid fa-code"></i> What I Know</div>
+      <h2 class="section-title fade-in">Skills</h2>
+      <div class="section-underline fade-in"></div>
+
+      <div class="skills-grid">
+
+        <div class="skill-category fade-in">
+          <p class="skill-cat-title"><i class="fa-solid fa-laptop-code"></i> Programming</p>
+          <div class="skill-item">
+            <div class="skill-info"><span>Python</span><span>90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>Embedded C</span><span>80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>Verilog HDL</span><span>75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-category fade-in">
+          <p class="skill-cat-title"><i class="fa-solid fa-brain"></i> VLSI & Verification</p>
+          <div class="skill-item">
+            <div class="skill-info"><span>RTL Design</span><span>85%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>SystemVerilog</span><span>75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>UVM</span><span>70%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-category fade-in">
+          <p class="skill-cat-title"><i class="fa-solid fa-globe"></i>Embedded Systems</p>
+          <div class="skill-item">
+            <div class="skill-info"><span>Arduino</span><span>88%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>ATmega328</span><span>70%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>UART / SPI / I²C</span><span>65%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-category fade-in">
+          <p class="skill-cat-title"><i class="fa-solid fa-microchip"></i>EDA & Simulation</p>
+          <div class="skill-item">
+            <div class="skill-info"><span>EasyEDA</span><span>85%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>ModelSim</span><span>70%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>SEMulator3D</span><span>72%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-category fade-in">
+          <p class="skill-cat-title"><i class="fa-solid fa-database"></i>Hardware & PCB</p>
+          <div class="skill-item">
+            <div class="skill-info"><span>PCB Design</span><span>88%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>Proteus</span><span>78%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>MATLAB</span><span>72%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-category fade-in">
+          <p class="skill-cat-title"><i class="fa-solid fa-users"></i>Core Domains</p>
+          <div class="skill-item">
+            <div class="skill-info"><span>VLSI</span><span>92%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>MEMS</span><span>88%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>Semiconductor Devices</span><span>90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROJECTS ══ -->
+  <section id="projects">
+    <div class="projects-inner">
+      <div class="section-label fade-in"><i class="fa-solid fa-rocket"></i> What I've Built</div>
+      <h2 class="section-title fade-in">Projects</h2>
+      <div class="section-underline fade-in"></div>
+
+      <div class="projects-grid">
+
+        <div class="project-card fade-in">
+          <div class="project-icon"><i class="fa-solid fa-robot"></i></div>
+          <h3 class="project-title">Micro Thermopile for IR Sensing</h3>
+          <p class="project-desc">Designed and simulated device structure using SEMulator3D; documented deposition, lithography, and etching process steps. 
+Gained hands-on exposure to semiconductor process optimization for sensing applications.</p>
+          <div class="project-tags">
+            <span class="tag">IISc Bangalore</span><span class="tag"> SEMulator3D</span><span class="tag">LaTeX</span><span class="tag">Semiconductor</span><span class="tag">Feb 2026 - May 2026</span>
+          </div>
+          
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-icon"><i class="fa-solid fa-microchip"></i></div>
+          <h3 class="project-title">Audio Amplifier Circuit using Solar Panel</h3>
+          <p class="project-desc">Designed and tested a wireless audio transmission system using light as the carrier medium.
+Integrated solar panel as power source and verified signal integrity across the analog chain.</p>
+          <div class="project-tags">
+            <span class="tag">LM386</span><span class="tag">SRMIST</span><span class="tag">EasyEDA</span><span class="tag">May 2026</span><span class="tag">Analog Circuits</span>
+          </div>
+         
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h3 class="project-title">Air Traffic Control System</h3>
+          <p class="project-desc">Designed a priority-based FSM in Verilog HDL to handle 8 emergency request types with deterministic priority resolution.
+Integrated MATLAB GUI with Verilog via file I/O co-simulation for real-time landing priority output.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span><span class="tag">FSM</span><span class="tag">MATLAB</span><span class="tag">GTKWave</span><span class="tag">Verilog HDL</span><span class="tag">Feb 2025 - May 2025</span>
+          </div>
+          
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3 class="project-title">Digital Door Lock System</h3>
+          <p class="project-desc">Designed and simulated a secure digital door lock using ATmega328 microcontroller in Proteus. Implemented keypad-based 
+access control with embedded C firmware and debounce logic.</p>
+          <div class="project-tags">
+            <span class="tag">Proteus</span><span class="tag">ATmega328</span><span class="tag">Embedded System</span><span class="tag">Aug 2025 - Nov 2025</span>
+          </div>
+          
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-icon"><i class="fa-solid fa-wave-square"></i></div>
+          <h3 class="project-title">One-Way Intercom Circuit</h3>
+          <p class="project-desc">Built and simulated a one-way intercom using IC-386 amplifier and validated before hardware build.</p>
+          <div class="project-tags">
+            <span class="tag">IC-386</span><span class="tag">EasyEDA</span><span class="tag">TinkerCad</span><span class="tag">Analog Circuits</span><span class="tag">Feb 2025 - May 2025</span>
+          </div>
+          
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-icon"><i class="fa-solid fa-globe"></i></div>
+          <h3 class="project-title">Home Security Alarm System</h3>
+          <p class="project-desc">Designed alarm circuit using BJT transistors and digital ICs with PCB fabrication in EasyEDA. Programmed trigger logic and 
+validated operation on physical PCB.</p>
+          <div class="project-tags">
+            <span class="tag">SRMIST</span><span class="tag"> EasyEDA</span><span class="tag">Digital and Analog Circuits</span><span class="tag">Aug 2024 - Nov 2024</span>
+          </div>
+          
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+ <!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label fade-in"><i class="fa-solid fa-paper-plane"></i> Get In Touch</div>
+    <h2 class="section-title fade-in">Contact</h2>
+    <div class="section-underline fade-in"></div>
+
+    <form id="contact-form" class="contact-card fade-in">
+      <div class="contact-row">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="from_name" placeholder="Your Name" required/>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="from_email" placeholder="your@email.com" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Subject</label>
+        <input type="text" name="subject" placeholder="Project Collaboration" required/>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea name="message" placeholder="Tell me about your project or idea..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-send">
+        <i class="fa-solid fa-paper-plane"></i> Send Message
+      </button>
+
+      <div class="social-links">
+        <a href="https://github.com/"   target="_blank" class="social-link"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com/" target="_blank" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:your@email.com" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://twitter.com/"  target="_blank" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </form>
+  </div>
+</section>
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <p>© 2026 <span>Anubhav Mishra</span></p>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- ══ SCROLL UP ══ -->
+<a href="#" class="scrollup" id="scroll-up" aria-label="Scroll to top">
+  <i class="ri-arrow-up-line"></i>
+</a>
+<script>
+  const scrollUpBtn = document.getElementById('scroll-up');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY >= 400) {
+      scrollUpBtn.classList.add('show-scroll');
+    } else {
+      scrollUpBtn.classList.remove('show-scroll');
+    }
+  });
+
+  scrollUpBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+<script>
+  const cursorDot = document.querySelector('.cursor-dot');
+  const cursorRing = document.querySelector('.cursor-ring');
+
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursorDot.style.left = mouseX + 'px';
+    cursorDot.style.top = mouseY + 'px';
+  });
+
+  // Smooth trailing ring
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.15;
+    ringY += (mouseY - ringY) * 0.15;
+    cursorRing.style.left = ringX + 'px';
+    cursorRing.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Grow ring on hover over interactive elements
+  const hoverTargets = document.querySelectorAll('a, button, .scrollup, input, textarea');
+  hoverTargets.forEach((el) => {
+    el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+  });
+</script>
+<script>
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+
+  let width, height, particles;
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // Responsive particle count based on screen size
+  function getParticleCount() {
+    const area = width * height;
+    return Math.min(Math.floor(area / 15000), 120);
+  }
+
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
+      this.radius = Math.random() * 1.5 + 0.5;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > width) this.vx *= -1;
+      if (this.y < 0 || this.y > height) this.vy *= -1;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(79, 110, 247, 0.8)';
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particles = Array.from({ length: getParticleCount() }, () => new Particle());
+  }
+  initParticles();
+  window.addEventListener('resize', initParticles);
+
+  const connectDistance = 130;
+
+  function connectParticles() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < connectDistance) {
+          const opacity = 1 - dist / connectDistance;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(79, 110, 247, ${opacity * 0.3})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach((p) => {
+      p.update();
+      p.draw();
+    });
+    connectParticles();
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // Pause animation when tab is inactive (performance)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(animate);
+    }
+  });
+</script>
+
+
+</body>
+</html>
