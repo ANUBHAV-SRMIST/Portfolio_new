@@ -207,3 +207,32 @@ function createClickEffect(x, y) {
 document.addEventListener('click', (e) => {
   createClickEffect(e.clientX, e.clientY);
 });
+// ── GALLERY LIGHTBOX ──
+const galleryItems = document.querySelectorAll('.gallery-item');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxClose = document.getElementById('lightboxClose');
+
+galleryItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const fullSrc = item.getAttribute('data-full');
+    lightboxImg.src = fullSrc;
+    lightbox.classList.add('active');
+  });
+});
+
+lightboxClose.addEventListener('click', () => {
+  lightbox.classList.remove('active');
+});
+
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) {
+    lightbox.classList.remove('active');
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    lightbox.classList.remove('active');
+  }
+});
