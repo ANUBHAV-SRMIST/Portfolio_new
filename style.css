@@ -1382,3 +1382,45 @@ nav {
   color: var(--accent-blue);
   width: 16px;
 }
+.edu-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 0.4rem;
+}
+
+.edu-item {
+  position: relative;
+  padding-left: 1rem;
+  border-left: 2px solid var(--border);
+}
+
+.edu-item::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+}
+
+.edu-degree {
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.edu-school {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.1rem;
+}
+
+.edu-year {
+  font-size: 0.78rem;
+  color: var(--accent-light);
+  margin-top: 0.15rem;
+  font-weight: 500;
+}
