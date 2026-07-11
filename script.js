@@ -9,6 +9,11 @@ function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
   document.getElementById('navOverlay').classList.toggle('active');
 }
+// ── CLOSE NAV WHEN TAPPING OVERLAY ──
+document.getElementById('navOverlay').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('navOverlay').classList.remove('active');
+});
 
 
 // ── HIGHLIGHT ACTIVE NAV LINK ON SCROLL ──
