@@ -1312,3 +1312,72 @@ nav {
     grid-template-columns: 1fr;
   }
 }
+/* ══ RESUME DROPDOWN ══ */
+.resume-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.resume-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.resume-arrow {
+  font-size: 0.7rem;
+  transition: transform 0.25s ease;
+}
+
+.resume-toggle.active .resume-arrow {
+  transform: rotate(180deg);
+}
+
+.resume-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 200px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  z-index: 100;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.resume-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.resume-menu a {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 8px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.resume-menu a:hover {
+  background: rgba(79, 110, 247, 0.15);
+  color: var(--accent-light);
+}
+
+.resume-menu a i {
+  color: var(--accent-blue);
+  width: 16px;
+}

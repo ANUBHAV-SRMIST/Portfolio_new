@@ -236,3 +236,19 @@ document.addEventListener('keydown', (e) => {
     lightbox.classList.remove('active');
   }
 });
+// ── RESUME DROPDOWN ──
+const resumeToggle = document.getElementById('resumeToggle');
+const resumeMenu = document.getElementById('resumeMenu');
+
+resumeToggle.addEventListener('click', (e) => {
+  e.stopPropagation();
+  resumeMenu.classList.toggle('open');
+  resumeToggle.classList.toggle('active');
+});
+
+document.addEventListener('click', (e) => {
+  if (!resumeToggle.contains(e.target) && !resumeMenu.contains(e.target)) {
+    resumeMenu.classList.remove('open');
+    resumeToggle.classList.remove('active');
+  }
+});
