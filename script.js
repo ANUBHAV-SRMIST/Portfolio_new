@@ -257,3 +257,58 @@ document.addEventListener('click', (e) => {
     resumeToggle.classList.remove('active');
   }
 });
+// ── CERTIFICATIONS DATA (edit this list) ──
+const certData = [
+  { img: "images/Cert/8-BIT-MICROCONTROLLER.jpg", title: "8 Bit Microcontroller" },
+  { img: "images/Cert/8051-Microcontroller.jpg", title: "8051 Microcontroller" },
+  { img: "images/Cert/Aptitude-Test-Series.jpg", title: "Aptitude Test Series" },
+  { img: "images/Cert/AWS-Data-Engineer.jpg", title: "AWS Data Engineer" },
+  { img: "images/Cert/AWS-Generative-AI.jpg", title: "AWS Generative AI" },
+  { img: "images/Cert/C-Programming.jpg", title: "C Programming" },
+  { img: "images/Cert/Crash-Course-On-Python.jpg", title: "Crash Course On Python" },
+  { img: "images/Cert/Database-Data-Structure-Test-Series.jpg", title: "Database & Data Structure Test Series" },
+  { img: "images/Cert/Design-Verification-using-System-Verilog.jpg", title: "Design & Verification using SystemVerilog/UVM" },
+  { img: "images/Cert/DSA.jpg", title: "DSA" },
+  { img: "images/Cert/Electronic-Proficiency-Test.jpg", title: "Electronic Proficiency Test" },
+  { img: "images/Cert/Introduction-to-Front-End.jpg", title: "Introduction to Front End (Meta)" },
+  { img: "images/Cert/Programming-Test-Series-(C-and-Python).jpg", title: "Programming Test Series (C and Python)" },
+  { img: "images/Cert/Python-Full-stack.jpg", title: "Python Full Stack" },
+  { img: "images/Cert/Science-of-well-being.jpg", title: "The Science of Well-Being" },
+  { img: "images/Cert/SQL-and-Database-Management-Systems.jpg", title: "SQL and Database Management Systems" },
+  { img: "images/Cert/SQL-for-Data-Science.jpg", title: "SQL for Data Science" },
+  { img: "images/Cert/SRM-HACKTHON.jpg", title: "SRM Hackathon" },
+  { img: "images/Cert/UI_UX-DESIGN.jpg", title: "UI/UX Design" },
+  { img: "images/Cert/Veilog-HDL.jpg", title: "Verilog HDL" }
+];
+
+// ── BUILD CERT MARQUEE ──
+const certTrack = document.getElementById('certMarqueeTrack');
+function renderCertCard(cert) {
+  return `
+    <div class="cert-card" data-img="${cert.img}" data-title="${cert.title}">
+      <img src="${cert.img}" alt="${cert.title}" loading="lazy">
+      <div class="cert-card-info">
+        <span class="cert-card-title">${cert.title}</span>
+      </div>
+    </div>
+  `;
+}
+certTrack.innerHTML = certData.map(renderCertCard).join('') + certData.map(renderCertCard).join('');
+
+// ── CERTIFICATE MODAL ──
+const certModal = document.getElementById('certModal');
+const certModalImg = document.getElementById('certModalImg');
+const certModalTitle = document.getElementById('certModalTitle');
+const certModalClose = document.getElementById('certModalClose');
+
+certTrack.addEventListener('click', (e) => {
+  const card = e.target.closest('.cert-card');
+  if (!card) return;
+  certModalImg.src = card.getAttribute('data-img');
+  certModalTitle.textContent = card.getAttribute('data-title');
+  certModal.classList.add('active');
+});
+
+certModalClose.addEventListener('click', () => certModal.classList.remove('active'));
+certModal.addEventListener('click', (e) => { if (e.target === certModal) certModal.classList.remove('active'); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') certModal.classList.remove('active'); });
