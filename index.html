@@ -41,6 +41,22 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <body>
+  <!-- =========================
+SYSTEM STATUS
+========================= -->
+
+<div class="system-status">
+    <span class="status-dot"></span>
+
+    <span class="status-text">
+        System Online
+    </span>
+
+    <span class="corner tl"></span>
+    <span class="corner tr"></span>
+    <span class="corner bl"></span>
+    <span class="corner br"></span>
+</div>
   <canvas id="bg-canvas"></canvas>
   <div class="cursor-dot"></div>
   <div class="cursor-ring"></div>
@@ -56,6 +72,8 @@
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#internships">Internships</a></li>
+        <li><a href="#certifications">Certifications</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -98,6 +116,10 @@
 
       <!-- Text -->
       <div class="hero-text fade-in">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          ECE '27 · SRMIST
+        </div>
         <p class="hero-greeting">Hello, I'm</p>
         <h1 class="hero-name" id="typed-name"></h1>
         <p class="hero-role">Senior Student Chair IEEE EDS</p>
@@ -123,6 +145,10 @@
           <a href="https://linkedin.com/" target="_blank" class="btn btn-outline"><i
               class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
         </div>
+        <div class="hero-contact-row">
+          <a href="mailto:am3359@srmist.edu.in"><i class="fa-solid fa-envelope"></i> am3359@srmist.edu.in</a>
+          <a href="tel:+917667275993"><i class="fa-solid fa-phone"></i> +91 7667275993</a>
+        </div>
 
 
 
@@ -131,10 +157,31 @@
     </div>
     </div>
     </div>
+    <a href="#about" class="scroll-hint">
+      <span>Scroll to Explore</span>
+      <div class="scroll-hint-arrow">
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+    </a>
   </section>
 
   <!-- ══ ABOUT ══ -->
   <section id="about">
+     <div class="academic-banner fade-in">
+      <span class="banner-corner corner-tl"></span>
+      <span class="banner-corner corner-br"></span>
+      <div class="academic-banner-left">
+        <div class="academic-banner-label">
+          <i class="fa-solid fa-graduation-cap"></i> Academic Excellence
+        </div>
+        <h3>Electronics & Communication</h3>
+        <p>SRM Institute of Science and Technology</p>
+      </div>
+      <div class="academic-banner-right">
+        <span class="academic-banner-score">9.42</span>
+        <span class="academic-banner-sub">Current CGPA</span>
+      </div>
+    
 
     <div class="about-grid fade-in">
       <div>
@@ -157,7 +204,10 @@
         <div class="info-card fade-in">
           <div class="info-card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
           <div>
-            <p class="info-card-label">Education</p>
+            <p class="info-card-label">
+              <span class="live-badge"><span class="live-dot"></span>Currently Pursuing</span>
+              Education
+            </p>
             <div class="edu-timeline">
               <div class="edu-item">
                 <div class="edu-degree">B.Tech ECE (Data Science)</div>
@@ -186,10 +236,10 @@
         </div>
       </div>
       <div class="info-card">
-        <div class="info-card-icon"><i class="fa-regular fa-calendar"></i></div>
+        <div class="info-card-icon"><i class="fa-solid fa-briefcase"></i></div>
         <div>
-          <p class="info-card-label">CGPA</p>
-          <p class="info-card-value">9.42/10</p>
+          <p class="info-card-label">Open To</p>
+          <p class="info-card-value">Internships & Full-time Roles</p>
         </div>
       </div>
       <div class="info-card">
@@ -199,13 +249,9 @@
           <p class="info-card-value">Chennai, Tamil Nadu, India</p>
         </div>
       </div>
-      <div class="info-card">
-        <div class="info-card-icon"><i class="fa-solid fa-envelope"></i></div>
-        <div>
-          <p class="info-card-label">Email</p>
-          <p class="info-card-value">am3359@srmist.edu.in</p>
-        </div>
-      </div>
+     
+    </div>
+      
     </div>
     </div>
   </section>
@@ -351,6 +397,32 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+  <!-- ══ CORE SPECIALIZATIONS ══ -->
+  <section id="specializations">
+    <div class="spec-inner">
+      <div class="spec-label fade-in">Expertise</div>
+      <h2 class="spec-title fade-in">Core <span>Specializations</span></h2>
+      <p class="spec-subtitle fade-in">Bridging electronics and data science with modern engineering paradigms</p>
+      <div class="spec-underline fade-in"></div>
+
+      <div class="spec-cards">
+        <div class="spec-card fade-in">
+          <div class="spec-card-icon"><i class="fa-solid fa-microchip"></i></div>
+          <h3>VLSI Design & Verification</h3>
+        </div>
+
+        <div class="spec-card fade-in">
+          <div class="spec-card-icon"><i class="fa-solid fa-wave-square"></i></div>
+          <h3>Embedded Systems</h3>
+        </div>
+
+        <div class="spec-card fade-in">
+          <div class="spec-card-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <h3>MEMS & Semiconductor Devices</h3>
+        </div>
       </div>
     </div>
   </section>
@@ -627,10 +699,26 @@
       </form>
     </div>
   </section>
-  <!-- ══ FOOTER ══ -->
-  <footer>
+<!-- ══ FOOTER ══ -->
+
+<footer>
+
+    <div class="system-status">
+
+        <span class="status-dot"></span>
+
+        <span class="status-text">SYSTEM ONLINE</span>
+
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+
+    </div>
+
     <p>© 2026 <span>Anubhav Mishra</span></p>
-  </footer>
+
+</footer>
 
   <script src="script.js"></script>
   <!-- ══ SCROLL UP ══ -->

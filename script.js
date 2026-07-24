@@ -326,3 +326,21 @@ certTrack.addEventListener('click', (e) => {
 certModalClose.addEventListener('click', () => certModal.classList.remove('active'));
 certModal.addEventListener('click', (e) => { if (e.target === certModal) certModal.classList.remove('active'); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') certModal.classList.remove('active'); });
+//=========================
+// SYSTEM STATUS
+//=========================
+
+const status=document.querySelector(".system-status");
+
+setInterval(()=>{
+
+status.style.boxShadow=
+"0 0 18px rgba(79,110,247,.25)";
+
+setTimeout(()=>{
+
+status.style.boxShadow="none";
+
+},700);
+
+},2000);
