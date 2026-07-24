@@ -33,6 +33,20 @@ function updateActiveNav() {
 }
 
 window.addEventListener('scroll', updateActiveNav);
+// ── FLOATING NAV ON SCROLL ──
+const navEl = document.querySelector('nav');
+const SCROLL_THRESHOLD = 40;
+
+function updateNavScrollState() {
+  if (window.scrollY > SCROLL_THRESHOLD) {
+    navEl.classList.add('nav-scrolled');
+  } else {
+    navEl.classList.remove('nav-scrolled');
+  }
+}
+
+window.addEventListener('scroll', updateNavScrollState);
+window.addEventListener('DOMContentLoaded', updateNavScrollState);
 
 
 // ── FADE-IN ELEMENTS ON SCROLL ──
