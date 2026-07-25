@@ -59,6 +59,10 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+// ── STAGGERED GALLERY ENTRANCE ──
+document.querySelectorAll('.gallery-item').forEach((item, i) => {
+  item.style.transitionDelay = `${i * 90}ms`;
+});
 
 
 // ── CLOSE MOBILE NAV WHEN A LINK IS CLICKED ──
@@ -326,6 +330,248 @@ certTrack.addEventListener('click', (e) => {
 certModalClose.addEventListener('click', () => certModal.classList.remove('active'));
 certModal.addEventListener('click', (e) => { if (e.target === certModal) certModal.classList.remove('active'); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') certModal.classList.remove('active'); });
+
+// ── INDUSTRY EXPOSURE DATA ──
+const expData = [
+  {
+    title: "Electronics Cooling Capstone",
+    org: "Dell Technologies · Chennai",
+    icon: "fa-temperature-half",
+    duration: "2024",
+    type: "Capstone Program",
+    badgeColor: "orange",
+    leadBy: "Prabhakar Subramaniam (Ex-Intel)",
+    desc: "Intensive capstone program on electronics thermal management, led by Prabhakar Subramaniam (Ex-Intel), focusing on CFD simulations and heat dissipation strategies for high-performance computing.",
+    tags: ["ANSYS Icepak", "CFD Simulation", "Junction Temp Analysis", "Heat Sink Design", "Thermal Resistance"],
+    learnings: [
+      "Mastered ANSYS Icepak for component-level and system-level thermal simulation",
+      "Analyzed Junction-to-Case (θjc) and Case-to-Ambient (θca) thermal resistance",
+      "Optimized heat sink geometries and fan airflow profiles for data centers",
+      "Applied computational fluid dynamics to solve conjugate heat transfer problems"
+    ]
+  },
+  {
+    title: "Community Connect Programme",
+    org: "Saraswati Shishu Vidya Mandir, Ara Kanta Sarubera, Ramgarh, Jharkhand",
+    icon: "fa-heart",
+    duration: "2024",
+    type: "Community Service",
+    badgeColor: "green",
+    link: "https://docs.google.com/presentation/d/1HAe_J_3gAyg0jjoFkMvYX9OsZjtgr4tF/edit?usp=sharing&ouid=108966136856154764181&rtpof=true&sd=true",
+    leadBy: "Divya Karunya Charitable Trust",
+    desc: "Volunteered at Divyakaruniya Ashramam as part of the Community Connect initiative, contributing to charitable activities and community service.",
+    tags: ["Community Service", "Social Impact", "Volunteering", "Teamwork", "Empathy"],
+    learnings: [
+      "Engaged in charitable activities at the ashram",
+      "Contributed to community welfare programs",
+      "Developed interpersonal and leadership skills",
+      "Built connections through meaningful social work"
+    ]
+  },
+  {
+    title: "Advanced Embedded System Developer",
+    org: "Microchip Technology Inc.",
+    icon: "fa-microchip",
+    duration: "Jan - Mar 2026",
+    grade: "O",
+    type: "Virtual Internship",
+    badgeColor: "blue",
+    desc: "Completed an advanced 10-week virtual internship on embedded systems development, delivered through the AICTE EduSkills National Internship Portal in partnership with Microchip Technology.",
+    tags: ["Embedded Systems", "Microcontrollers", "Microchip", "AICTE · EduSkills"],
+    learnings: [
+      "Advanced embedded systems design concepts and microcontroller architecture",
+      "Industry-aligned development practices from Microchip's curriculum",
+      "Completed the program with an Outstanding (O) grade"
+    ]
+  },
+  {
+    title: "SQL & Database Management Systems",
+    org: "EduSkills Academy",
+    icon: "fa-database",
+    duration: "Apr - Jun 2026",
+    grade: "O",
+    type: "Virtual Internship",
+    badgeColor: "blue",
+    desc: "Completed an 8-week virtual internship on SQL and database management systems through the AICTE EduSkills National Internship Portal.",
+    tags: ["SQL", "Database Management", "EduSkills", "AICTE"],
+    learnings: [
+      "Relational database design and SQL query fundamentals",
+      "Structured database management curriculum by EduSkills Academy",
+      "Completed the program with an Outstanding (O) grade"
+    ]
+  },
+  {
+    title: "Cloud Gen AI",
+    org: "AWS Academy",
+    icon: "fa-cloud",
+    duration: "Jul - Sep 2025",
+    grade: "O",
+    type: "Virtual Internship",
+    badgeColor: "blue",
+    desc: "Completed a 10-week virtual internship exploring generative AI on cloud infrastructure, with curriculum provided by AWS Academy.",
+    tags: ["Generative AI", "AWS", "Cloud Computing", "AICTE · EduSkills"],
+    learnings: [
+      "Foundations of generative AI and cloud-based AI services",
+      "Hands-on exposure to AWS Academy's Gen AI curriculum",
+      "Completed the program with an Outstanding (O) grade"
+    ]
+  },
+  {
+    title: "Structural Analysis",
+    org: "Ansys (part of Synopsys)",
+    icon: "fa-cube",
+    duration: "Oct - Dec 2025",
+    grade: "O",
+    type: "Virtual Internship",
+    badgeColor: "blue",
+    desc: "Completed a 10-week virtual internship on structural analysis, supported by Ansys, part of Synopsys, via the AICTE EduSkills National Internship Portal.",
+    tags: ["Structural Analysis", "ANSYS", "Simulation", "AICTE · EduSkills"],
+    learnings: [
+      "Structural simulation and analysis fundamentals using Ansys tools",
+      "Applied engineering analysis workflows",
+      "Completed the program with an Outstanding (O) grade"
+    ]
+  },
+  {
+    title: "Python Full Stack Developer",
+    org: "EduSkills Academy",
+    icon: "fa-brands fa-python",
+    duration: "Apr - Jun 2025",
+    grade: "P",
+    type: "Virtual Internship",
+    badgeColor: "blue",
+    desc: "Completed a 10-week virtual internship on full-stack development using Python, delivered via the AICTE EduSkills National Internship Portal.",
+    tags: ["Python", "Full-Stack Development", "EduSkills", "AICTE"],
+    learnings: [
+      "End-to-end web development fundamentals using Python",
+      "Structured full-stack curriculum from EduSkills Academy",
+      "Successfully completed the internship program"
+    ]
+  },
+  {
+    title: "Data Engineering",
+    org: "AWS Academy",
+    icon: "fa-database",
+    duration: "Jan - Mar 2025",
+    grade: "C",
+    type: "Virtual Internship",
+    badgeColor: "blue",
+    desc: "Completed a 10-week virtual internship in data engineering with curriculum provided by AWS Academy, through the AICTE EduSkills National Internship Portal.",
+    tags: ["Data Engineering", "AWS", "Cloud Computing", "AICTE · EduSkills"],
+    learnings: [
+      "Core data engineering concepts and AWS data services",
+      "Cloud-based data pipeline fundamentals",
+      "Successfully completed the internship program"
+    ]
+  },
+  {
+    title: "Android Developer",
+    org: "Google for Developers",
+    icon: "fa-brands fa-google",
+    duration: "Oct - Dec 2024",
+    grade: "C",
+    type: "Virtual Internship",
+    badgeColor: "blue",
+    desc: "Completed a 10-week Android Developer virtual internship supported by Google for Developers, under the India Edu Program.",
+    tags: ["Android Development", "Google", "Mobile Apps", "AICTE · EduSkills"],
+    learnings: [
+      "Android app development fundamentals",
+      "Structured curriculum from Google's India Edu Program",
+      "Successfully completed the internship program"
+    ]
+  },
+  {
+    title: "Networking",
+    org: "Juniper Networks",
+    icon: "fa-network-wired",
+    duration: "Jul - Sep 2024",
+    grade: "A",
+    type: "Virtual Internship",
+    badgeColor: "blue",
+    desc: "Completed a 10-week Networking virtual internship supported by Juniper Networks' Cloud & Automation Academy.",
+    tags: ["Networking", "Cloud & Automation", "Juniper Networks", "AICTE · EduSkills"],
+    learnings: [
+      "Core networking concepts and cloud automation practices",
+      "Hands-on exposure to Juniper Networks' curriculum",
+      "Completed the program with a Very Good (A) grade"
+    ]
+  },
+  {
+    title: "Embedded System Developer",
+    org: "Microchip Technology Inc.",
+    icon: "fa-microchip",
+    duration: "Apr - Jun 2024",
+    grade: "C",
+    type: "Virtual Internship",
+    badgeColor: "blue",
+    desc: "Completed a 10-week Embedded System Developer virtual internship supported by Microchip, through the AICTE EduSkills National Internship Portal.",
+    tags: ["Embedded Systems", "Microcontrollers", "Microchip", "AICTE · EduSkills"],
+    learnings: [
+      "Fundamentals of embedded systems and microcontroller programming",
+      "Introductory industry curriculum from Microchip",
+      "Successfully completed the internship program"
+    ]
+  }
+];
+
+// ── RENDER EXPERIENCE LIST + DETAIL ──
+const expList = document.getElementById('expList');
+const expDetail = document.getElementById('expDetail');
+
+function renderExpDetail(exp) {
+  expDetail.innerHTML = `
+    <div class="exp-detail-top">
+      <span class="exp-badge type-${exp.badgeColor || 'blue'}">${exp.type}</span>
+      <span class="exp-detail-date">${exp.duration}</span>
+      ${exp.grade ? `<span class="exp-grade">Grade ${exp.grade}</span>` : ''}
+    </div>
+    <h3 class="exp-detail-title">${exp.title}</h3>
+    <div class="exp-detail-org"><i class="fa-solid fa-building"></i> ${exp.org}</div>
+    ${exp.leadBy ? `<div class="exp-detail-lead">Led by ${exp.leadBy}</div>` : ''}
+    <p class="exp-detail-desc">${exp.desc}</p>
+    <div class="exp-detail-tags">
+      ${exp.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+    </div>
+    <div class="exp-learnings-title">Key Learnings</div>
+    <ul class="exp-learnings">
+      ${exp.learnings.map(l => `<li>${l}</li>`).join('')}
+    </ul>
+    ${exp.link ? `<a href="${exp.link}" target="_blank" rel="noopener noreferrer" class="exp-proof-btn"><i class="fa-solid fa-file-lines"></i> View Proof / Certificate</a>` : ''}
+  `;
+}
+
+function renderExpList() {
+  expList.innerHTML = expData.map((exp, i) => `
+    <div class="exp-item ${i === 0 ? 'active' : ''}" data-index="${i}">
+      <div class="exp-item-icon"><i class="fa-solid ${exp.icon.includes('fa-') && !exp.icon.startsWith('fa-brands') ? exp.icon : ''}"></i></div>
+      <div>
+        <div class="exp-item-title">${exp.title}</div>
+        <div class="exp-item-org">${exp.org}</div>
+      </div>
+    </div>
+  `).join('');
+
+  // Fix icon classes properly (handles both fa-solid and fa-brands icons)
+  document.querySelectorAll('.exp-item').forEach((item, i) => {
+    const iconEl = item.querySelector('.exp-item-icon i');
+    iconEl.className = expData[i].icon.startsWith('fa-brands') ? expData[i].icon : `fa-solid ${expData[i].icon}`;
+
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.exp-item').forEach(el => el.classList.remove('active'));
+      item.classList.add('active');
+
+      const icon = item.querySelector('.exp-item-icon');
+      icon.classList.remove('bounce');
+      void icon.offsetWidth; // restart animation
+      icon.classList.add('bounce');
+
+      renderExpDetail(expData[i]);
+    });
+  });
+}
+
+renderExpList();
+renderExpDetail(expData[0]);
 //=========================
 // SYSTEM STATUS
 //=========================
