@@ -277,26 +277,26 @@ document.addEventListener('click', (e) => {
 });
 // ── CERTIFICATIONS DATA (edit this list) ──
 const certData = [
-  { img: "images/Cert/8-BIT-MICROCONTROLLER.jpg", title: "8 Bit Microcontroller" },
-  { img: "images/Cert/8051-Microcontroller.jpg", title: "8051 Microcontroller" },
-  { img: "images/Cert/Aptitude-Test-Series.jpg", title: "Aptitude Test Series" },
-  { img: "images/Cert/AWS-Data-Engineer.jpg", title: "AWS Data Engineer" },
-  { img: "images/Cert/AWS-Generative-AI.jpg", title: "AWS Generative AI" },
-  { img: "images/Cert/C-Programming.jpg", title: "C Programming" },
-  { img: "images/Cert/Crash-Course-On-Python.jpg", title: "Crash Course On Python" },
-  { img: "images/Cert/Database-Data-Structure-Test-Series.jpg", title: "Database & Data Structure Test Series" },
-  { img: "images/Cert/Design-Verification-using-System-Verilog.jpg", title: "Design & Verification using SystemVerilog/UVM" },
-  { img: "images/Cert/DSA.jpg", title: "DSA" },
-  { img: "images/Cert/Electronic-Proficiency-Test.jpg", title: "Electronic Proficiency Test" },
-  { img: "images/Cert/Introduction-to-Front-End.jpg", title: "Introduction to Front End (Meta)" },
-  { img: "images/Cert/Programming-Test-Series-(C-and-Python).jpg", title: "Programming Test Series (C and Python)" },
-  { img: "images/Cert/Python-Full-stack.jpg", title: "Python Full Stack" },
-  { img: "images/Cert/Science-of-well-being.jpg", title: "The Science of Well-Being" },
-  { img: "images/Cert/SQL-and-Database-Management-Systems.jpg", title: "SQL and Database Management Systems" },
-  { img: "images/Cert/SQL-for-Data-Science.jpg", title: "SQL for Data Science" },
-  { img: "images/Cert/SRM-HACKTHON.jpg", title: "SRM Hackathon" },
-  { img: "images/Cert/UI_UX-DESIGN.jpg", title: "UI/UX Design" },
-  { img: "images/Cert/Veilog-HDL.jpg", title: "Verilog HDL" }
+  { img: "images/Cert/8-BIT-MICROCONTROLLER.jpg", title: "8 Bit Microcontroller", org: "Microchip", desc: "Fundamentals of 8-bit microcontroller architecture and programming." },
+  { img: "images/Cert/8051-Microcontroller.jpg", title: "8051 Microcontroller", org: "Udemy", desc: "Programming and interfacing techniques for the 8051 microcontroller." },
+  { img: "images/Cert/Aptitude-Test-Series.jpg", title: "Aptitude Test Series", org: "Sanfoundary", desc: "Quantitative aptitude and logical reasoning test series." },
+  { img: "images/Cert/AWS-Data-Engineer.jpg", title: "AWS Data Engineer", org: "AWS Academy", desc: "Cloud-based data engineering pipelines and services on AWS." },
+  { img: "images/Cert/AWS-Generative-AI.jpg", title: "AWS Generative AI", org: "AWS Academy", desc: "Generative AI foundations and applications on AWS cloud infrastructure." },
+  { img: "images/Cert/C-Programming.jpg", title: "C Programming", org: "IEEE", desc: "Core concepts of C programming including memory management and pointers." },
+  { img: "images/Cert/Crash-Course-On-Python.jpg", title: "Crash Course On Python", org: "Google", desc: "Python fundamentals covering syntax, data structures, and basic scripting." },
+  { img: "images/Cert/Database-Data-Structure-Test-Series.jpg", title: "Database & Data Structure Test Series", org: "SANfoundry", desc: "Scored Grade A (90%+ marks) in database and data structure fundamentals." },
+  { img: "images/Cert/Design-Verification-using-System-Verilog.jpg", title: "Design & Verification using SystemVerilog/UVM", org: "Udemy", desc: "Hands-on design verification methodology using SystemVerilog and UVM." },
+  { img: "images/Cert/DSA.jpg", title: "DSA", org: "Microsoft", desc: "Data structures and algorithms fundamentals and problem solving." },
+  { img: "images/Cert/Electronic-Proficiency-Test.jpg", title: "Electronic Proficiency Test", org: "SANfoundry", desc: "Scored Grade A (>82% marks) in core electronics proficiency." },
+  { img: "images/Cert/Introduction-to-Front-End.jpg", title: "Introduction to Front End (Meta)", org: "Meta", desc: "Foundations of front-end web development." },
+  { img: "images/Cert/Programming-Test-Series-(C-and-Python).jpg", title: "Programming Test Series (C and Python)", org: "SANfoundry", desc: "Scored Grade A (85%+ marks) in C and Python programming fundamentals." },
+  { img: "images/Cert/Python-Full-stack.jpg", title: "Python Full Stack", org: "EduSkills Academy", desc: "Full-stack development training using Python across the application stack." },
+  { img: "images/Cert/Science-of-well-being.jpg", title: "The Science of Well-Being", org: "Yale University", desc: "Explored the science of happiness and evidence-based habits for well-being." },
+  { img: "images/Cert/SQL-and-Database-Management-Systems.jpg", title: "SQL and Database Management Systems", org: "EduSkills Academy", desc: "Internship certification in SQL fundamentals and database management." },
+  { img: "images/Cert/SQL-for-Data-Science.jpg", title: "SQL for Data Science", org: "UC Davis", desc: "Applied SQL querying techniques for data science and analysis." },
+  { img: "images/Cert/SRM-HACKTHON.jpg", title: "SRM Hackathon", org: "SRM Institute", desc: "Participated in a competitive hackathon building solutions under time constraints." },
+  { img: "images/Cert/UI_UX-DESIGN.jpg", title: "UI/UX Design", org: "CodeSoft", desc: "Principles of user interface and user experience design." },
+  { img: "images/Cert/Veilog-HDL.jpg", title: "Verilog HDL", org: "Udemy", desc: "Hardware description language fundamentals using Verilog." }
 ];
 
 // ── BUILD CERT MARQUEE ──
@@ -307,6 +307,8 @@ function renderCertCard(cert) {
       <img src="${cert.img}" alt="${cert.title}" loading="lazy">
       <div class="cert-card-info">
         <span class="cert-card-title">${cert.title}</span>
+        ${cert.org ? `<span class="cert-card-org">${cert.org}</span>` : ''}
+        ${cert.desc ? `<p class="cert-card-desc">${cert.desc}</p>` : ''}
       </div>
     </div>
   `;
@@ -590,3 +592,35 @@ status.style.boxShadow="none";
 },700);
 
 },2000);
+// ── BASIC COPY PROTECTION (deterrent only, not foolproof) ──
+
+// Disable right-click context menu
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+// Disable dragging images (prevents easy "save image as" via drag)
+document.addEventListener('dragstart', (e) => {
+  if (e.target.tagName === 'IMG') e.preventDefault();
+});
+
+// Block common dev-tools shortcuts
+document.addEventListener('keydown', (e) => {
+  const key = e.key.toLowerCase();
+
+  // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C (DevTools panels)
+  if (e.ctrlKey && e.shiftKey && ['i', 'j', 'c'].includes(key)) {
+    e.preventDefault();
+    return;
+  }
+
+  // Ctrl+U (View Source)
+  if (e.ctrlKey && key === 'u') {
+    e.preventDefault();
+    return;
+  }
+
+  // Cmd equivalents for Mac
+  if (e.metaKey && e.altKey && ['i', 'j', 'c'].includes(key)) {
+    e.preventDefault();
+    return;
+  }
+});
