@@ -8,13 +8,14 @@
 function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
   document.getElementById('navOverlay').classList.toggle('active');
+  document.getElementById('hamburger').classList.toggle('active');
 }
 // ── CLOSE NAV WHEN TAPPING OVERLAY ──
 document.getElementById('navOverlay').addEventListener('click', () => {
   document.getElementById('navLinks').classList.remove('open');
   document.getElementById('navOverlay').classList.remove('active');
+  document.getElementById('hamburger').classList.remove('active');
 });
-
 
 // ── HIGHLIGHT ACTIVE NAV LINK ON SCROLL ──
 const sections   = document.querySelectorAll('section[id]');
@@ -30,8 +31,10 @@ function updateActiveNav() {
   navAnchors.forEach(a => {
     a.classList.toggle('active', a.getAttribute('href') === '#' + current);
   });
-}
 
+  const activeLink = document.querySelector('.nav-links a.active');
+  if (activeLink) moveIndicator(activeLink);
+}
 window.addEventListener('scroll', updateActiveNav);
 // ── FLOATING NAV ON SCROLL ──
 const navEl = document.querySelector('nav');
@@ -64,12 +67,20 @@ document.querySelectorAll('.gallery-item').forEach((item, i) => {
   item.style.transitionDelay = `${i * 90}ms`;
 });
 
+// ── STAGGERED GRID CARD ENTRANCE (Skills / Specializations / Projects) ──
+document.querySelectorAll('.skills-grid, .spec-cards, .projects-grid').forEach(grid => {
+  grid.querySelectorAll('.fade-in').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 90}ms`;
+  });
+});
+
 
 // ── CLOSE MOBILE NAV WHEN A LINK IS CLICKED ──
 navAnchors.forEach(a => {
   a.addEventListener('click', () => {
     document.getElementById('navLinks').classList.remove('open');
     document.getElementById('navOverlay').classList.remove('active');
+    document.getElementById('hamburger').classList.remove('active');
   });
 });
 // ── CONTACT FORM SEND (EmailJS) ──
@@ -267,12 +278,14 @@ resumeToggle.addEventListener('click', (e) => {
   e.stopPropagation();
   resumeMenu.classList.toggle('open');
   resumeToggle.classList.toggle('active');
+  document.body.classList.toggle('resume-open');
 });
 
 document.addEventListener('click', (e) => {
   if (!resumeToggle.contains(e.target) && !resumeMenu.contains(e.target)) {
     resumeMenu.classList.remove('open');
     resumeToggle.classList.remove('active');
+    document.body.classList.remove('resume-open');
   }
 });
 // ── CERTIFICATIONS DATA (edit this list) ──
