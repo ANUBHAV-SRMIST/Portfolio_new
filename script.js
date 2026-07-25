@@ -619,6 +619,12 @@ document.addEventListener('dragstart', (e) => {
 document.addEventListener('keydown', (e) => {
   const key = e.key.toLowerCase();
 
+  // F12
+  if (e.key === 'F12') {
+    e.preventDefault();
+    return;
+  }
+
   // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C (DevTools panels)
   if (e.ctrlKey && e.shiftKey && ['i', 'j', 'c'].includes(key)) {
     e.preventDefault();
