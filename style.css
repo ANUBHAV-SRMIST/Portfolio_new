@@ -3322,3 +3322,105 @@ footer span {
     padding: 1rem 0.75rem 0.75rem;
   }
 }
+/* ════════════════════════
+   GITHUB STATS CARD
+════════════════════════ */
+.github-card-wrap {
+  max-width: 420px;
+  margin: 0 auto 3rem;
+  padding: 0 1.5rem;
+}
+
+.github-card {
+  position: relative;
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text-primary);
+  isolation: isolate;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.github-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(79, 110, 247, 0.3) 1px, transparent 1px);
+  background-size: 18px 18px;
+  opacity: 0.35;
+  mask-image: linear-gradient(135deg, black, transparent 70%);
+  -webkit-mask-image: linear-gradient(135deg, black, transparent 70%);
+  transition: transform 0.6s ease;
+  z-index: -1;
+}
+
+.github-card-glow {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--glow), transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.github-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-blue);
+  box-shadow: 0 20px 45px rgba(79, 110, 247, 0.25);
+}
+
+.github-card:hover::before {
+  transform: scale(1.15) rotate(3deg);
+}
+
+.github-card:hover .github-card-glow {
+  transform: scale(1.3);
+  opacity: 1.4;
+}
+
+.github-card-icon {
+  font-size: 2.2rem;
+  color: var(--accent-blue);
+  margin-bottom: 1.5rem;
+}
+
+.github-card-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.github-card-stats {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.github-card-stats strong {
+  color: var(--accent-blue);
+  font-size: 1.1rem;
+  margin-right: 0.3rem;
+}
+
+.github-card-arrow {
+  position: absolute;
+  top: 1.75rem;
+  right: 1.75rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.github-card:hover .github-card-arrow {
+  transform: translate(4px, -4px);
+  color: var(--accent-blue);
+}

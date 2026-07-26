@@ -774,3 +774,54 @@ document.addEventListener('keydown', (e) => {
   render();
   startAutoplay();
 })();
+// ══ GITHUB STATS CARD — live data + count-up ══
+(() => {
+  const card = document.getElementById('githubCard');
+  if (!card) return;
+
+  const repoEl = document.getElementById('githubRepos');
+  const followerEl = document.getElementById('githubFollowers');
+  let targetRepos = 0;
+  let targetFollowers = 0;
+  let animated = false;
+
+  fetch('https://api.github.com/users/ANUBHAV-SRMIST')
+    .then(res => res.json())
+    .then(data => {
+      targetRepos = data.public_repos || 0;
+      targetFollowers = data.followers || 0;
+    })
+    .catch(() => {
+      targetRepos = 49;
+      targetFollowers = 7;
+    });
+
+  function countUp(el, target, duration) {
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animated) {
+        animated = true;
+        const waitForData = setInterval(() => {
+          if (targetRepos || targetFollowers) {
+            clearInterval(waitForData);
+            countUp(repoEl, targetRepos, 1200);
+            countUp(followerEl, targetFollowers, 1200);
+          }
+        }, 100);
+        setTimeout(() => clearInterval(waitForData), 3000);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(card);
+})();
