@@ -637,3 +637,140 @@ document.addEventListener('keydown', (e) => {
     return;
   }
 });
+// ══ INTERESTS & PASSIONS — 3D DRAG COVERFLOW ══
+// ══ INTERESTS & PASSIONS — 3D DRAG COVERFLOW ══
+(() => {
+  const track = document.getElementById('coverflow');
+  if (!track) return;
+
+  const cards = Array.from(track.querySelectorAll('.coverflow-card'));
+  const dotsWrap = document.getElementById('coverflowDots');
+  let activeIndex = Math.floor(cards.length / 2);
+  let dragOffset = 0;
+  let dragMoved = false;
+  let startX = 0;
+  let isDragging = false;
+  let bobTime = 0;
+  let autoplayTimer = null;
+
+  cards.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.className = 'coverflow-dot';
+    dot.addEventListener('click', () => {
+      activeIndex = i;
+      restartAutoplay();
+    });
+    dotsWrap.appendChild(dot);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function getConfig() {
+    const mobile = window.innerWidth < 600;
+    return {
+      spacing: mobile ? 140 : 230,
+      angle: mobile ? 38 : 45,
+      depth: mobile ? 90 : 140
+    };
+  }
+
+  function render() {
+    const { spacing, angle, depth } = getConfig();
+    cards.forEach((card, i) => {
+      const offset = (i - activeIndex) + dragOffset / spacing;
+      const abs = Math.abs(offset);
+      const tx = offset * spacing;
+      const rotY = Math.max(-65, Math.min(65, offset * -angle));
+      const tz = -abs * depth;
+      const scale = Math.max(0.55, 1 - abs * 0.15);
+      const opacity = abs > 3.4 ? 0 : Math.max(0, 1 - abs * 0.28);
+
+      // gentle floating bob, only on the centered card, fading out as it moves off-center
+      const bobStrength = Math.max(0, 1 - abs / 0.5);
+      const bob = Math.sin(bobTime / 700) * 8 * bobStrength;
+
+      card.style.transform =
+        `translate(-50%, -50%) translate3d(${tx}px, ${bob}px, ${tz}px) rotateY(${rotY}deg) scale(${scale})`;
+      card.style.opacity = opacity;
+      card.style.zIndex = Math.round(100 - abs * 10);
+      card.style.pointerEvents = abs > 3.4 ? 'none' : 'auto';
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
+  }
+
+  // ── continuous idle float loop ──
+  function tick() {
+    bobTime += 16;
+    if (!isDragging) render();
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  // ── autoplay ──
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayTimer = setInterval(() => {
+      activeIndex = (activeIndex + 1) % cards.length;
+      render();
+    }, 3200);
+  }
+  function stopAutoplay() {
+    if (autoplayTimer) clearInterval(autoplayTimer);
+  }
+  function restartAutoplay() {
+    stopAutoplay();
+    startAutoplay();
+  }
+
+  track.addEventListener('mouseenter', stopAutoplay);
+  track.addEventListener('mouseleave', startAutoplay);
+
+  function onPointerDown(e) {
+    isDragging = true;
+    dragMoved = false;
+    startX = e.clientX;
+    dragOffset = 0;
+    stopAutoplay();
+    track.classList.add('dragging');
+    track.setPointerCapture(e.pointerId);
+  }
+
+  function onPointerMove(e) {
+    if (!isDragging) return;
+    dragOffset = e.clientX - startX;
+    if (Math.abs(dragOffset) > 5) dragMoved = true;
+    render();
+  }
+
+  function onPointerUp() {
+    if (!isDragging) return;
+    isDragging = false;
+    track.classList.remove('dragging');
+    const { spacing } = getConfig();
+    const steps = Math.round(dragOffset / spacing);
+    activeIndex = Math.max(0, Math.min(cards.length - 1, activeIndex - steps));
+    dragOffset = 0;
+    render();
+    restartAutoplay();
+  }
+
+  track.addEventListener('pointerdown', onPointerDown);
+  track.addEventListener('pointermove', onPointerMove);
+  track.addEventListener('pointerup', onPointerUp);
+  track.addEventListener('pointerleave', onPointerUp);
+
+  cards.forEach((card, i) => {
+    card.addEventListener('click', () => {
+      if (dragMoved) return;
+      if (i !== activeIndex) {
+        activeIndex = i;
+        restartAutoplay();
+        render();
+      }
+    });
+  });
+
+  window.addEventListener('resize', render);
+
+  render();
+  startAutoplay();
+})();
