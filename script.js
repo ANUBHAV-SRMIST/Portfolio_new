@@ -193,19 +193,34 @@ window.addEventListener('DOMContentLoaded', () => {
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon = themeToggle.querySelector('i');
 
+function getSystemTheme() {
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+}
+
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   themeIcon.className = theme === 'light' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-  localStorage.setItem('portfolio-theme', theme);
 }
 
-// Load saved theme on page load (defaults to dark)
-const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
-applyTheme(savedTheme);
+// If the user has manually toggled before, respect that choice.
+// Otherwise, follow the device's system theme automatically.
+const savedTheme = localStorage.getItem('portfolio-theme');
+applyTheme(savedTheme || getSystemTheme());
 
+// Live-update if system theme changes, but only when user hasn't manually chosen
+const systemThemeQuery = window.matchMedia('(prefers-color-scheme: light)');
+systemThemeQuery.addEventListener('change', (e) => {
+  if (!localStorage.getItem('portfolio-theme')) {
+    applyTheme(e.matches ? 'light' : 'dark');
+  }
+});
+
+// Manual toggle now counts as an explicit override, saved for future visits
 themeToggle.addEventListener('click', () => {
   const current = document.documentElement.getAttribute('data-theme');
-  applyTheme(current === 'light' ? 'dark' : 'light');
+  const newTheme = current === 'light' ? 'dark' : 'light';
+  applyTheme(newTheme);
+  localStorage.setItem('portfolio-theme', newTheme);
 });
 // ── CLICK EFFECT (particle burst) ──
 function createClickEffect(x, y) {
