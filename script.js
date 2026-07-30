@@ -331,7 +331,7 @@ const certData = [
 const certTrack = document.getElementById('certMarqueeTrack');
 function renderCertCard(cert) {
   return `
-    <div class="cert-card" data-img="${cert.img}" data-title="${cert.title}">
+    <div class="cert-card" data-img="${cert.img}" data-title="${cert.title}"data-org="${cert.org || ''}" data-desc="${cert.desc || ''}">
       <img src="${cert.img}" alt="${cert.title}" loading="lazy">
       <div class="cert-card-info">
         <span class="cert-card-title">${cert.title}</span>
@@ -347,6 +347,8 @@ certTrack.innerHTML = certData.map(renderCertCard).join('') + certData.map(rende
 const certModal = document.getElementById('certModal');
 const certModalImg = document.getElementById('certModalImg');
 const certModalTitle = document.getElementById('certModalTitle');
+const certModalOrg = document.getElementById('certModalOrg');
+const certModalDesc = document.getElementById('certModalDesc');
 const certModalClose = document.getElementById('certModalClose');
 
 certTrack.addEventListener('click', (e) => {
@@ -354,6 +356,8 @@ certTrack.addEventListener('click', (e) => {
   if (!card) return;
   certModalImg.src = card.getAttribute('data-img');
   certModalTitle.textContent = card.getAttribute('data-title');
+  certModalOrg.textContent = card.getAttribute('data-org');
+  certModalDesc.textContent = card.getAttribute('data-desc');
   certModal.classList.add('active');
 });
 
