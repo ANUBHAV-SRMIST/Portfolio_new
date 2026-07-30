@@ -825,3 +825,70 @@ document.addEventListener('keydown', (e) => {
 
   observer.observe(card);
 })();
+// ══ PUBLICATIONS — abstract toggle + tilt effect + scroll reveal ══
+(() => {
+  const toggle = document.getElementById('pubToggle');
+  const abstractEl = document.getElementById('pubAbstract');
+  if (toggle && abstractEl) {
+    toggle.addEventListener('click', () => {
+      const expanded = abstractEl.classList.toggle('expanded');
+      toggle.classList.toggle('expanded', expanded);
+      toggle.innerHTML = expanded
+        ? 'Show Less <i class="fa-solid fa-chevron-down"></i>'
+        : 'Read Full Abstract <i class="fa-solid fa-chevron-down"></i>';
+    });
+  }
+
+  const pubCard = document.querySelector('.pub-card');
+  if (!pubCard) return;
+
+  if (window.matchMedia('(hover: hover)').matches) {
+    pubCard.addEventListener('mousemove', (e) => {
+      const rect = pubCard.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateX = ((y / rect.height) - 0.5) * -6;
+      const rotateY = ((x / rect.width) - 0.5) * 6;
+      pubCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    pubCard.addEventListener('mouseleave', () => {
+      pubCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    });
+  }
+
+  // ── scroll-triggered reveal + stat count-up ──
+  let statsAnimated = false;
+  const statEls = pubCard.querySelectorAll('.pub-stat-value');
+
+  function animateStats() {
+    if (statsAnimated) return;
+    statsAnimated = true;
+    statEls.forEach(el => {
+      const target = parseFloat(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const isDecimal = String(el.dataset.target).includes('.');
+      const start = performance.now();
+      const duration = 1000;
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = eased * target;
+        el.textContent = (isDecimal ? value.toFixed(1) : Math.round(value)) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  const pubObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        pubCard.classList.add('in-view');
+        animateStats();
+        pubObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  pubObserver.observe(pubCard);
+})();
