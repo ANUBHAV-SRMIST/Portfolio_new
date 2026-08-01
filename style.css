@@ -2300,7 +2300,206 @@ nav {
 .cert-modal-close:hover {
   background: rgba(0, 0, 0, 0.8);
 }
+/* ════════════════════════
+   DIGITAL BADGES (Credly)
+════════════════════════ */
+#badges {
+  padding: 6rem 5%;
+}
 
+.badges-inner {
+  max-width: 640px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.badges-subtitle {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin-top: 0.9rem;
+  line-height: 1.6;
+}
+
+.badges-subtitle a {
+  color: var(--accent-light);
+  font-weight: 600;
+}
+
+.badge-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 2.4rem 1.5rem;
+}
+.badges-more-wrap {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.badge-card.badge-extra {
+  display: none;
+}
+
+.badge-grid.expanded .badge-card.badge-extra {
+  display: block;
+}
+
+.badge-card {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  padding: 1.7rem 1rem 1.4rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(28px) scale(0.94);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 0.8, 0.3, 1),
+    border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.badge-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.badge-card:hover {
+  border-color: var(--accent-blue);
+  box-shadow: 0 14px 34px rgba(79, 110, 247, 0.18);
+}
+
+.badge-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.75s ease;
+  pointer-events: none;
+}
+
+.badge-card:hover::after {
+  left: 150%;
+}
+
+.badge-medallion {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.badge-medallion img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #fff;
+  padding: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.badge-card:hover .badge-medallion img {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+
+.badge-card:hover .badge-medallion img {
+  transform: scale(1.07);
+}
+
+.badge-verified {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 3;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  border: 2px solid var(--bg-card);
+  transform: scale(0);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.badge-card:hover .badge-verified {
+  transform: scale(1);
+}
+
+.badge-title {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 0.3rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.badge-issuer {
+  display: block;
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: var(--accent-light);
+}
+
+.badge-date {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.badge-date.expiring {
+  color: #f2a154;
+}
+
+@media (max-width: 600px) {
+  #badges {
+    padding: 3.5rem 5%;
+  }
+
+  .badge-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1.8rem 1rem;
+  }
+
+  .badge-medallion {
+    width: 92px;
+    height: 92px;
+  }
+
+  .badge-medallion img {
+    width: 78px;
+    height: 78px;
+  }
+
+  /* on mobile, only show the first 6 by default */
+  .badge-card:nth-child(n + 7):not(.badge-extra) {
+    display: none;
+  }
+
+  .badge-grid.expanded .badge-card:nth-child(n + 7) {
+    display: block;
+  }
+}
 /* ════════════════════════
    INDUSTRY EXPOSURE
 ════════════════════════ */

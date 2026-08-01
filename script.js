@@ -364,7 +364,98 @@ certTrack.addEventListener('click', (e) => {
 certModalClose.addEventListener('click', () => certModal.classList.remove('active'));
 certModal.addEventListener('click', (e) => { if (e.target === certModal) certModal.classList.remove('active'); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') certModal.classList.remove('active'); });
+// ══ DIGITAL BADGES (Credly) — data, render, tilt, reveal ══
+const badgeData = [
+  { img: "images/Badges/fortinet-fortigate-7-6-operator.png", title: "Fortinet FortiGate 7.6 Operator", org: "Fortinet", date: "Issued Jul 29, 2026", link: "https://www.credly.com/badges/83019bfd-2f77-45af-b431-65d0a51de92a/public_url" },
+  { img: "images/Badges/fortinet-nse-1-certified-in-cybersecurity.png", title: "Fortinet NSE 1 Certified in Cybersecurity", org: "Fortinet", date: "Expires Jul 29, 2028", link: "https://www.credly.com/badges/e8f651da-8023-4d87-8e02-0b7056bd035d/public_url" },
+  { img: "images/Badges/fortinet-nse-2-certified-in-cybersecurity.1.png", title: "Fortinet NSE 2 Certified in Cybersecurity", org: "Fortinet", date: "Expires Jul 29, 2028", link: "https://www.credly.com/badges/9a20073a-c8e8-492c-aa47-a58810933a66/public_url" },
+  { img: "images/Badges/fortinet-nse-3-certified-in-cybersecurity.1.png", title: "Fortinet NSE 3 Certified in Cybersecurity", org: "Fortinet", date: "Expires Jul 29, 2028", link: "https://www.credly.com/badges/0422be06-6485-41e2-8389-2618fd2d2bc7/public_url" },
+  { img: "images/Badges/technical-introduction-to-cybersecurity-3-0.png", title: "Technical Introduction to Cybersecurity 3.0", org: "Fortinet", date: "Issued Jul 2, 2026", link: "https://www.credly.com/badges/4bce0550-f896-4a2b-a972-59e904bfc540/public_url" },
+  { img: "images/Badges/getting-started-in-cybersecurity-3-0.png", title: "Getting Started in Cybersecurity 3.0", org: "Fortinet", date: "Issued Jun 19, 2026", link: "https://www.credly.com/badges/38b24744-113b-4666-8dc0-fa0249d80bfc/public_url" },
+  { img: "images/Badges/fortinet-certified-fundamentals-cybersecurity.png", title: "Fortinet Certified Fundamentals Cybersecurity", org: "Fortinet", date: "Expires Jun 19, 2028", link: "https://www.credly.com/badges/5400dd49-6eed-4a32-a599-e0869c9652c0/public_url" },
+  { img: "images/Badges/introduction-to-the-threat-landscape-3-0.png", title: "Introduction to the Threat Landscape 3.0", org: "Fortinet", date: "Issued Jun 13, 2026", link: "https://www.credly.com/badges/8729054e-9ed3-4917-817d-878ee43df0e8/public_url" },
+  { img: "images/Badges/aws-academy-graduate-machine-learning-foundations-t.png", title: "AWS Academy Graduate - Machine Learning Foundations", org: "AWS Academy", date: "Issued Sep 10, 2025", link: "https://www.credly.com/badges/d24ea0d5-8725-4422-ba2e-84ad7455063f/public_urlE" },
+  { img: "images/Badges/aws-academy-graduate-machine-learning-for-natural-l.png", title: "AWS Academy Graduate - Machine Learning for NLP", org: "AWS Academy", date: "Issued Sep 10, 2025", link: "https://www.credly.com/badges/172f1ff3-b4c2-4129-a261-193c6072d8a0/public_url" },
+  { img: "images/Badges/aws-academy-graduate-generative-ai-foundations-trai.png", title: "AWS Academy Graduate - Generative AI Foundations", org: "AWS Academy", date: "Issued Sep 8, 2025", link: "https://www.credly.com/badges/2c1e8626-3706-4656-8371-cc55dc84fe11/public_url" },
+  { img: "images/Badges/data-analytics-essentials.png", title: "Data Analytics Essentials", org: "Coursera", date: "Issued Jun 19, 2025", link: "https://www.credly.com/badges/72c8e498-808a-4ce0-8625-1a8a9e2ead25/public_url" },
+  { img: "images/Badges/aws-academy-graduate-data-engineering-training-badg.png", title: "AWS Academy Graduate - Data Engineering", org: "AWS Academy", date: "Issued Feb 13, 2025", link: "https://www.credly.com/badges/2e4d3831-11e0-4f1f-9546-ec0f25cf35af/public_url" },
+  { img: "images/Badges/aws-academy-graduate-cloud-foundations-training-bad.png", title: "AWS Academy Graduate - Cloud Foundations", org: "AWS Academy", date: "Issued Feb 2, 2025", link: "https://www.credly.com/badges/b017ec71-13d2-40cb-8c29-e75da9081fbf/public_url" }
+];
 
+const badgeGrid = document.getElementById('badgeGrid');
+
+function renderBadgeCard(badge, i) {
+  const expiring = badge.date.toLowerCase().includes('expire');
+  const extraClass = i >= 10 ? ' badge-extra' : '';
+  return `
+    <a class="badge-card fade-in${extraClass}" href="${badge.link}" target="_blank" rel="noopener noreferrer" style="transition-delay:${(i % 10) * 80}ms">
+      <div class="badge-medallion">
+        <img src="${badge.img}" alt="${badge.title}" loading="lazy">
+        <span class="badge-verified"><i class="fa-solid fa-check"></i></span>
+      </div>
+      <h4 class="badge-title">${badge.title}</h4>
+      <span class="badge-issuer">${badge.org}</span>
+      <span class="badge-date${expiring ? ' expiring' : ''}">${badge.date}</span>
+    </a>`;
+}
+
+if (badgeGrid) {
+  badgeGrid.innerHTML = badgeData.map(renderBadgeCard).join('');
+
+ // scroll-reveal for the first 10 badges
+  const badgeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        badgeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.badge-card:not(.badge-extra)').forEach(card => badgeObserver.observe(card));
+   // ── SHOW MORE / SHOW LESS ──
+  const badgesToggleBtn = document.getElementById('badgesToggleBtn');
+  if (badgesToggleBtn) {
+    if (badgeData.length <= 10) {
+      badgesToggleBtn.style.display = 'none';
+    } else {
+      let expanded = false;
+      badgesToggleBtn.addEventListener('click', () => {
+        expanded = !expanded;
+        badgeGrid.classList.toggle('expanded', expanded);
+
+        if (expanded) {
+          const extraCards = badgeGrid.querySelectorAll('.badge-extra');
+          extraCards.forEach((card, i) => {
+            setTimeout(() => card.classList.add('visible'), i * 80);
+          });
+          badgesToggleBtn.innerHTML = 'Show Less <i class="fa-solid fa-chevron-up"></i>';
+        } else {
+          badgeGrid.querySelectorAll('.badge-extra').forEach(card => card.classList.remove('visible'));
+          badgesToggleBtn.innerHTML = 'Show More Badges <i class="fa-solid fa-chevron-down"></i>';
+          badgesToggleBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    }
+  }
+
+// subtle 3D tilt on hover (desktop only)
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.badge-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rotateX = ((y / rect.height) - 0.5) * -8;
+        const rotateY = ((x / rect.width) - 0.5) * 8;
+        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+}
 // ── INDUSTRY EXPOSURE DATA ──
 const expData = [
   {
