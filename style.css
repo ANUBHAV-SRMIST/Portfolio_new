@@ -1469,6 +1469,13 @@ footer span {
     z-index: 999;
     overflow-y: auto;
   }
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+   .nav-links {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
 
   .nav-links::before {
     content: '';
@@ -1599,6 +1606,10 @@ footer span {
     color: #fff;
     background: linear-gradient(90deg, rgba(79, 110, 247, 0.25), rgba(79, 110, 247, 0.05));
     box-shadow: inset 0 0 0 1px rgba(79, 110, 247, 0.35);
+  }
+  [data-theme="light"] .nav-links a.nav-link.active {
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-light));
+    box-shadow: 0 6px 18px rgba(79, 110, 247, 0.35);
   }
 
   .nav-links a.nav-link.active .nav-icon {
