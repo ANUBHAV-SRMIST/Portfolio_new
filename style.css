@@ -2,6 +2,9 @@
    ANUBHAV MISHRA — PORTFOLIO STYLES
    style.css
 ══════════════════════════════════════ */
+body.nav-open {
+  overflow: hidden;
+}
 
 /* ── RESET & ROOT VARIABLES ── */
 *,

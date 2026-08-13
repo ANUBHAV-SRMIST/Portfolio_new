@@ -9,12 +9,14 @@ function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
   document.getElementById('navOverlay').classList.toggle('active');
   document.getElementById('hamburger').classList.toggle('active');
+  document.body.classList.toggle('nav-open');
 }
 // ── CLOSE NAV WHEN TAPPING OVERLAY ──
 document.getElementById('navOverlay').addEventListener('click', () => {
   document.getElementById('navLinks').classList.remove('open');
   document.getElementById('navOverlay').classList.remove('active');
   document.getElementById('hamburger').classList.remove('active');
+  document.body.classList.remove('nav-open');
 });
 
 // ── HIGHLIGHT ACTIVE NAV LINK ON SCROLL ──
@@ -81,6 +83,7 @@ navAnchors.forEach(a => {
     document.getElementById('navLinks').classList.remove('open');
     document.getElementById('navOverlay').classList.remove('active');
     document.getElementById('hamburger').classList.remove('active');
+    document.body.classList.remove('nav-open');
   });
 });
 // ── CONTACT FORM SEND (EmailJS) ──
