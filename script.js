@@ -461,6 +461,23 @@ if (badgeGrid) {
 }
 // ── INDUSTRY EXPOSURE DATA ──
 const expData = [
+    {
+    title: "Network Security Associate Virtual Internship",
+    org: "Fortinet Training Institute",
+    icon: "fa-shield-halved",
+    duration: "Jun - Aug 2026",
+    grade: "O",
+    type: "Virtual Internship",
+    badgeColor: "blue",
+    link: "https://certificate.eduskillsfoundation.org/verify/4fa188ffa86e4090707a/4fa188ffa86e4090707a",
+    desc: "Completed an 8-week virtual internship on network security fundamentals, supported by Fortinet, through the AICTE EduSkills National Internship Portal.",
+    tags: ["Networking Basics", "Firewall Concepts", "VPN Technologies", "Threat Detection", "AICTE · EduSkills"],
+    learnings: [
+      "Gained hands-on exposure to securing networks and identifying threats",
+      "Configured firewalls, VPNs, and intrusion prevention systems",
+      "Completed the program with an Outstanding (O) grade"
+    ]
+  },
   {
     title: "Electronics Cooling Capstone",
     org: "Dell Technologies · Chennai",
@@ -496,6 +513,7 @@ const expData = [
       "Built connections through meaningful social work"
     ]
   },
+  
   {
     title: "Advanced Embedded System Developer",
     org: "Microchip Technology Inc.",
