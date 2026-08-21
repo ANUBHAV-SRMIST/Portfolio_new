@@ -459,9 +459,9 @@ if (badgeGrid) {
     });
   }
 }
-// ── INDUSTRY EXPOSURE DATA ──
+// ── INDUSTRY EXPOSURE DATA (sorted: most recent first) ──
 const expData = [
-    {
+  {
     title: "Network Security Associate Virtual Internship",
     org: "Fortinet Training Institute",
     icon: "fa-shield-halved",
@@ -475,58 +475,6 @@ const expData = [
     learnings: [
       "Gained hands-on exposure to securing networks and identifying threats",
       "Configured firewalls, VPNs, and intrusion prevention systems",
-      "Completed the program with an Outstanding (O) grade"
-    ]
-  },
-  {
-    title: "Electronics Cooling Capstone",
-    org: "Dell Technologies · Chennai",
-    icon: "fa-temperature-half",
-    duration: "2024",
-    type: "Capstone Program",
-    badgeColor: "orange",
-    leadBy: "Prabhakar Subramaniam (Ex-Intel)",
-    desc: "Intensive capstone program on electronics thermal management, led by Prabhakar Subramaniam (Ex-Intel), focusing on CFD simulations and heat dissipation strategies for high-performance computing.",
-    tags: ["ANSYS Icepak", "CFD Simulation", "Junction Temp Analysis", "Heat Sink Design", "Thermal Resistance"],
-    learnings: [
-      "Mastered ANSYS Icepak for component-level and system-level thermal simulation",
-      "Analyzed Junction-to-Case (θjc) and Case-to-Ambient (θca) thermal resistance",
-      "Optimized heat sink geometries and fan airflow profiles for data centers",
-      "Applied computational fluid dynamics to solve conjugate heat transfer problems"
-    ]
-  },
-  {
-    title: "Community Connect Programme",
-    org: "Saraswati Shishu Vidya Mandir, Ara Kanta Sarubera, Ramgarh, Jharkhand",
-    icon: "fa-heart",
-    duration: "2024",
-    type: "Community Service",
-    badgeColor: "green",
-    link: "https://docs.google.com/presentation/d/1HAe_J_3gAyg0jjoFkMvYX9OsZjtgr4tF/edit?usp=sharing&ouid=108966136856154764181&rtpof=true&sd=true",
-    leadBy: "Divya Karunya Charitable Trust",
-    desc: "Volunteered at Divyakaruniya Ashramam as part of the Community Connect initiative, contributing to charitable activities and community service.",
-    tags: ["Community Service", "Social Impact", "Volunteering", "Teamwork", "Empathy"],
-    learnings: [
-      "Engaged in charitable activities at the ashram",
-      "Contributed to community welfare programs",
-      "Developed interpersonal and leadership skills",
-      "Built connections through meaningful social work"
-    ]
-  },
-  
-  {
-    title: "Advanced Embedded System Developer",
-    org: "Microchip Technology Inc.",
-    icon: "fa-microchip",
-    duration: "Jan - Mar 2026",
-    grade: "O",
-    type: "Virtual Internship",
-    badgeColor: "blue",
-    desc: "Completed an advanced 10-week virtual internship on embedded systems development, delivered through the AICTE EduSkills National Internship Portal in partnership with Microchip Technology.",
-    tags: ["Embedded Systems", "Microcontrollers", "Microchip", "AICTE · EduSkills"],
-    learnings: [
-      "Advanced embedded systems design concepts and microcontroller architecture",
-      "Industry-aligned development practices from Microchip's curriculum",
       "Completed the program with an Outstanding (O) grade"
     ]
   },
@@ -547,18 +495,18 @@ const expData = [
     ]
   },
   {
-    title: "Cloud Gen AI",
-    org: "AWS Academy",
-    icon: "fa-cloud",
-    duration: "Jul - Sep 2025",
+    title: "Advanced Embedded System Developer",
+    org: "Microchip Technology Inc.",
+    icon: "fa-microchip",
+    duration: "Jan - Mar 2026",
     grade: "O",
     type: "Virtual Internship",
     badgeColor: "blue",
-    desc: "Completed a 10-week virtual internship exploring generative AI on cloud infrastructure, with curriculum provided by AWS Academy.",
-    tags: ["Generative AI", "AWS", "Cloud Computing", "AICTE · EduSkills"],
+    desc: "Completed an advanced 10-week virtual internship on embedded systems development, delivered through the AICTE EduSkills National Internship Portal in partnership with Microchip Technology.",
+    tags: ["Embedded Systems", "Microcontrollers", "Microchip", "AICTE · EduSkills"],
     learnings: [
-      "Foundations of generative AI and cloud-based AI services",
-      "Hands-on exposure to AWS Academy's Gen AI curriculum",
+      "Advanced embedded systems design concepts and microcontroller architecture",
+      "Industry-aligned development practices from Microchip's curriculum",
       "Completed the program with an Outstanding (O) grade"
     ]
   },
@@ -575,6 +523,22 @@ const expData = [
     learnings: [
       "Structural simulation and analysis fundamentals using Ansys tools",
       "Applied engineering analysis workflows",
+      "Completed the program with an Outstanding (O) grade"
+    ]
+  },
+  {
+    title: "Cloud Gen AI",
+    org: "AWS Academy",
+    icon: "fa-cloud",
+    duration: "Jul - Sep 2025",
+    grade: "O",
+    type: "Virtual Internship",
+    badgeColor: "blue",
+    desc: "Completed a 10-week virtual internship exploring generative AI on cloud infrastructure, with curriculum provided by AWS Academy.",
+    tags: ["Generative AI", "AWS", "Cloud Computing", "AICTE · EduSkills"],
+    learnings: [
+      "Foundations of generative AI and cloud-based AI services",
+      "Hands-on exposure to AWS Academy's Gen AI curriculum",
       "Completed the program with an Outstanding (O) grade"
     ]
   },
@@ -624,6 +588,41 @@ const expData = [
       "Android app development fundamentals",
       "Structured curriculum from Google's India Edu Program",
       "Successfully completed the internship program"
+    ]
+  },
+  {
+    title: "Electronics Cooling Capstone",
+    org: "Dell Technologies · Chennai",
+    icon: "fa-temperature-half",
+    duration: "2024",
+    type: "Capstone Program",
+    badgeColor: "orange",
+    leadBy: "Prabhakar Subramaniam (Ex-Intel)",
+    desc: "Intensive capstone program on electronics thermal management, led by Prabhakar Subramaniam (Ex-Intel), focusing on CFD simulations and heat dissipation strategies for high-performance computing.",
+    tags: ["ANSYS Icepak", "CFD Simulation", "Junction Temp Analysis", "Heat Sink Design", "Thermal Resistance"],
+    learnings: [
+      "Mastered ANSYS Icepak for component-level and system-level thermal simulation",
+      "Analyzed Junction-to-Case (θjc) and Case-to-Ambient (θca) thermal resistance",
+      "Optimized heat sink geometries and fan airflow profiles for data centers",
+      "Applied computational fluid dynamics to solve conjugate heat transfer problems"
+    ]
+  },
+  {
+    title: "Community Connect Programme",
+    org: "Saraswati Shishu Vidya Mandir, Ara Kanta Sarubera, Ramgarh, Jharkhand",
+    icon: "fa-heart",
+    duration: "2024",
+    type: "Community Service",
+    badgeColor: "green",
+    link: "https://docs.google.com/presentation/d/1HAe_J_3gAyg0jjoFkMvYX9OsZjtgr4tF/edit?usp=sharing&ouid=108966136856154764181&rtpof=true&sd=true",
+    leadBy: "Divya Karunya Charitable Trust",
+    desc: "Volunteered at Divyakaruniya Ashramam as part of the Community Connect initiative, contributing to charitable activities and community service.",
+    tags: ["Community Service", "Social Impact", "Volunteering", "Teamwork", "Empathy"],
+    learnings: [
+      "Engaged in charitable activities at the ashram",
+      "Contributed to community welfare programs",
+      "Developed interpersonal and leadership skills",
+      "Built connections through meaningful social work"
     ]
   },
   {
@@ -889,6 +888,31 @@ document.addEventListener('keydown', (e) => {
   track.addEventListener('pointerup', onPointerUp);
   track.addEventListener('pointerleave', onPointerUp);
 
+  // ── click-to-popup for the interest cards ──
+  const interestModal = document.getElementById('interestModal');
+  const interestModalImg = document.getElementById('interestModalImg');
+  const interestModalTitle = document.getElementById('interestModalTitle');
+  const interestModalDesc = document.getElementById('interestModalDesc');
+  const interestModalClose = document.getElementById('interestModalClose');
+
+  function openInterestModal(card) {
+    const img = card.querySelector('img');
+    interestModalImg.src = img.src;
+    interestModalTitle.textContent = card.getAttribute('data-title') || '';
+    interestModalDesc.textContent = card.getAttribute('data-desc') || '';
+    interestModal.classList.add('active');
+  }
+
+  if (interestModalClose) {
+    interestModalClose.addEventListener('click', () => interestModal.classList.remove('active'));
+    interestModal.addEventListener('click', (e) => {
+      if (e.target === interestModal) interestModal.classList.remove('active');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') interestModal.classList.remove('active');
+    });
+  }
+
   cards.forEach((card, i) => {
     card.addEventListener('click', () => {
       if (dragMoved) return;
@@ -896,6 +920,8 @@ document.addEventListener('keydown', (e) => {
         activeIndex = i;
         restartAutoplay();
         render();
+      } else {
+        openInterestModal(card);
       }
     });
   });
