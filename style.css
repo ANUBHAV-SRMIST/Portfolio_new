@@ -3173,10 +3173,26 @@ nav {
 }
 
 .spec-title span {
-  background: linear-gradient(90deg, var(--accent-blue), var(--accent-light));
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-light), var(--accent-blue));
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  background-position: 0% center;
+}
+
+.spec-title.visible span {
+  animation: specShimmer 1.6s ease forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes specShimmer {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 100% center;
+  }
 }
 
 .spec-subtitle {
