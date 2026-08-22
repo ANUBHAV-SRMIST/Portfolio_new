@@ -259,6 +259,19 @@ function createClickEffect(x, y) {
 document.addEventListener('click', (e) => {
   createClickEffect(e.clientX, e.clientY);
 });
+// ── GALLERY SHOW MORE / SHOW LESS ──
+const galleryToggleBtn = document.getElementById('galleryToggleBtn');
+if (galleryToggleBtn) {
+  const extraItems = document.querySelectorAll('.gallery-extra');
+  galleryToggleBtn.addEventListener('click', () => {
+    const isExpanded = galleryToggleBtn.classList.toggle('expanded');
+    extraItems.forEach(item => item.classList.toggle('show', isExpanded));
+    galleryToggleBtn.querySelector('span').textContent = isExpanded ? 'Show Less' : 'Show More';
+    if (!isExpanded) {
+      document.getElementById('gallery').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+}
 // ── GALLERY LIGHTBOX ──
 const galleryItems = document.querySelectorAll('.gallery-item');
 const lightbox = document.getElementById('lightbox');
@@ -462,6 +475,23 @@ if (badgeGrid) {
 // ── INDUSTRY EXPOSURE DATA (sorted: most recent first) ──
 const expData = [
   {
+    title: "Zscaler Zero Trust Cloud Security",
+    org: "Zscaler",
+    icon: "fa-shield-halved",
+    duration: "Aug - Oct 2026",
+    type: "Virtual Internship",
+    badgeColor: "green",
+    ongoing: true,
+    offerLetter: "offer-letters/zscaler-zero-trust-offer.pdf",
+    desc: "Currently pursuing an 8-week virtual internship on Zero Trust cloud security architecture, supported by Zscaler, through the AICTE EduSkills National Internship Portal.",
+    tags: ["Zero Trust Architecture", "Cloud Security", "Identity Verification", "Access Control", "AICTE · EduSkills"],
+    learnings: [
+      "Studying Zero Trust Exchange principles and Zero Trust Cyber Associate (ZTCA) fundamentals",
+      "Learning identity verification, access control, and policy enforcement",
+      "Currently in progress — Week 1 of 8 completed"
+    ]
+  },
+  {
     title: "Network Security Associate Virtual Internship",
     org: "Fortinet Training Institute",
     icon: "fa-shield-halved",
@@ -470,7 +500,9 @@ const expData = [
     type: "Virtual Internship",
     badgeColor: "blue",
     link: "https://certificate.eduskillsfoundation.org/verify/4fa188ffa86e4090707a/4fa188ffa86e4090707a",
+    offerLetter: "offer-letters/fortinet-network-security-offer.pdf",
     desc: "Completed an 8-week virtual internship on network security fundamentals, supported by Fortinet, through the AICTE EduSkills National Internship Portal.",
+
     tags: ["Networking Basics", "Firewall Concepts", "VPN Technologies", "Threat Detection", "AICTE · EduSkills"],
     learnings: [
       "Gained hands-on exposure to securing networks and identifying threats",
@@ -486,6 +518,9 @@ const expData = [
     grade: "O",
     type: "Virtual Internship",
     badgeColor: "blue",
+    link: "https://certificate.eduskillsfoundation.org/verify/4060b44bc6479d83078c/4060b44bc6479d83078c",
+    offerLetter: "offer-letters/sql-dbms-offer.pdf",
+
     desc: "Completed an 8-week virtual internship on SQL and database management systems through the AICTE EduSkills National Internship Portal.",
     tags: ["SQL", "Database Management", "EduSkills", "AICTE"],
     learnings: [
@@ -502,6 +537,8 @@ const expData = [
     grade: "O",
     type: "Virtual Internship",
     badgeColor: "blue",
+     link: "https://certificate.eduskillsfoundation.org/verify/4e588870a9abf0d09e19/4e588870a9abf0d09e19",
+    offerLetter: "offer-letters/microchip-embedded-systems-offer.pdf",
     desc: "Completed an advanced 10-week virtual internship on embedded systems development, delivered through the AICTE EduSkills National Internship Portal in partnership with Microchip Technology.",
     tags: ["Embedded Systems", "Microcontrollers", "Microchip", "AICTE · EduSkills"],
     learnings: [
@@ -667,7 +704,7 @@ function renderExpDetail(exp) {
   expDetail.innerHTML = `
     <div class="exp-detail-top">
       <span class="exp-badge type-${exp.badgeColor || 'blue'}">${exp.type}</span>
-      <span class="exp-detail-date">${exp.duration}</span>
+            <span class="exp-detail-date">${exp.ongoing ? '<span class="exp-ongoing-dot"></span>' : ''}${exp.duration}${exp.ongoing ? ' · Ongoing' : ''}</span>
       ${exp.grade ? `<span class="exp-grade">Grade ${exp.grade}</span>` : ''}
     </div>
     <h3 class="exp-detail-title">${exp.title}</h3>
@@ -682,7 +719,9 @@ function renderExpDetail(exp) {
       ${exp.learnings.map(l => `<li>${l}</li>`).join('')}
     </ul>
     ${exp.link ? `<a href="${exp.link}" target="_blank" rel="noopener noreferrer" class="exp-proof-btn"><i class="fa-solid fa-file-lines"></i> View Proof / Certificate</a>` : ''}
+    ${exp.offerLetter ? `<a href="${exp.offerLetter}" target="_blank" rel="noopener noreferrer" class="exp-proof-btn"><i class="fa-solid fa-file-pdf"></i> View Offer Letter</a>` : ''}
   `;
+  
 }
 
 function renderExpList() {

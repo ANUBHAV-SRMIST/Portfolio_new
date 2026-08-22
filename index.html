@@ -57,7 +57,7 @@
     <div class="nav-wrap">
       <ul class="nav-links" id="navLinks">
         <li class="nav-mobile-header">
-          
+
           <button class="nav-close" onclick="toggleNav()" aria-label="Close menu"><i class="ri-close-line"></i></button>
         </li>
         <li><a href="#home" class="nav-link active"><span class="nav-icon"><i
@@ -696,7 +696,23 @@
           <img src="images/p4.jpg" alt="Gallery photo 4" loading="lazy">
           <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
         </div>
+        <div class="gallery-item gallery-extra fade-in" data-full="images/p5.jpg">
+          <img src="images/p5.jpg" alt="Gallery photo 5" loading="lazy">
+          <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gallery-item gallery-extra fade-in" data-full="images/p6.jpg">
+          <img src="images/p6.jpg" alt="Gallery photo 6" loading="lazy">
+          <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gallery-item gallery-extra fade-in" data-full="images/p7.jpg">
+          <img src="images/p7.jpg" alt="Gallery photo 7" loading="lazy">
+          <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
       </div>
+
+      <button class="gallery-toggle-btn" id="galleryToggleBtn">
+        <span>Show More</span> <i class="fa-solid fa-chevron-down"></i>
+      </button>
     </div>
   </section>
   <!-- ══ INTERESTS & PASSIONS (3D drag carousel) ══ -->
@@ -707,40 +723,40 @@
       <p class="interests-subtitle fade-in">Life beyond technology — drag to explore what inspires me</p>
     </div>
 
-       <div class="coverflow" id="coverflow">
-        <div class="coverflow-card" data-title="Vibe Coding"
-          data-desc="Building projects fast and freely — chasing ideas with code, experimenting, and learning by doing.">
-          <img src="images/interests/vibe-coding.jpg" alt="Vibe Coding" loading="lazy"
-            onerror="this.style.background='linear-gradient(135deg,#1e244a,#2a3060)'">
-          <div class="coverflow-label">Vibe Coding</div>
-        </div>
-        <div class="coverflow-card" data-title="Singing"
-          data-desc="Music has always been an outlet — singing helps me express, unwind, and stay creatively inspired.">
-          <img src="images/interests/singing.jpg" alt="Singing" loading="lazy"
-            onerror="this.style.background='linear-gradient(135deg,#2a1e1e,#4a2a2a)'">
-          <div class="coverflow-label">Singing</div>
-        </div>
-        <div class="coverflow-card" data-title="Canva Designing"
-          data-desc="Turning ideas into visuals — posters, social creatives, and quick designs with easy, powerful tools.">
-          <img src="images/interests/canva-design.jpg" alt="Canva Designing" loading="lazy"
-            onerror="this.style.background='linear-gradient(135deg,#1e3a4a,#2a5a6a)'">
-          <div class="coverflow-label">Canva Designing</div>
-        </div>
-        <div class="coverflow-card" data-title="Calisthenics"
-          data-desc="Building strength, control, and discipline using just my own bodyweight — training anywhere, anytime.">
-          <img src="images/interests/calisthenics.jpg" alt="Calisthenics" loading="lazy"
-            onerror="this.style.background='linear-gradient(135deg,#2a1e3a,#4a2a5a)'">
-          <div class="coverflow-label">Calisthenics</div>
-        </div>
-        <div class="coverflow-card" data-title="Gaming"
-          data-desc="Play. Focus. Win. Gaming keeps my strategic thinking and reflexes sharp while I unwind and connect.">
-          <img src="images/interests/gaming.jpg" alt="Gaming" loading="lazy"
-            onerror="this.style.background='linear-gradient(135deg,#1e3a2a,#2a5a3a)'">
-          <div class="coverflow-label">Gaming</div>
-        </div>
+    <div class="coverflow" id="coverflow">
+      <div class="coverflow-card" data-title="Vibe Coding"
+        data-desc="Building projects fast and freely — chasing ideas with code, experimenting and learning by doing.">
+        <img src="images/interests/vibe-coding.jpg" alt="Vibe Coding" loading="lazy"
+          onerror="this.style.background='linear-gradient(135deg,#1e244a,#2a3060)'">
+        <div class="coverflow-label">Vibe Coding</div>
       </div>
+      <div class="coverflow-card" data-title="Singing"
+        data-desc="Music has always been an outlet — singing helps me express, unwind and stay creatively inspired.">
+        <img src="images/interests/singing.jpg" alt="Singing" loading="lazy"
+          onerror="this.style.background='linear-gradient(135deg,#2a1e1e,#4a2a2a)'">
+        <div class="coverflow-label">Singing</div>
+      </div>
+      <div class="coverflow-card" data-title="Canva Designing"
+        data-desc="Turning ideas into visuals — posters, social creatives and quick designs with easy, powerful tools.">
+        <img src="images/interests/canva-design.jpg" alt="Canva Designing" loading="lazy"
+          onerror="this.style.background='linear-gradient(135deg,#1e3a4a,#2a5a6a)'">
+        <div class="coverflow-label">Canva Designing</div>
+      </div>
+      <div class="coverflow-card" data-title="Calisthenics"
+        data-desc="Building strength, control and discipline using just my own bodyweight — a mindful, empowering practice.">
+        <img src="images/interests/calisthenics.jpg" alt="Calisthenics" loading="lazy"
+          onerror="this.style.background='linear-gradient(135deg,#2a1e3a,#4a2a5a)'">
+        <div class="coverflow-label">Calisthenics</div>
+      </div>
+      <div class="coverflow-card" data-title="Gaming"
+        data-desc="Play. Focus. Win. Gaming keeps my strategic thinking and reflexes sharp while I unwind and connect.">
+        <img src="images/interests/gaming.jpg" alt="Gaming" loading="lazy"
+          onerror="this.style.background='linear-gradient(135deg,#1e3a2a,#2a5a3a)'">
+        <div class="coverflow-label">Gaming</div>
+      </div>
+    </div>
 
-      <div class="coverflow-dots" id="coverflowDots"></div>
+    <div class="coverflow-dots" id="coverflowDots"></div>
     </div>
   </section>
 

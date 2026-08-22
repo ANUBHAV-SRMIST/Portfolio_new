@@ -2754,6 +2754,7 @@ nav {
   transition: background 0.25s ease, color 0.25s ease;
 }
 
+
 .exp-item.active .exp-item-icon {
   background: linear-gradient(135deg, var(--accent-blue), var(--accent-light));
   color: #fff;
@@ -3540,6 +3541,17 @@ footer span {
   color: #4ade80;
   border-color: rgba(74, 222, 128, 0.3);
 }
+.exp-ongoing-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 6px #4ade80;
+  margin-right: 6px;
+  vertical-align: middle;
+  animation: liveBlink 1.4s ease-in-out infinite;
+}
 @media (max-width: 600px) {
   .scroll-hint {
     display: none !important;
@@ -4116,4 +4128,41 @@ footer span {
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25), 0 0 20px rgba(79, 110, 247, 0.12);
     animation: none;
   }
+}
+.gallery-extra {
+  display: none;
+}
+
+.gallery-extra.show {
+  display: block;
+}
+
+.gallery-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 28px auto 0;
+  padding: 10px 24px;
+  background: rgba(79, 110, 247, 0.1);
+  border: 1px solid rgba(79, 110, 247, 0.3);
+  border-radius: 999px;
+  color: var(--accent-light);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.gallery-toggle-btn:hover {
+  background: rgba(79, 110, 247, 0.2);
+  transform: translateY(-2px);
+}
+
+.gallery-toggle-btn i {
+  transition: transform 0.3s ease;
+}
+
+.gallery-toggle-btn.expanded i {
+  transform: rotate(180deg);
 }
