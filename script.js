@@ -475,6 +475,22 @@ if (badgeGrid) {
 // ── INDUSTRY EXPOSURE DATA (sorted: most recent first) ──
 const expData = [
   {
+    title: "Intern – Drive Next Automotive Lab",
+    org: "SRM Technologies Pvt Ltd",
+    icon: "fa-car",
+   duration: "Since Sep 2026",
+    type: "Internship",
+    badgeColor: "green",
+    ongoing: true,
+    desc: "Currently working as an intern at SRM Technologies Pvt Ltd in the Drive Next Automotive Lab, applying academic knowledge in a professional engineering environment.",
+    tags: ["Automotive", "Industry Internship", "SRM Technologies", "Professional Experience"],
+    learnings: [
+      "Working in an industry lab environment alongside professional engineers",
+      "Applying core ECE and embedded concepts to real-world automotive engineering",
+      "Currently in progress"
+    ]
+  },
+  {
     title: "Zscaler Zero Trust Cloud Security",
     org: "Zscaler",
     icon: "fa-shield-halved",
@@ -488,7 +504,7 @@ const expData = [
     learnings: [
       "Studying Zero Trust Exchange principles and Zero Trust Cyber Associate (ZTCA) fundamentals",
       "Learning identity verification, access control, and policy enforcement",
-      "Currently in progress — Week 1 of 8 completed"
+      "Currently in progress"
     ]
   },
   {
