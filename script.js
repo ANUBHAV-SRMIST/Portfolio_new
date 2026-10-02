@@ -1113,3 +1113,77 @@ if (lastUpdatedEl) {
     day: 'numeric'
   });
 }
+// ══ GLASS — light follows the cursor ══
+(() => {
+  if (!window.matchMedia('(hover: hover)').matches) return;
+
+  const sel = '.skill-category, .spec-card, .project-card, .pub-card, .info-card, .membership-card, .exp-detail, .badge-card, .cert-card, .contact-card, .github-card, .academic-banner';
+
+  document.addEventListener('pointermove', e => {
+    const card = e.target.closest(sel);
+    if (!card) return;
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }, { passive: true });
+
+  document.addEventListener('pointerout', e => {
+    const card = e.target.closest && e.target.closest(sel);
+    if (card && !card.contains(e.relatedTarget)) {
+      card.style.removeProperty('--mx');
+      card.style.removeProperty('--my');
+    }
+  });
+})();
+// ══ SCROLL REVEAL — fade-up for everything not animated yet ══
+(() => {
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // [selector, direction]  ('' = fade up, 'reveal-left', 'reveal-right', 'reveal-zoom')
+  const groups = [
+    ['.about-bio', ''],
+    ['.info-card:not(.fade-in)', ''],
+    ['.edu-item', 'reveal-left'],
+    ['.pub-subtitle, .spec-subtitle, .exp-subtitle, .interests-subtitle, .badges-subtitle', ''],
+    ['.pub-stat', 'reveal-zoom'],
+    ['.pub-tags, .pub-actions', ''],
+    ['.membership-list li', 'reveal-left'],
+    ['.badges-more-wrap, .gallery-toggle-btn', ''],
+    ['.coverflow', 'reveal-zoom'],
+    ['footer > *', '']
+  ];
+
+  const seen = new Set();
+  groups.forEach(([selector, variant]) => {
+    const perParent = new Map();
+    document.querySelectorAll(selector).forEach(el => {
+      if (el.classList.contains('fade-in') || seen.has(el)) return;
+      seen.add(el);
+      const n = perParent.get(el.parentElement) || 0;
+      perParent.set(el.parentElement, n + 1);
+      el.style.setProperty('--rd', Math.min(n * 90, 450) + 'ms');   // stagger
+      el.classList.add('reveal');
+      if (variant) el.classList.add(variant);
+    });
+  });
+
+  document.body.offsetHeight; // flush styles so the first animation plays
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      io.unobserve(el);
+      el.classList.add('in');
+      const delay = parseInt(el.style.getPropertyValue('--rd')) || 0;
+      // clean up afterwards so hover effects on cards keep working
+      setTimeout(() => {
+        el.classList.remove('reveal', 'reveal-left', 'reveal-right', 'reveal-zoom', 'in');
+        el.style.removeProperty('--rd');
+      }, 1000 + delay);
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
