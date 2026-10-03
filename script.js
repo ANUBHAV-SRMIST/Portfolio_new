@@ -1495,3 +1495,51 @@ if (lastUpdatedEl) {
   lb.addEventListener('click', e => { if (e.target === lb || e.target.closest('.pb-lb-close')) closeLb(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden) closeLb(); });
 })();
+/* ══════════════════════════════════════════════════════════
+   INTERESTS — centre card pops, side cards lean (phone swipe)
+   Paste at the very END of script.js
+══════════════════════════════════════════════════════════ */
+(() => {
+  const grid = document.getElementById('ipGrid');
+  if (!grid) return;
+  const mq = window.matchMedia('(max-width: 700px)');
+  const VARS = ['--lty', '--lry', '--ls', '--lo', '--lc'];
+  let queued = false;
+
+  function update() {
+    queued = false;
+    const cards = grid.querySelectorAll('.ip-card');
+
+    if (!mq.matches) {                       // desktop / tablet: leave everything alone
+      cards.forEach(c => { VARS.forEach(v => c.style.removeProperty(v)); c.style.zIndex = ''; });
+      return;
+    }
+
+    const mid = grid.clientWidth / 2;
+    cards.forEach(c => {
+      if (c.classList.contains('ip-hide')) return;
+      const center = (c.offsetLeft - grid.offsetLeft - grid.scrollLeft) + c.offsetWidth / 2;
+      const d = (center - mid) / (c.offsetWidth * 0.9);   // -1 = one card left, 0 = centre, 1 = one card right
+      const t = Math.min(Math.abs(d), 1);                 // 0 = centred, 1 = fully to the side
+      const ease = t * t * (3 - 2 * t);
+
+      c.style.setProperty('--ls',  (1.05 - 0.21 * ease).toFixed(3));              // centre grows
+      c.style.setProperty('--lty', (-14 * (1 - ease)).toFixed(1) + 'px');          // centre lifts
+      c.style.setProperty('--lry', Math.max(-34, Math.min(34, -d * 30)).toFixed(1) + 'deg');
+      c.style.setProperty('--lo',  (1 - 0.5 * ease).toFixed(3));                   // sides fade
+      c.style.setProperty('--lc',  (1 - ease).toFixed(3));                         // centre glows
+      c.style.zIndex = String(100 - Math.round(ease * 10));
+    });
+  }
+
+  function queue() { if (!queued) { queued = true; requestAnimationFrame(update); } }
+
+  grid.addEventListener('scroll', queue, { passive: true });
+  window.addEventListener('resize', queue);
+  (mq.addEventListener ? mq.addEventListener('change', queue) : mq.addListener(queue));
+  document.querySelectorAll('.ip-tab').forEach(t =>
+    t.addEventListener('click', () => { [60, 350, 900].forEach(ms => setTimeout(queue, ms)); }));
+
+  [0, 300, 900, 1800].forEach(ms => setTimeout(queue, ms));   // after the entrance animation
+  queue();
+})();
