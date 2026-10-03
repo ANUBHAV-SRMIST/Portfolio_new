@@ -36,6 +36,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
  <link rel="stylesheet" href="style.css?v=5" />
@@ -122,32 +123,69 @@
       <span></span><span></span><span></span><span></span><span></span>
     </div>
 
-    <div class="hero-inner">
-      <!-- Photo -->
+       <div class="hero-inner">
+      <!-- Photo + rotating badges -->
       <div class="hero-img-wrap fade-in">
-        <div class="hero-img-ring">
-          <!-- REPLACE src with your actual photo, e.g. src="assets/anubhav.jpg" -->
-          <img src="images/dp.png" alt="Anubhav Mishra"
-            onerror="this.style.background='linear-gradient(135deg,#1e244a,#2a3060)'; this.style.opacity='.4'" />
+        <div class="hero-orbit-stage">
+          <div class="hero-photo">
+            <img src="images/dp.png" alt="Anubhav Mishra"
+              onerror="this.style.background='linear-gradient(135deg,#1e244a,#2a3060)'; this.style.opacity='.4'" />
+          </div>
+
+          <div class="hero-orbit-track"></div>
+
+          <!-- 4 badges rotating clockwise (text stays upright) -->
+          <div class="hero-orbit">
+            <div class="hero-orbit-item" style="--a:-135deg;--na:135deg">
+              <div class="hero-orbit-badge">
+                <span class="ob-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+                <span class="ob-text"><b>ECE '27</b><small>SRMIST</small></span>
+              </div>
+            </div>
+            <div class="hero-orbit-item" style="--a:-45deg;--na:45deg">
+              <div class="hero-orbit-badge">
+                <span class="ob-icon"><i class="fa-solid fa-microchip"></i></span>
+                <span class="ob-text"><b>Embedded</b><small>Systems</small></span>
+              </div>
+            </div>
+            <div class="hero-orbit-item" style="--a:45deg;--na:-45deg">
+              <div class="hero-orbit-badge">
+                <span class="ob-icon"><i class="fa-solid fa-chart-simple"></i></span>
+                <span class="ob-text"><b>Data</b><small>Science</small></span>
+              </div>
+            </div>
+            <div class="hero-orbit-item" style="--a:135deg;--na:-135deg">
+              <div class="hero-orbit-badge">
+                <span class="ob-icon"><i class="fa-solid fa-memory"></i></span>
+                <span class="ob-text"><b>VLSI &amp;</b><small>Semiconductors</small></span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Text -->
       <div class="hero-text fade-in">
-        <div class="hero-badge">
-          <span class="hero-badge-dot"></span>
-          ECE '27 · SRMIST
-        </div>
         <p class="hero-greeting">Hello, I'm</p>
         <h1 class="hero-name" id="typed-name"></h1>
-        <p class="hero-role hero-role-intern">
-          Intern at
+
+        <p class="hero-tagline">
+          <span>Electronics Engineer</span>
+          <span>Data Science Enthusiast</span>
+          <span>Problem Solver</span>
+        </p>
+
+        <div class="hero-intern-card">
+          <span class="intern-label">Intern at</span>
           <a href="https://www.srmtech.com" target="_blank" rel="noopener noreferrer" class="company-pill"
             aria-label="SRM Technologies">
             <img src="images/srmtech-logo.png" alt="SRM Technologies logo">
           </a>
-        </p>
-        <div class="hero-divider"></div>
+          <div class="intern-info">
+            <strong>Drive Next Automotive Lab</strong>
+            <span>Engineering Intern</span>
+          </div>
+        </div>
 
         <div class="hero-btns">
           <div class="resume-dropdown">
@@ -162,22 +200,44 @@
                 <i class="fa-solid fa-code"></i> Software Resume
               </a>
             </div>
-          </div> <a href="https://github.com/ANUBHAV-SRMIST" target="_blank" class="btn btn-outline"><i
+          </div>
+          <a href="https://github.com/ANUBHAV-SRMIST" target="_blank" class="btn btn-outline"><i
               class="fa-brands fa-github"></i> GitHub</a>
           <a href="https://www.linkedin.com/in/anubhav-shrijan/" target="_blank" class="btn btn-outline"><i
               class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
         </div>
+
         <div class="hero-contact-row">
           <a href="mailto:am3359@srmist.edu.in"><i class="fa-solid fa-envelope"></i> am3359@srmist.edu.in</a>
           <a href="tel:+917667275993"><i class="fa-solid fa-phone"></i> +91 7667275993</a>
+          <span class="hero-loc"><i class="fa-solid fa-location-dot"></i> Chennai, India</span>
         </div>
 
-
-
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-icon"><i class="fa-solid fa-layer-group"></i></span>
+            <span class="hero-stat-text"><b>10+</b><small>Projects</small></span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-icon"><i class="fa-solid fa-award"></i></span>
+            <span class="hero-stat-text"><b>5+</b><small>Certifications</small></span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-icon"><i class="fa-solid fa-users"></i></span>
+            <span class="hero-stat-text"><b>IEEE-EDS</b><small>Student Chair</small></span>
+          </div>
+        </div>
       </div>
     </div>
-    </div>
-    </div>
+        <!-- Motto + signature -->
+    <div class="hero-sign-wrap" aria-hidden="true">
+      <ul class="hero-motto">
+        <li>Engineer</li>
+        <li>Build</li>
+        <li>Learn</li>
+        <li>Improve</li>
+      </ul>
+      <span class="hero-signature">Anubhav Mishra</span>
     </div>
     <a href="#about" class="scroll-hint">
       <span>Scroll to Explore</span>
