@@ -20,7 +20,7 @@ document.getElementById('navOverlay').addEventListener('click', () => {
 });
 
 // ── HIGHLIGHT ACTIVE NAV LINK ON SCROLL ──
-const sections   = document.querySelectorAll('section[id]');
+const sections = document.querySelectorAll('section[id]');
 const navAnchors = document.querySelectorAll('.nav-links a');
 
 function updateActiveNav() {
@@ -87,14 +87,13 @@ navAnchors.forEach(a => {
   });
 });
 // ── CONTACT FORM SEND (EmailJS) ──
-(function() {
-  emailjs.init("r6EtzKxLyAlRozhrZ");
-})();
+if (window.emailjs) emailjs.init("r6EtzKxLyAlRozhrZ");
 
 const contactForm = document.getElementById('contact-form');
 
-contactForm.addEventListener('submit', function(e) {
+contactForm.addEventListener('submit', function (e) {
   e.preventDefault();
+  if (!window.emailjs) { alert('Email service unavailable, try again.'); return; }
 
   const sendBtn = contactForm.querySelector('.btn-send');
   const originalText = sendBtn.innerHTML;
@@ -418,7 +417,7 @@ function renderBadgeCard(badge, i) {
 if (badgeGrid) {
   badgeGrid.innerHTML = badgeData.map(renderBadgeCard).join('');
 
- // scroll-reveal for the first 10 badges
+  // scroll-reveal for the first 10 badges
   const badgeObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -429,7 +428,7 @@ if (badgeGrid) {
   }, { threshold: 0.15 });
 
   document.querySelectorAll('.badge-card:not(.badge-extra)').forEach(card => badgeObserver.observe(card));
-   // ── SHOW MORE / SHOW LESS ──
+  // ── SHOW MORE / SHOW LESS ──
   const badgesToggleBtn = document.getElementById('badgesToggleBtn');
   if (badgesToggleBtn) {
     if (badgeData.length <= 10) {
@@ -455,7 +454,7 @@ if (badgeGrid) {
     }
   }
 
-// subtle 3D tilt on hover (desktop only)
+  // subtle 3D tilt on hover (desktop only)
   if (window.matchMedia('(hover: hover)').matches) {
     document.querySelectorAll('.badge-card').forEach(card => {
       card.addEventListener('mousemove', (e) => {
@@ -478,7 +477,7 @@ const expData = [
     title: "Intern – Drive Next Automotive Lab",
     org: "SRM Technologies Pvt Ltd",
     icon: "fa-car",
-   duration: "Since Sep 2026",
+    duration: "Since Sep 2026",
     type: "Internship",
     badgeColor: "green",
     ongoing: true,
@@ -553,7 +552,7 @@ const expData = [
     grade: "O",
     type: "Virtual Internship",
     badgeColor: "blue",
-     link: "https://certificate.eduskillsfoundation.org/verify/4e588870a9abf0d09e19/4e588870a9abf0d09e19",
+    link: "https://certificate.eduskillsfoundation.org/verify/4e588870a9abf0d09e19/4e588870a9abf0d09e19",
     offerLetter: "offer-letters/microchip-embedded-systems-offer.pdf",
     desc: "Completed an advanced 10-week virtual internship on embedded systems development, delivered through the AICTE EduSkills National Internship Portal in partnership with Microchip Technology.",
     tags: ["Embedded Systems", "Microcontrollers", "Microchip", "AICTE · EduSkills"],
@@ -737,7 +736,7 @@ function renderExpDetail(exp) {
     ${exp.link ? `<a href="${exp.link}" target="_blank" rel="noopener noreferrer" class="exp-proof-btn"><i class="fa-solid fa-file-lines"></i> View Proof / Certificate</a>` : ''}
     ${exp.offerLetter ? `<a href="${exp.offerLetter}" target="_blank" rel="noopener noreferrer" class="exp-proof-btn"><i class="fa-solid fa-file-pdf"></i> View Offer Letter</a>` : ''}
   `;
-  
+
 }
 
 function renderExpList() {
@@ -776,20 +775,20 @@ renderExpDetail(expData[0]);
 // SYSTEM STATUS
 //=========================
 
-const status=document.querySelector(".system-status");
+const status = document.querySelector(".system-status");
 
-setInterval(()=>{
+setInterval(() => {
 
-status.style.boxShadow=
-"0 0 18px rgba(79,110,247,.25)";
+  status.style.boxShadow =
+    "0 0 18px rgba(79,110,247,.25)";
 
-setTimeout(()=>{
+  setTimeout(() => {
 
-status.style.boxShadow="none";
+    status.style.boxShadow = "none";
 
-},700);
+  }, 700);
 
-},2000);
+}, 2000);
 // ── BASIC COPY PROTECTION (deterrent only, not foolproof) ──
 
 // Disable right-click context menu
@@ -910,19 +909,16 @@ document.addEventListener('keydown', (e) => {
   track.addEventListener('mouseleave', startAutoplay);
 
   function onPointerDown(e) {
-    isDragging = true;
-    dragMoved = false;
-    startX = e.clientX;
-    dragOffset = 0;
-    stopAutoplay();
-    track.classList.add('dragging');
-    track.setPointerCapture(e.pointerId);
+    isDragging = true; dragMoved = false; startX = e.clientX; dragOffset = 0;
+    stopAutoplay(); track.classList.add('dragging');
   }
-
   function onPointerMove(e) {
     if (!isDragging) return;
     dragOffset = e.clientX - startX;
-    if (Math.abs(dragOffset) > 5) dragMoved = true;
+    if (!dragMoved && Math.abs(dragOffset) > 5) {
+      dragMoved = true;
+      try { track.setPointerCapture(e.pointerId); } catch (_) { }
+    }
     render();
   }
 
@@ -942,6 +938,7 @@ document.addEventListener('keydown', (e) => {
   track.addEventListener('pointermove', onPointerMove);
   track.addEventListener('pointerup', onPointerUp);
   track.addEventListener('pointerleave', onPointerUp);
+  track.addEventListener('pointercancel', onPointerUp);
 
   // ── click-to-popup for the interest cards ──
   const interestModal = document.getElementById('interestModal');
@@ -1138,7 +1135,7 @@ if (lastUpdatedEl) {
 // ══ SCROLL REVEAL — fade-up for everything not animated yet ══
 (() => {
   if (!('IntersectionObserver' in window) ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   // [selector, direction]  ('' = fade up, 'reveal-left', 'reveal-right', 'reveal-zoom')
   const groups = [

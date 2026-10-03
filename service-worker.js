@@ -1,4 +1,4 @@
-const CACHE_NAME = "anubhav-portfolio-v4";
+const CACHE_NAME = "anubhav-portfolio-v5";
 
 const urlsToCache = [
   "/",
@@ -30,13 +30,14 @@ self.addEventListener("activate", event => {
 
 // ── FETCH: network-first — always try to get the latest version, fall back to cache if offline ──
 self.addEventListener("fetch", event => {
+  const req = event.request;
+  if (req.method !== "GET" || new URL(req.url).origin !== self.location.origin) return;
   event.respondWith(
-    fetch(event.request)
-      .then(response => {
-        const responseClone = response.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseClone));
-        return response;
+    fetch(req)
+      .then(res => {
+        if (res.status === 200) { const c = res.clone(); caches.open(CACHE_NAME).then(x => x.put(req, c)); }
+        return res;
       })
-      .catch(() => caches.match(event.request))
+      .catch(() => caches.match(req).then(r => r || caches.match("/index.html")))
   );
 });
