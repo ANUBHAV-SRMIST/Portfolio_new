@@ -1260,3 +1260,34 @@ if (lastUpdatedEl) {
     }
   });
 })();
+/* ══════════════════════════════════════════════════════════
+   CORE SPECIALIZATIONS — smooth tap animation (touch / pen)
+   Paste at the very END of script.js
+══════════════════════════════════════════════════════════ */
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  document.querySelectorAll('.sp-card').forEach(card => {
+    card.addEventListener('pointerdown', e => {
+      if (e.pointerType === 'mouse') return;          // desktop keeps normal hover
+
+      // ripple from the finger
+      const r = card.getBoundingClientRect();
+      const rip = document.createElement('span');
+      rip.className = 'sp-ripple';
+      rip.style.left = (e.clientX - r.left) + 'px';
+      rip.style.top = (e.clientY - r.top) + 'px';
+      card.appendChild(rip);
+      rip.addEventListener('animationend', () => rip.remove());
+
+      // restart the tap animation each time
+      card.classList.remove('is-tapped');
+      void card.offsetWidth;
+      card.classList.add('is-tapped');
+    }, { passive: true });
+
+    card.addEventListener('animationend', e => {
+      if (e.target === card && e.animationName === 'spTap') card.classList.remove('is-tapped');
+    });
+  });
+})();
