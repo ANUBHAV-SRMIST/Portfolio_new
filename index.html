@@ -602,101 +602,267 @@
     </div>
   </section>
 
-  <!-- ══ PROJECTS ══ -->
-  <section id="projects">
-    <div class="projects-inner">
-      <div class="section-label fade-in"><i class="fa-solid fa-rocket"></i> What I've Built</div>
-      <h2 class="section-title fade-in">Projects</h2>
-      <div class="section-underline fade-in"></div>
+ <!-- ══ PROJECTS ══ -->
+  <section id="projects" class="pj-section">
+    <div class="pj-wrap">
 
-      <div class="projects-grid">
-        <div class="project-card fade-in">
-          <span class="project-new-badge"><span class="exp-ongoing-dot"></span>New</span>
-          <div class="project-icon"><i class="fa-solid fa-network-wired"></i></div>
-          <h3 class="project-title">Multiple Access Scheme for Wired Network</h3>
-          <p class="project-desc">Built a hardware CSMA/CD demonstrator using two ESP32 transmitter nodes and one
-            ESP32 receiver node over W5500 Ethernet modules and a shared hub. Implemented carrier sensing, collision
-            detection, jam signaling, random backoff, and retransmission, with live status shown on an OLED
-            display.</p>
-          <div class="project-tags">
-            <span class="tag">ESP32</span><span class="tag">W5500 Ethernet</span><span class="tag">CSMA/CD</span><span
-              class="tag">UDP</span><span class="tag">Arduino</span><span class="tag">SRMIST</span>
-          </div>
+      <div class="pj-top">
+        <div class="pj-pill pj-reveal"><i class="fa-solid fa-rocket"></i> What I've Built</div>
+        <h2 class="pj-title pj-reveal" style="--d:.08s">Projects</h2>
+        <p class="pj-sub pj-reveal" style="--d:.16s">A collection of hands-on projects that showcase my skills in electronics, embedded systems, VLSI, data analysis and development.</p>
 
-        </div>
-
-        <div class="project-card fade-in">
-          <div class="project-icon"><i class="fa-solid fa-robot"></i></div>
-          <h3 class="project-title">Micro Thermopile for IR Sensing</h3>
-          <p class="project-desc">Designed and simulated device structure using SEMulator3D; documented deposition,
-            lithography, and etching process steps.
-            Gained hands-on exposure to semiconductor process optimization for sensing applications.</p>
-          <div class="project-tags">
-            <span class="tag">IISc Bangalore</span><span class="tag"> SEMulator3D</span><span
-              class="tag">LaTeX</span><span class="tag">Semiconductor</span><span class="tag">Feb 2026 - May 2026</span>
-          </div>
-
-        </div>
-
-        <div class="project-card fade-in">
-          <div class="project-icon"><i class="fa-solid fa-microchip"></i></div>
-          <h3 class="project-title">Audio Amplifier Circuit using Solar Panel</h3>
-          <p class="project-desc">Designed and tested a wireless audio transmission system using light as the carrier
-            medium.
-            Integrated solar panel as power source and verified signal integrity across the analog chain.</p>
-          <div class="project-tags">
-            <span class="tag">LM386</span><span class="tag">SRMIST</span><span class="tag">EasyEDA</span><span
-              class="tag">May 2026</span><span class="tag">Analog Circuits</span>
-          </div>
-
-        </div>
-
-        <div class="project-card fade-in">
-          <div class="project-icon"><i class="fa-solid fa-chart-line"></i></div>
-          <h3 class="project-title">Air Traffic Control System</h3>
-          <p class="project-desc">Designed a priority-based FSM in Verilog HDL to handle 8 emergency request types with
-            deterministic priority resolution.
-            Integrated MATLAB GUI with Verilog via file I/O co-simulation for real-time landing priority output.</p>
-          <div class="project-tags">
-            <span class="tag">Python</span><span class="tag">FSM</span><span class="tag">MATLAB</span><span
-              class="tag">GTKWave</span><span class="tag">Verilog HDL</span><span class="tag">Feb 2025 - May 2025</span>
-          </div>
-
-        </div>
-
-        <div class="project-card fade-in">
-          <div class="project-icon"><i class="fa-solid fa-shield-halved"></i></div>
-          <h3 class="project-title">Digital Door Lock System</h3>
-          <p class="project-desc">Designed and simulated a secure digital door lock using ATmega328 microcontroller in
-            Proteus. Implemented keypad-based
-            access control with embedded C firmware and debounce logic.</p>
-          <div class="project-tags">
-            <span class="tag">Proteus</span><span class="tag">ATmega328</span><span class="tag">Embedded
-              System</span><span class="tag">Aug 2025 - Nov 2025</span>
-          </div>
-
-        </div>
-
-        <div class="project-card fade-in">
-          <div class="project-icon"><i class="fa-solid fa-wave-square"></i></div>
-          <h3 class="project-title">One-Way Intercom Circuit</h3>
-          <p class="project-desc">Built and simulated a one-way intercom using IC-386 amplifier and validated before
-            hardware build.</p>
-          <div class="project-tags">
-            <span class="tag">IC-386</span><span class="tag">EasyEDA</span><span class="tag">TinkerCad</span><span
-              class="tag">Analog Circuits</span><span class="tag">Feb 2025 - May 2025</span>
-          </div>
-
+        <div class="pj-tabs pj-reveal" role="group" aria-label="Filter projects" style="--d:.24s">
+          <button type="button" class="pj-tab active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="pj-tab" data-filter="embedded" aria-pressed="false">Embedded</button>
+          <button type="button" class="pj-tab" data-filter="vlsi" aria-pressed="false">VLSI &amp; Semiconductor</button>
+          <button type="button" class="pj-tab" data-filter="analog" aria-pressed="false">Analog &amp; Electronics</button>
+          <button type="button" class="pj-tab" data-filter="simulation" aria-pressed="false">Simulation</button>
+          <button type="button" class="pj-tab" data-filter="other" aria-pressed="false">Other</button>
         </div>
       </div>
-      <a href="https://github.com/ANUBHAV-SRMIST" target="_blank" rel="noopener noreferrer"
-        class="view-all-projects fade-in">
-        View all projects on GitHub
-        <i class="fa-solid fa-arrow-right"></i>
-      </a>
-    </div>
 
+      <div class="pj-grid">
+
+        <!-- 01 -->
+        <article class="pj-card pj-reveal" data-cat="embedded" style="--c:168,85,247;--c2:192,132,252;--k:196,181,253;--d:0s">
+          <div class="pj-art" aria-hidden="true">
+            <svg viewBox="0 0 200 160" preserveAspectRatio="xMaxYMin meet">
+              <path class="w" d="M46 52C46 84 78 74 92 100"/>
+              <path class="w" d="M126 44C126 72 150 82 138 104"/>
+              <path class="w dim" d="M70 48C74 70 96 66 104 88"/>
+              <rect class="d" x="22" y="14" width="52" height="40" rx="6"/>
+              <rect class="f" x="34" y="24" width="28" height="22" rx="3"/>
+              <path class="s dim" d="M22 24h-6M22 34h-6M22 44h-6M74 24h6M74 34h6M74 44h6"/>
+              <rect class="d" x="98" y="6" width="52" height="40" rx="6"/>
+              <rect class="f" x="110" y="16" width="28" height="22" rx="3"/>
+              <path class="s dim" d="M98 16h-6M98 26h-6M98 36h-6M150 16h6M150 26h6M150 36h6"/>
+              <g transform="rotate(-8 132 118)">
+                <rect class="d" x="70" y="92" width="120" height="56" rx="6"/>
+                <text class="t" x="80" y="113" font-size="14">CSMA/CD</text>
+                <text class="t" x="80" y="127" font-size="10">Node 1</text>
+                <text class="t dim2" x="80" y="140" font-size="9">Transmitting...</text>
+              </g>
+            </svg>
+          </div>
+          <div class="pj-head">
+            <span class="pj-num">01</span>
+            <span class="pj-chip">Communication</span>
+            <span class="pj-new">New</span>
+          </div>
+          <h3 class="pj-name">Multiple Access Scheme for Wired Network</h3>
+          <p class="pj-desc">Built a hardware CSMA/CD demonstrator using two ESP32 nodes and one receiver over W5500 Ethernet modules. Implemented carrier sensing, collision detection, jam signaling and retransmission with live status on an OLED display.</p>
+          <ul class="pj-tags">
+            <li>ESP32</li><li>W5500 Ethernet</li><li>CSMA/CD</li><li>UDP</li><li>Arduino</li><li>SRMIST</li>
+          </ul>
+        </article>
+
+        <!-- 02 -->
+        <article class="pj-card pj-reveal" data-cat="vlsi simulation" style="--c:99,102,241;--c2:129,140,248;--k:56,189,248;--d:.08s">
+          <div class="pj-art" aria-hidden="true">
+            <svg viewBox="0 0 200 160" preserveAspectRatio="xMaxYMin meet">
+              <ellipse class="s dim" cx="100" cy="112" rx="92" ry="38"/>
+              <ellipse class="s dim" cx="100" cy="112" rx="62" ry="26"/>
+              <polygon class="d" points="100,78 156,102 100,126 44,102"/>
+              <polygon class="f" points="44,102 100,126 100,138 44,114"/>
+              <polygon class="f dim2" points="156,102 100,126 100,138 156,114"/>
+              <polygon class="d" points="100,54 138,71 100,88 62,71"/>
+              <polygon class="f" points="62,71 100,88 100,98 62,81"/>
+              <polygon class="f dim2" points="138,71 100,88 100,98 138,81"/>
+              <polygon class="f" points="100,60 122,70 100,80 78,70"/>
+              <circle class="g" cx="100" cy="70" r="4"/>
+              <path class="s dim" d="M100 46V18M90 28l10-12 10 12"/>
+            </svg>
+          </div>
+          <div class="pj-head">
+            <span class="pj-num">02</span>
+            <span class="pj-chip">Semiconductor</span>
+          </div>
+          <h3 class="pj-name">Micro Thermopile for IR Sensing</h3>
+          <p class="pj-desc">Designed and simulated a thermopile device using SEMulator3D. Documented deposition, lithography and etching steps with process optimization for IR sensing applications.</p>
+          <ul class="pj-tags">
+            <li>IISc Bangalore</li><li>SEMulator3D</li><li>LaTeX</li><li>Semiconductor</li><li>Feb 2026 - May 2026</li>
+          </ul>
+        </article>
+
+        <!-- 03 -->
+        <article class="pj-card pj-reveal" data-cat="analog" style="--c:139,92,246;--c2:167,139,250;--k:216,180,254;--d:.16s">
+          <div class="pj-art" aria-hidden="true">
+            <svg viewBox="0 0 200 160" preserveAspectRatio="xMaxYMin meet">
+              <rect class="d" x="130" y="8" width="62" height="110" rx="8"/>
+              <circle class="s" cx="161" cy="40" r="12"/>
+              <circle class="s" cx="161" cy="84" r="24"/>
+              <circle class="f" cx="161" cy="84" r="10"/>
+              <polygon class="d" points="14,78 86,48 126,70 54,106"/>
+              <path class="s dim" d="M27 87L99 55M41 97L113 63M32 70L72 97M50 63L90 88M68 56L108 79"/>
+              <path class="w" d="M126 70C142 78 140 92 152 98"/>
+              <path class="s dim" d="M54 106V128M30 128h48"/>
+            </svg>
+          </div>
+          <div class="pj-head">
+            <span class="pj-num">03</span>
+            <span class="pj-chip">Analog Electronics</span>
+          </div>
+          <h3 class="pj-name">Audio Amplifier using Solar Panel</h3>
+          <p class="pj-desc">Designed and tested a wireless audio transmission system using light as the carrier medium. Integrated solar panel as power source and verified signal integrity across the analog chain.</p>
+          <ul class="pj-tags">
+            <li>LM386</li><li>SRMIST</li><li>EasyEDA</li><li>May 2026</li><li>Analog Circuits</li>
+          </ul>
+        </article>
+
+        <!-- 04 -->
+        <article class="pj-card pj-reveal" data-cat="vlsi simulation" style="--c:37,99,235;--c2:96,165,250;--k:96,165,250;--d:.24s">
+          <div class="pj-art" aria-hidden="true">
+            <svg viewBox="0 0 200 160" preserveAspectRatio="xMaxYMin meet">
+              <circle class="s dim" cx="100" cy="104" r="58"/>
+              <circle class="s dim" cx="100" cy="104" r="36"/>
+              <polygon class="d" points="92,152 108,152 104,86 96,86"/>
+              <polygon class="d" points="86,58 100,42 114,58"/>
+              <polygon class="f" points="80,58 120,58 126,74 74,74"/>
+              <path class="s" d="M82 66h36M100 42V24"/>
+              <g transform="translate(6,0) scale(.6) rotate(55 50 54)">
+                <path class="d" d="M50 8C54 8 56 14 56 22L56 50L86 70L86 78L56 68L56 86L66 94L66 100L50 96L34 100L34 94L44 86L44 68L14 78L14 70L44 50L44 22C44 14 46 8 50 8Z"/>
+              </g>
+            </svg>
+          </div>
+          <div class="pj-head">
+            <span class="pj-num">04</span>
+            <span class="pj-chip">FPGA / HDL</span>
+          </div>
+          <h3 class="pj-name">Air Traffic Control System</h3>
+          <p class="pj-desc">Designed a priority-based FSM in Verilog HDL to handle 8 emergency request types. Integrated MATLAB GUI with Verilog via file I/O co-simulation for real-time landing priority output.</p>
+          <ul class="pj-tags">
+            <li>Python</li><li>FSM</li><li>MATLAB</li><li>GTKWave</li><li>Verilog HDL</li><li>Feb 2025 - May 2025</li>
+          </ul>
+        </article>
+
+        <!-- 05 -->
+        <article class="pj-card pj-reveal" data-cat="embedded simulation" style="--c:192,38,211;--c2:232,121,249;--k:232,171,250;--d:.32s">
+          <div class="pj-art" aria-hidden="true">
+            <svg viewBox="0 0 200 160" preserveAspectRatio="xMaxYMin meet">
+              <rect class="d" x="70" y="6" width="84" height="132" rx="8"/>
+              <rect class="f" x="80" y="16" width="64" height="20" rx="3"/>
+              <text class="t" x="112" y="29" font-size="7" text-anchor="middle" textLength="54" lengthAdjust="spacingAndGlyphs">ACCESS GRANTED</text>
+              <path class="s" d="M80 46h16v14H80zM104 46h16v14h-16zM128 46h16v14h-16zM80 66h16v14H80zM104 66h16v14h-16zM128 66h16v14h-16zM80 86h16v14H80zM104 86h16v14h-16zM128 86h16v14h-16zM80 106h16v14H80zM104 106h16v14h-16zM128 106h16v14h-16z"/>
+              <rect class="d" x="164" y="68" width="28" height="58" rx="6"/>
+              <circle class="f" cx="178" cy="90" r="8"/>
+              <path class="s" d="M172 108h12M172 116h12"/>
+            </svg>
+          </div>
+          <div class="pj-head">
+            <span class="pj-num">05</span>
+            <span class="pj-chip">Embedded Systems</span>
+          </div>
+          <h3 class="pj-name">Digital Door Lock System</h3>
+          <p class="pj-desc">Designed and simulated a secure digital door lock using ATmega328 in Proteus. Implemented keypad-based access control with embedded C firmware and debounce logic.</p>
+          <ul class="pj-tags">
+            <li>Proteus</li><li>ATmega328</li><li>Embedded System</li><li>Aug 2025 - Nov 2025</li>
+          </ul>
+        </article>
+
+        <!-- 06 -->
+        <article class="pj-card pj-reveal" data-cat="analog simulation" style="--c:20,184,166;--c2:45,212,191;--k:45,212,191;--d:.4s">
+          <div class="pj-art" aria-hidden="true">
+            <svg viewBox="0 0 200 160" preserveAspectRatio="xMaxYMin meet">
+              <rect class="d" x="138" y="6" width="56" height="104" rx="8"/>
+              <circle class="s" cx="166" cy="34" r="10"/>
+              <circle class="s" cx="166" cy="78" r="22"/>
+              <circle class="f" cx="166" cy="78" r="9"/>
+              <g transform="rotate(28 84 60)">
+                <rect class="d" x="66" y="8" width="36" height="62" rx="18"/>
+                <path class="s dim" d="M67 28h34M67 40h34M67 52h34M84 8v62"/>
+                <rect class="f" x="76" y="70" width="16" height="50" rx="6"/>
+              </g>
+              <path class="w" d="M70 126C90 152 122 122 150 132"/>
+            </svg>
+          </div>
+          <div class="pj-head">
+            <span class="pj-num">06</span>
+            <span class="pj-chip">Communication</span>
+          </div>
+          <h3 class="pj-name">One-Way Intercom Circuit</h3>
+          <p class="pj-desc">Built and simulated a one-way intercom using IC-386 audio amplifier and validated before hardware build.</p>
+          <ul class="pj-tags">
+            <li>IC-386</li><li>EasyEDA</li><li>TinkerCad</li><li>Analog Circuits</li><li>Feb 2025 - May 2025</li>
+          </ul>
+        </article>
+
+      </div>
+
+      <p class="pj-empty" hidden>Nothing in this category yet. More projects are on the way!</p>
+
+      <a href="https://github.com/ANUBHAV-SRMIST" target="_blank" rel="noopener noreferrer" class="pj-more pj-reveal">
+        View all projects on GitHub <i class="fa-solid fa-arrow-right"></i>
+      </a>
+
+    </div>
   </section>
+
+  <!-- Projects: filter tabs, scroll-in animation and hover glow (self-contained) -->
+  <script>
+    (function () {
+      var sec = document.getElementById('projects');
+      if (!sec) return;
+      var tabs = [].slice.call(sec.querySelectorAll('.pj-tab'));
+      var cards = [].slice.call(sec.querySelectorAll('.pj-card'));
+      var empty = sec.querySelector('.pj-empty');
+      var reveal = [].slice.call(sec.querySelectorAll('.pj-reveal'));
+
+      sec.classList.add('pj-ready');
+
+      function show(el) { el.classList.add('pj-in'); }
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { show(e.target); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.1 });
+        reveal.forEach(function (el) { io.observe(el); });
+      } else {
+        reveal.forEach(show);
+      }
+
+      function applyFilter(f) {
+        var n = 0;
+        cards.forEach(function (c) {
+          var cats = (c.getAttribute('data-cat') || '').split(' ');
+          var ok = f === 'all' || cats.indexOf(f) > -1;
+          c.hidden = !ok;
+          if (ok) {
+            c.classList.remove('pj-in');
+            c.style.setProperty('--d', (n * 70) + 'ms');
+            void c.offsetWidth;
+            c.classList.add('pj-in');
+            n++;
+          }
+        });
+        empty.hidden = n > 0;
+      }
+
+      tabs.forEach(function (t) {
+        t.addEventListener('click', function () {
+          tabs.forEach(function (x) {
+            var on = x === t;
+            x.classList.toggle('active', on);
+            x.setAttribute('aria-pressed', on ? 'true' : 'false');
+          });
+          applyFilter(t.getAttribute('data-filter'));
+          if (t.scrollIntoView) {
+            try { t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); } catch (_) {}
+          }
+        });
+      });
+
+      if (window.matchMedia && window.matchMedia('(hover: hover)').matches) {
+        sec.addEventListener('pointermove', function (e) {
+          var c = e.target.closest && e.target.closest('.pj-card');
+          if (!c) return;
+          var r = c.getBoundingClientRect();
+          c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+          c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        }, { passive: true });
+      }
+    })();
+  </script>
   <!-- ══ INTERNSHIPS / INDUSTRY EXPOSURE ══ -->
   <section id="internships">
     <div class="exp-inner">
