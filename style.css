@@ -9861,3 +9861,82 @@ html .reveal.in {
   #interests .ip-grid.ip-armed:not(.ip-ready) .ip-card { opacity: 0; }
 }
 /* ═════════ END POP ═════════ */
+/* ═══════════════════════════════════════════════════════
+   INTERESTS & PASSIONS — colored icons for every tile
+   Paste at the very bottom of style.css
+═══════════════════════════════════════════════════════ */
+
+/* one color per tile  (R, G, B) — change any of these to recolor a tile */
+#interests .ip-card[data-title="Technology"]  { --ic: 56, 189, 248; }   /* cyan   */
+#interests .ip-card[data-title="Photography"] { --ic: 244, 114, 182; }  /* pink   */
+#interests .ip-card[data-title="Fitness"]     { --ic: 251, 146, 60; }   /* orange */
+#interests .ip-card[data-title="Music"]       { --ic: 192, 132, 252; }  /* violet */
+#interests .ip-card[data-title="Gaming"]      { --ic: 74, 222, 128; }   /* green  */
+#interests .ip-card[data-title="Exploration"] { --ic: 250, 204, 21; }   /* yellow */
+
+/* the small icon tile */
+#interests .ip-card .ip-card-icon {
+  background: linear-gradient(145deg, rgba(var(--ic), 0.5), rgba(10, 14, 40, 0.72));
+  border-color: rgba(var(--ic), 0.8);
+  color: rgb(var(--ic));
+  box-shadow:
+    0 0 20px rgba(var(--ic), 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+#interests .ip-card .ip-card-icon i {
+  filter: drop-shadow(0 0 6px rgba(var(--ic), 0.85));
+}
+
+/* the big faint icon (shows when a photo is missing) */
+#interests .ip-card .ip-card-bgicon {
+  color: rgba(var(--ic), 0.35);
+  filter: drop-shadow(0 0 16px rgba(var(--ic), 0.7));
+}
+
+/* the little line under the text */
+#interests .ip-card .ip-card-line {
+  background: linear-gradient(90deg, rgb(var(--ic)), rgba(var(--ic), 0.25));
+  box-shadow: 0 0 12px rgba(var(--ic), 0.7);
+}
+
+/* hover: the whole tile glows in its own color */
+#interests .ip-card[data-title]:hover,
+#interests .ip-card[data-title]:focus-visible {
+  border-color: rgba(var(--ic), 0.85);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -50px 60px -30px rgba(var(--ic), 0.4),
+    0 0 46px rgba(var(--ic), 0.55),
+    0 26px 40px -10px rgba(0, 0, 0, 0.55);
+}
+#interests .ip-card:hover .ip-card-icon,
+#interests .ip-card:focus-visible .ip-card-icon {
+  background: linear-gradient(145deg, rgba(var(--ic), 0.85), rgba(var(--ic), 0.35));
+  color: #fff;
+  box-shadow: 0 0 26px rgba(var(--ic), 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+/* ═══════════════════════════════════════════════════════
+   INTERESTS — make the middle two tiles pop out too (desktop)
+   Paste at the very bottom of style.css (after the colors block)
+═══════════════════════════════════════════════════════ */
+@media (min-width: 1101px) {
+  /* before: the middle tiles sat BACK (-10px) and LOW (+8px) while the sides came forward.
+     now every tile comes forward, and the middle pair floats the highest */
+  #interests .ip-card:nth-child(1) { --ry: 16deg;   --rz: -1deg;   --ty: -14px; --tz: 60px; }
+  #interests .ip-card:nth-child(2) { --ry: 9deg;    --rz: -0.5deg; --ty: -22px; --tz: 66px; }
+  #interests .ip-card:nth-child(3) { --ry: 3.5deg;  --rz: 0deg;    --ty: -30px; --tz: 72px; }
+  #interests .ip-card:nth-child(4) { --ry: -3.5deg; --rz: 0deg;    --ty: -30px; --tz: 72px; }
+  #interests .ip-card:nth-child(5) { --ry: -9deg;   --rz: 0.5deg;  --ty: -22px; --tz: 66px; }
+  #interests .ip-card:nth-child(6) { --ry: -16deg;  --rz: 1deg;    --ty: -14px; --tz: 60px; }
+}
+
+/* a soft glow in each tile's own color, so they look like they float */
+#interests .ip-card[data-title] {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.38),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -50px 60px -30px rgba(var(--ic), 0.28),
+    inset 0 0 0 5px rgba(255, 255, 255, 0.018),
+    0 0 36px rgba(var(--ic), 0.28),
+    0 24px 38px -10px rgba(0, 0, 0, 0.55);
+}
