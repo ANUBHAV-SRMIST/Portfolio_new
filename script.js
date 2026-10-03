@@ -477,10 +477,11 @@ const expData = [
     title: "Intern – Drive Next Automotive Lab",
     org: "SRM Technologies Pvt Ltd",
     icon: "fa-car",
-    duration: "Since Sep 2026",
-    type: "Internship",
+    duration: "17 Sep 2026 - Present",
+    type: "Internship · On-site",
     badgeColor: "green",
     ongoing: true,
+    offerLetter: "offer-letters/drive-next-automotive-lab-offer.pdf",
     desc: "Currently working as an intern at SRM Technologies Pvt Ltd in the Drive Next Automotive Lab, applying academic knowledge in a professional engineering environment.",
     tags: ["Automotive", "Industry Internship", "SRM Technologies", "Professional Experience"],
     learnings: [
@@ -503,7 +504,7 @@ const expData = [
     learnings: [
       "Studying Zero Trust Exchange principles and Zero Trust Cyber Associate (ZTCA) fundamentals",
       "Learning identity verification, access control, and policy enforcement",
-      "Currently in progress"
+      "Completed the program with an Outstanding (O) grade"
     ]
   },
   {
@@ -734,9 +735,17 @@ function renderExpDetail(exp) {
       ${exp.learnings.map(l => `<li>${l}</li>`).join('')}
     </ul>
     ${exp.link ? `<a href="${exp.link}" target="_blank" rel="noopener noreferrer" class="exp-proof-btn"><i class="fa-solid fa-file-lines"></i> View Proof / Certificate</a>` : ''}
-    ${exp.offerLetter ? `<a href="${exp.offerLetter}" target="_blank" rel="noopener noreferrer" class="exp-proof-btn"><i class="fa-solid fa-file-pdf"></i> View Offer Letter</a>` : ''}
+        ${exp.offerLetter ? `<a href="${exp.offerLetter}" target="_blank" rel="noopener noreferrer" class="exp-proof-btn exp-offer-btn" style="display:none"><i class="fa-solid fa-file-pdf"></i> View Offer Letter</a>` : ''}
   `;
 
+  // show the offer-letter button only when the PDF file really exists
+  const offerBtn = expDetail.querySelector('.exp-offer-btn');
+  if (offerBtn) {
+    const show = () => { offerBtn.style.display = ''; };
+    fetch(exp.offerLetter, { method: 'HEAD' })
+      .then(r => { if (r.ok && !(r.headers.get('content-type') || '').includes('text/html')) show(); })
+      .catch(show);   // can't check (offline / opened as a file) -> just show it
+  }
 }
 
 function renderExpList() {
@@ -1292,7 +1301,7 @@ if (lastUpdatedEl) {
 // PUBLICATIONS — cards, filter tabs, count-up, paper preview
 // To add another paper, copy one { ... } block inside PUBLICATIONS.
 // ══════════════════════════════════════════════════════════════
-;(() => {
+; (() => {
   const list = document.getElementById('pbList');
   const filtersEl = document.getElementById('pbFilters');
   if (!list || !filtersEl) return;
@@ -1307,9 +1316,9 @@ if (lastUpdatedEl) {
       affiliation: 'Dept. of ECE, SRMIST · Shiv Nadar Institution of Eminence · IIT Bhubaneswar · INDIA',
       categories: ['Wearable Sensing', 'Healthcare'],                      // these create the filter tabs
       stats: [
-        { value: 2,   suffix: 's', label: 'Response Time (cur-rGO)' },
+        { value: 2, suffix: 's', label: 'Response Time (cur-rGO)' },
         { value: 3.2, suffix: 's', label: 'Response Time (m-rGO)' },
-        { value: 2,   suffix: '',  label: 'Sensing Layers Compared' }
+        { value: 2, suffix: '', label: 'Sensing Layers Compared' }
       ],
       abstract: 'After the pandemic caused by SARS-CoV-2, face masks became essential in preventing the spread of the virus through respiratory fluid. Since the virus significantly impacts the lungs, real-time respiration monitoring has become critical for evaluating health status. This work presents an economical, simple method for fabricating smart face masks by depositing functionalized graphene coatings — curcumin functionalized (cur-rGO) and melamine functionalized (m-rGO) reduced graphene oxide — onto commercial surgical masks. Both sensing layers exhibit high sensitivity toward human breath, with cur-rGO demonstrating faster response and recovery, making it a strong candidate for accurate, low-cost respiration monitoring.',
       tags: ['Smart Mask', 'Functionalized Graphene', 'Health Monitoring', 'Sensitivity', 'Quick Response'],
@@ -1523,11 +1532,11 @@ if (lastUpdatedEl) {
       const t = Math.min(Math.abs(d), 1);                 // 0 = centred, 1 = fully to the side
       const ease = t * t * (3 - 2 * t);
 
-      c.style.setProperty('--ls',  (1.05 - 0.21 * ease).toFixed(3));              // centre grows
+      c.style.setProperty('--ls', (1.05 - 0.21 * ease).toFixed(3));              // centre grows
       c.style.setProperty('--lty', (-14 * (1 - ease)).toFixed(1) + 'px');          // centre lifts
       c.style.setProperty('--lry', Math.max(-34, Math.min(34, -d * 30)).toFixed(1) + 'deg');
-      c.style.setProperty('--lo',  (1 - 0.5 * ease).toFixed(3));                   // sides fade
-      c.style.setProperty('--lc',  (1 - ease).toFixed(3));                         // centre glows
+      c.style.setProperty('--lo', (1 - 0.5 * ease).toFixed(3));                   // sides fade
+      c.style.setProperty('--lc', (1 - ease).toFixed(3));                         // centre glows
       c.style.zIndex = String(100 - Math.round(ease * 10));
     });
   }
