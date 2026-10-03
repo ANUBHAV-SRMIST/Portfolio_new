@@ -7467,3 +7467,108 @@ html .reveal.in {
   background: linear-gradient(135deg, rgb(var(--ic, 79, 110, 247)), rgba(var(--ic, 79, 110, 247), 0.7));
   color: #fff;
 }
+/* ══ Contact: colourful form + social tiles ══ */
+
+/* Each field gets its own colour (labels + focus glow) */
+.form-group:has([name="from_name"]) { --fc: 34, 211, 238; }   /* Name    → cyan   */
+.form-group:has([name="from_email"]){ --fc: 251, 191, 36; }   /* Email   → amber  */
+.form-group:has([name="subject"])   { --fc: 74, 222, 128; }   /* Subject → green  */
+.form-group:has([name="message"])   { --fc: 192, 132, 252; }  /* Message → purple */
+
+.form-group label {
+  color: rgb(var(--fc, 139, 146, 184));
+  opacity: 0.9;
+}
+.form-group:focus-within label {
+  color: rgb(var(--fc, 79, 110, 247));
+  opacity: 1;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: rgba(var(--fc, 123, 147, 255), 0.85);
+  background: rgba(var(--fc, 79, 110, 247), 0.07);
+  box-shadow:
+    0 0 0 4px rgba(var(--fc, 79, 110, 247), 0.16),
+    inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Send button: blue → purple gradient */
+.btn-send {
+  background: linear-gradient(135deg, #4f6ef7, #9333ea);
+  border-color: rgba(147, 51, 234, 0.6);
+  box-shadow: 0 10px 28px rgba(110, 80, 240, 0.35);
+}
+.btn-send:hover {
+  background: linear-gradient(135deg, #7b93ff, #a855f7);
+  border-color: rgba(168, 85, 247, 0.8);
+  box-shadow: 0 14px 34px rgba(147, 51, 234, 0.45);
+}
+
+/* Social tiles: one colour each */
+.social-link:nth-child(1) { --sc: 192, 132, 252; }  /* GitHub        → purple */
+.social-link:nth-child(2) { --sc: 56, 152, 255; }   /* LinkedIn      → blue   */
+.social-link:nth-child(3) { --sc: 45, 212, 191; }   /* ResearchGate  → teal   */
+.social-link:nth-child(4) { --sc: 248, 113, 113; }  /* Email         → red    */
+.social-link:nth-child(5) { --sc: 148, 163, 184; }  /* X             → silver */
+
+.social-link {
+  color: rgb(var(--sc, 139, 146, 184));
+  background: linear-gradient(135deg, rgba(var(--sc, 79, 110, 247), 0.22), rgba(var(--sc, 79, 110, 247), 0.06));
+  border-color: rgba(var(--sc, 79, 110, 247), 0.45);
+  box-shadow: 0 0 14px rgba(var(--sc, 79, 110, 247), 0.22);
+}
+.social-link:hover {
+  color: #fff;
+  background: linear-gradient(135deg, rgb(var(--sc, 79, 110, 247)), rgba(var(--sc, 79, 110, 247), 0.65));
+  border-color: rgba(var(--sc, 79, 110, 247), 0.9);
+  box-shadow: 0 10px 26px rgba(var(--sc, 79, 110, 247), 0.5);
+}
+
+/* Light theme: softer tiles, darker label text */
+[data-theme="light"] .social-link {
+  background: rgba(var(--sc, 79, 110, 247), 0.14);
+  box-shadow: none;
+}
+[data-theme="light"] .social-link:hover {
+  background: linear-gradient(135deg, rgb(var(--sc, 79, 110, 247)), rgba(var(--sc, 79, 110, 247), 0.7));
+}
+/* ══ Industry Exposure: smooth horizontal scroll on mobile ══ */
+@media (max-width: 800px) {
+  .exp-list {
+    flex-direction: row;
+    gap: 0.9rem;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.6rem 1.2rem 1rem;
+    margin: 0 -0.4rem;
+
+    /* smooth swipe + snap each card into place */
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 1.2rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+
+    /* replace the vertical fade with soft left/right edge fades */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
+
+    /* hide the scrollbar */
+    scrollbar-width: none;
+  }
+  .exp-list::-webkit-scrollbar { display: none; }
+
+  .exp-item {
+    flex: 0 0 78%;
+    max-width: 290px;
+    min-width: 230px;
+    width: auto;
+    scroll-snap-align: center;
+    transform: none;
+  }
+  .exp-item:hover { transform: none; }
+
+  /* detail panel should not float over the list on mobile */
+  .exp-detail { position: static; }
+}
