@@ -7572,3 +7572,52 @@ html .reveal.in {
   /* detail panel should not float over the list on mobile */
   .exp-detail { position: static; }
 }
+/* ══ Mobile menu: colourful icons ══ */
+.nav-icon:has(.ri-home-4-line)      { --nc: 251, 191, 36; }   /* Home           → amber  */
+.nav-icon:has(.ri-user-3-line)      { --nc: 34, 211, 238; }   /* About          → cyan   */
+.nav-icon:has(.ri-code-s-slash-line){ --nc: 74, 222, 128; }   /* Skills         → green  */
+.nav-icon:has(.ri-book-open-line)   { --nc: 192, 132, 252; }  /* Publications   → purple */
+.nav-icon:has(.ri-folder-3-line)    { --nc: 56, 189, 248; }   /* Projects       → sky    */
+.nav-icon:has(.ri-briefcase-4-line) { --nc: 251, 146, 60; }   /* Internships    → orange */
+.nav-icon:has(.ri-award-line)       { --nc: 244, 114, 182; }  /* Certifications → pink   */
+.nav-icon:has(.ri-medal-line)       { --nc: 250, 204, 21; }   /* Badges         → yellow */
+.nav-icon:has(.ri-mail-line)        { --nc: 248, 113, 113; }  /* Contact        → red    */
+
+.nav-links a.nav-link .nav-icon {
+  color: rgb(var(--nc, 123, 147, 255));
+  background: linear-gradient(135deg, rgba(var(--nc, 79, 110, 247), 0.28), rgba(var(--nc, 79, 110, 247), 0.08));
+  border: 1px solid rgba(var(--nc, 79, 110, 247), 0.5);
+  box-shadow: 0 0 10px rgba(var(--nc, 79, 110, 247), 0.25);
+}
+
+/* hover + selected item: fill with its own colour */
+.nav-links a.nav-link:hover .nav-icon,
+.nav-links a.nav-link.active .nav-icon {
+  background: linear-gradient(135deg, rgb(var(--nc, 79, 110, 247)), rgba(var(--nc, 79, 110, 247), 0.65));
+  color: #fff;
+  border-color: rgba(var(--nc, 79, 110, 247), 0.9);
+  box-shadow: 0 0 16px rgba(var(--nc, 79, 110, 247), 0.55);
+}
+
+/* Social buttons at the bottom of the menu */
+.nav-social:nth-child(1) { --sc: 192, 132, 252; }  /* GitHub   → purple */
+.nav-social:nth-child(2) { --sc: 56, 152, 255; }   /* LinkedIn → blue   */
+.nav-social:nth-child(3) { --sc: 248, 113, 113; }  /* Mail     → red    */
+
+.nav-social {
+  color: rgb(var(--sc, 139, 146, 184));
+  background: linear-gradient(135deg, rgba(var(--sc, 79, 110, 247), 0.22), rgba(var(--sc, 79, 110, 247), 0.06));
+  border-color: rgba(var(--sc, 79, 110, 247), 0.45);
+  box-shadow: 0 0 12px rgba(var(--sc, 79, 110, 247), 0.2);
+}
+.nav-social:hover {
+  background: linear-gradient(135deg, rgb(var(--sc, 79, 110, 247)), rgba(var(--sc, 79, 110, 247), 0.65));
+  border-color: rgba(var(--sc, 79, 110, 247), 0.9);
+  color: #fff;
+}
+
+/* Light theme: softer tiles, no glow */
+[data-theme="light"] .nav-links a.nav-link .nav-icon,
+[data-theme="light"] .nav-social {
+  box-shadow: none;
+}
