@@ -7383,3 +7383,39 @@ html .reveal.in {
 .hero-orbit-badge {
   will-change: transform;
 }
+/* ══ About tiles: colourful icons ══ */
+.info-card-icon:has(.fa-graduation-cap) { --ic: 251, 191, 36; }   /* Education → amber  */
+.info-card-icon:has(.fa-calendar)       { --ic: 34, 211, 238; }   /* Year      → cyan   */
+.info-card-icon:has(.fa-briefcase)      { --ic: 74, 222, 128; }   /* Open To   → green  */
+.info-card-icon:has(.fa-location-dot)   { --ic: 244, 114, 182; }  /* Location  → pink   */
+
+.info-card-icon[class] {
+  color: rgb(var(--ic, 79, 110, 247));
+  background: linear-gradient(135deg, rgba(var(--ic, 79, 110, 247), 0.3), rgba(var(--ic, 79, 110, 247), 0.08));
+  border: 1px solid rgba(var(--ic, 79, 110, 247), 0.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 0 14px rgba(var(--ic, 79, 110, 247), 0.3);
+}
+
+.info-card-icon i {
+  filter: drop-shadow(0 0 5px rgba(var(--ic, 79, 110, 247), 0.6));
+}
+
+/* On hover: fill with the tile's own colour instead of blue */
+.info-card:hover .info-card-icon[class] {
+  background: linear-gradient(135deg, rgb(var(--ic, 79, 110, 247)), rgba(var(--ic, 79, 110, 247), 0.65));
+  color: #fff;
+}
+
+/* Light theme: softer tint, no glow */
+[data-theme="light"] .info-card-icon[class] {
+  background: rgba(var(--ic, 79, 110, 247), 0.16);
+  box-shadow: none;
+}
+[data-theme="light"] .info-card-icon i {
+  filter: none;
+}
+[data-theme="light"] .info-card:hover .info-card-icon[class] {
+  background: linear-gradient(135deg, rgb(var(--ic, 79, 110, 247)), rgba(var(--ic, 79, 110, 247), 0.7));
+}
