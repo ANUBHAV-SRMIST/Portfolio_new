@@ -1301,7 +1301,7 @@ if (lastUpdatedEl) {
     {
       type: 'Conference Paper',
       venue: 'IEEE Sensors Conference',
-      year: 2024,
+      year: 2025,
       title: 'Wearable Smart Face Mask Based on Functionalized Graphene for Real-Time Monitoring of Human Respiration',
       authors: ['Anubhav Mishra', 'Soumyaranjan Routray', 'Avik Sett'],   // first name is highlighted
       affiliation: 'Dept. of ECE, SRMIST · Shiv Nadar Institution of Eminence · IIT Bhubaneswar · INDIA',
