@@ -9940,3 +9940,13 @@ html .reveal.in {
     0 0 36px rgba(var(--ic), 0.28),
     0 24px 38px -10px rgba(0, 0, 0, 0.55);
 }
+/* ═══════════════════════════════════════════════════════
+   INTERESTS — smooth blend into the sections above and below
+   Paste at the very bottom of style.css
+═══════════════════════════════════════════════════════ */
+#interests::before {
+  /* the glow + arcs used to start with a hard edge at the top of the section.
+     this fades them in from nothing, and out again at the bottom */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 220px, #000 calc(100% - 160px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 220px, #000 calc(100% - 160px), transparent 100%);
+}
