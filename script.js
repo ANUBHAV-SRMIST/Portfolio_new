@@ -1288,3 +1288,210 @@ if (lastUpdatedEl) {
     });
   });
 })();
+// ══════════════════════════════════════════════════════════════
+// PUBLICATIONS — cards, filter tabs, count-up, paper preview
+// To add another paper, copy one { ... } block inside PUBLICATIONS.
+// ══════════════════════════════════════════════════════════════
+;(() => {
+  const list = document.getElementById('pbList');
+  const filtersEl = document.getElementById('pbFilters');
+  if (!list || !filtersEl) return;
+
+  const PUBLICATIONS = [
+    {
+      type: 'Conference Paper',
+      venue: 'IEEE Sensors Conference',
+      year: 2024,
+      title: 'Wearable Smart Face Mask Based on Functionalized Graphene for Real-Time Monitoring of Human Respiration',
+      authors: ['Anubhav Mishra', 'Soumyaranjan Routray', 'Avik Sett'],   // first name is highlighted
+      affiliation: 'Dept. of ECE, SRMIST · Shiv Nadar Institution of Eminence · IIT Bhubaneswar · INDIA',
+      categories: ['Wearable Sensing', 'Healthcare'],                      // these create the filter tabs
+      stats: [
+        { value: 2,   suffix: 's', label: 'Response Time (cur-rGO)' },
+        { value: 3.2, suffix: 's', label: 'Response Time (m-rGO)' },
+        { value: 2,   suffix: '',  label: 'Sensing Layers Compared' }
+      ],
+      abstract: 'After the pandemic caused by SARS-CoV-2, face masks became essential in preventing the spread of the virus through respiratory fluid. Since the virus significantly impacts the lungs, real-time respiration monitoring has become critical for evaluating health status. This work presents an economical, simple method for fabricating smart face masks by depositing functionalized graphene coatings — curcumin functionalized (cur-rGO) and melamine functionalized (m-rGO) reduced graphene oxide — onto commercial surgical masks. Both sensing layers exhibit high sensitivity toward human breath, with cur-rGO demonstrating faster response and recovery, making it a strong candidate for accurate, low-cost respiration monitoring.',
+      tags: ['Smart Mask', 'Functionalized Graphene', 'Health Monitoring', 'Sensitivity', 'Quick Response'],
+      image: 'images/publications/face-mask-paper.jpg',                    // first page of the paper
+      link: 'https://drive.google.com/file/d/1oJG9FCQ9TuNmtroBxqGmR8CIyCpRjW_v/view?usp=sharing'
+    }
+  ];
+
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  // ── build cards ──
+  list.innerHTML = PUBLICATIONS.map(p => `
+    <article class="pb-card" data-cats="${esc(p.categories.join('|'))}">
+      <div class="pb-thumb">
+        <span class="pb-type"><i class="fa-solid fa-file-lines"></i>${esc(p.type)}</span>
+        <button type="button" class="pb-preview" data-img="${esc(p.image)}" aria-label="Preview the paper: ${esc(p.title)}">
+          <img src="${esc(p.image)}" alt="First page of the paper" loading="lazy" decoding="async">
+          <span class="pb-mock" aria-hidden="true"></span>
+          <span class="pb-zoom"><i class="fa-solid fa-magnifying-glass-plus"></i> Preview</span>
+        </button>
+      </div>
+      <div class="pb-body">
+        <div class="pb-meta">
+          <span class="pb-venue"><span class="pb-venue-ico"><i class="fa-solid fa-award"></i></span>${esc(p.venue)}</span>
+          <span class="pb-year">${esc(p.year)}</span>
+        </div>
+        <h3 class="pb-title">${esc(p.title)}</h3>
+        <p class="pb-authors">${p.authors.map((a, i) => i === 0 ? `<span class="me">${esc(a)}</span>` : esc(a)).join(', ')}</p>
+        <p class="pb-affil">${esc(p.affiliation)}</p>
+        <div class="pb-stats">
+          ${p.stats.map(s => `<div class="pb-stat"><strong data-target="${s.value}" data-suffix="${esc(s.suffix || '')}">0${esc(s.suffix || '')}</strong><span>${esc(s.label)}</span></div>`).join('')}
+        </div>
+        <div class="pb-abs">
+          <p class="pb-abstract">${esc(p.abstract)}</p>
+          <button type="button" class="pb-toggle" aria-expanded="false"><span>Read Full Abstract</span> <i class="fa-solid fa-chevron-down"></i></button>
+        </div>
+        <div class="pb-foot">
+          <div class="pb-tags">${p.tags.map(t => `<span class="pb-tag">${esc(t)}</span>`).join('')}</div>
+          <a class="btn btn-primary pb-btn" href="${esc(p.link)}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i> Read Full Paper</a>
+        </div>
+      </div>
+    </article>`).join('');
+
+  const cards = [...list.querySelectorAll('.pb-card')];
+
+  // ── filter tabs (built from the categories you use) ──
+  const cats = [];
+  PUBLICATIONS.forEach(p => p.categories.forEach(c => { if (!cats.includes(c)) cats.push(c); }));
+  filtersEl.innerHTML =
+    `<button type="button" class="pb-filter active" role="tab" aria-selected="true" data-filter="all">All (${PUBLICATIONS.length})</button>` +
+    cats.map(c => `<button type="button" class="pb-filter" role="tab" aria-selected="false" data-filter="${esc(c)}">${esc(c)} (${PUBLICATIONS.filter(p => p.categories.includes(c)).length})</button>`).join('');
+
+  filtersEl.addEventListener('click', e => {
+    const btn = e.target.closest('.pb-filter');
+    if (!btn) return;
+    const f = btn.dataset.filter;
+    filtersEl.querySelectorAll('.pb-filter').forEach(b => {
+      b.classList.toggle('active', b === btn);
+      b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+    });
+    let n = 0;
+    cards.forEach(card => {
+      const match = f === 'all' || card.dataset.cats.split('|').includes(f);
+      card.hidden = !match;
+      card.classList.remove('pop');
+      if (match) {
+        card.classList.add('in');
+        card.style.animationDelay = (n++ * 80) + 'ms';
+        void card.offsetWidth;
+        card.classList.add('pop');
+        countUp(card);
+      }
+    });
+    setTimeout(checkClamp, 50);
+  });
+
+  // ── count-up numbers ──
+  function countUp(card) {
+    if (card.dataset.counted) return;
+    card.dataset.counted = '1';
+    card.querySelectorAll('.pb-stat strong').forEach(el => {
+      const target = parseFloat(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const dec = String(el.dataset.target).includes('.');
+      const t0 = performance.now();
+      const step = now => {
+        const p = Math.min((now - t0) / 1100, 1);
+        const v = (1 - Math.pow(1 - p, 3)) * target;
+        el.textContent = (dec ? v.toFixed(1) : Math.round(v)) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }
+
+  // ── scroll reveal ──
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        io.unobserve(en.target);
+        en.target.classList.add('in');
+        countUp(en.target);
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(c => io.observe(c));
+  } else {
+    cards.forEach(c => { c.classList.add('in'); countUp(c); });
+  }
+
+  // ── abstract: read more / less (button only shows when text is cut off) ──
+  list.addEventListener('click', e => {
+    const t = e.target.closest('.pb-toggle');
+    if (!t) return;
+    const abs = t.closest('.pb-abs');
+    const open = abs.classList.toggle('expanded');
+    t.setAttribute('aria-expanded', open ? 'true' : 'false');
+    t.firstElementChild.textContent = open ? 'Show Less' : 'Read Full Abstract';
+  });
+
+  function checkClamp() {
+    list.querySelectorAll('.pb-abs').forEach(abs => {
+      if (abs.classList.contains('expanded')) return;
+      const p = abs.querySelector('.pb-abstract');
+      abs.querySelector('.pb-toggle').hidden = p.scrollHeight <= p.clientHeight + 1;
+    });
+  }
+  checkClamp();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(checkClamp);
+  window.addEventListener('load', checkClamp);
+  let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(checkClamp, 150); });
+
+  // ── missing image → neat placeholder page ──
+  list.querySelectorAll('.pb-preview img').forEach(img => {
+    const fail = () => img.closest('.pb-thumb').classList.add('no-img');
+    img.addEventListener('error', fail);
+    if (img.complete && img.naturalWidth === 0) fail();
+  });
+
+  // ── soft light that follows the cursor ──
+  if (window.matchMedia('(hover: hover)').matches) {
+    list.addEventListener('pointermove', e => {
+      const c = e.target.closest('.pb-card');
+      if (!c) return;
+      const r = c.getBoundingClientRect();
+      c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    }, { passive: true });
+  }
+
+  // ── click the paper → full-size preview ──
+  const lb = document.createElement('div');
+  lb.className = 'pb-lightbox';
+  lb.hidden = true;
+  lb.setAttribute('role', 'dialog');
+  lb.setAttribute('aria-modal', 'true');
+  lb.setAttribute('aria-label', 'Paper preview');
+  lb.innerHTML = '<button type="button" class="pb-lb-close" aria-label="Close preview"><i class="fa-solid fa-xmark"></i></button><img alt="Paper preview">';
+  document.body.appendChild(lb);
+  const lbImg = lb.querySelector('img');
+  let lastFocus = null;
+
+  const openLb = src => {
+    lastFocus = document.activeElement;
+    lbImg.src = src;
+    lb.hidden = false;
+    document.documentElement.style.overflow = 'hidden';
+    requestAnimationFrame(() => lb.classList.add('open'));
+    lb.querySelector('.pb-lb-close').focus();
+  };
+  const closeLb = () => {
+    lb.classList.remove('open');
+    document.documentElement.style.overflow = '';
+    setTimeout(() => { lb.hidden = true; lbImg.removeAttribute('src'); }, 300);
+    if (lastFocus) lastFocus.focus();
+  };
+
+  list.addEventListener('click', e => {
+    const b = e.target.closest('.pb-preview');
+    if (!b || b.closest('.pb-thumb').classList.contains('no-img')) return;
+    openLb(b.dataset.img);
+  });
+  lb.addEventListener('click', e => { if (e.target === lb || e.target.closest('.pb-lb-close')) closeLb(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden) closeLb(); });
+})();
