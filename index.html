@@ -281,146 +281,164 @@
 
   <!-- ══ SKILLS ══ -->
   <section id="skills">
-    <div class="skills-inner">
-      <div class="section-label fade-in"><i class="fa-solid fa-code"></i> What I Know</div>
-      <h2 class="section-title fade-in">Skills</h2>
-      <div class="section-underline fade-in"></div>
+    <div class="tech-inner">
 
-      <div class="skills-grid">
+      <div class="tech-head">
+        <div class="tech-pill fade-in"><span></span>MY SKILLS<span></span></div>
+        <h2 class="tech-title fade-in">Technologies I <span class="tech-grad">Work With</span></h2>
+        <p class="tech-sub fade-in">A blend of Electronics, Data Science, Embedded Systems and Development tools that I use to build, learn and create.</p>
+      </div>
 
-        <div class="skill-category fade-in">
-          <p class="skill-cat-title"><i class="fa-solid fa-laptop-code"></i> Programming</p>
-          <div class="skill-item">
-            <div class="skill-info"><span>Python</span><span>60%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:60%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>Embedded C</span><span>40%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:40%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>Verilog HDL</span><span>70%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:70%"></div>
-            </div>
-          </div>
-        </div>
+      <div class="tech-tabs fade-in" id="techTabs" role="group" aria-label="Filter skills">
+        <button type="button" class="tech-tab active" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="tech-tab" data-filter="electronics" aria-pressed="false">Electronics</button>
+        <button type="button" class="tech-tab" data-filter="embedded" aria-pressed="false">Embedded</button>
+        <button type="button" class="tech-tab" data-filter="data" aria-pressed="false">Data & Analytics</button>
+        <button type="button" class="tech-tab" data-filter="development" aria-pressed="false">Development</button>
+        <button type="button" class="tech-tab" data-filter="design" aria-pressed="false">Design & Others</button>
+      </div>
 
-        <div class="skill-category fade-in">
-          <p class="skill-cat-title"><i class="fa-solid fa-brain"></i> VLSI & Verification</p>
-          <div class="skill-item">
-            <div class="skill-info"><span>RTL Design</span><span>30%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:30%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>SystemVerilog</span><span>60%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:60%"></div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>UVM</span><span>30%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:30%"></div>
-            </div>
-          </div>
-        </div>
+      <div class="tech-grid" id="techGrid">
 
-        <div class="skill-category fade-in">
-          <p class="skill-cat-title"><i class="fa-solid fa-globe"></i>Embedded Systems</p>
-          <div class="skill-item">
-            <div class="skill-info"><span>Arduino</span><span>88%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:88%"></div>
+        <article class="tech-card fade-in" data-cat="electronics" style="--c:139,92,246">
+          <i class="fa-solid fa-microchip tech-card-bg" aria-hidden="true"></i>
+          <div class="tech-card-head">
+            <div class="tech-card-icon"><i class="fa-solid fa-microchip"></i></div>
+            <div>
+              <h3>Electronics & Circuit Design</h3>
+              <p>Circuit simulation, PCB design and electronic system modelling for real-world applications.</p>
             </div>
           </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>ATmega328</span><span>50%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:50%"></div>
-            </div>
+          <div class="tech-tiles">
+            <div class="tech-tile"><span class="tech-logo"><span class="tl-text tl-lt">LT</span></span><span class="tech-name">LTspice</span></div>
+            <div class="tech-tile"><span class="tech-logo"><svg viewBox="0 0 30 30" class="tl-svg" aria-hidden="true"><rect x="1" y="1" width="8" height="8" rx="1.5" fill="#f5c518"/><rect x="11" y="1" width="8" height="8" rx="1.5" fill="#ef4444"/><rect x="21" y="1" width="8" height="8" rx="1.5" fill="#22c55e"/><rect x="1" y="11" width="8" height="8" rx="1.5" fill="#22c55e"/><rect x="11" y="11" width="8" height="8" rx="1.5" fill="#3b82f6"/><rect x="21" y="11" width="8" height="8" rx="1.5" fill="#f5c518"/><rect x="1" y="21" width="8" height="8" rx="1.5" fill="#3b82f6"/><rect x="11" y="21" width="8" height="8" rx="1.5" fill="#f5c518"/><rect x="21" y="21" width="8" height="8" rx="1.5" fill="#ef4444"/></svg></span><span class="tech-name">Tinkercad</span></div>
+            <div class="tech-tile"><span class="tech-logo"><i class="ri-cloud-fill tl-font" style="color:#4f8cff"></i></span><span class="tech-name">EasyEDA</span></div>
+            <div class="tech-tile"><span class="tech-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/matlab/matlab-original.svg" alt="" loading="lazy" decoding="async"></span><span class="tech-name">MATLAB</span></div>
+            <div class="tech-tile"><span class="tech-logo"><span class="tl-text tl-xil">Σ</span></span><span class="tech-name">Xilinx</span></div>
+            <div class="tech-tile"><span class="tech-logo"><span class="tl-mask" style="--src:url(https://cdn.jsdelivr.net/npm/simple-icons@16.33.0/icons/ansys.svg);background:#ffb71b"></span></span><span class="tech-name">Ansys</span></div>
           </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>UART / SPI / I²C</span><span>40%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:40%"></div>
-            </div>
-          </div>
-        </div>
+        </article>
 
-        <div class="skill-category fade-in">
-          <p class="skill-cat-title"><i class="fa-solid fa-microchip"></i>EDA & Simulation</p>
-          <div class="skill-item">
-            <div class="skill-info"><span>EasyEDA</span><span>85%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:85%"></div>
+        <article class="tech-card fade-in" data-cat="embedded" style="--c:34,197,94">
+          <i class="fa-solid fa-memory tech-card-bg" aria-hidden="true"></i>
+          <div class="tech-card-head">
+            <div class="tech-card-icon"><i class="fa-solid fa-memory"></i></div>
+            <div>
+              <h3>Embedded Systems</h3>
+              <p>Microcontroller programming, hardware interfacing and real-time system design.</p>
             </div>
           </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>ModelSim</span><span>40%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:40%"></div>
-            </div>
+          <div class="tech-tiles">
+            <div class="tech-tile"><span class="tech-logo"><i class="fa-solid fa-microchip tl-font"></i></span><span class="tech-name">8051</span></div>
+            <div class="tech-tile"><span class="tech-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/arduino/arduino-original.svg" alt="" loading="lazy" decoding="async"></span><span class="tech-name">Arduino</span></div>
+            <div class="tech-tile"><span class="tech-logo"><span class="tl-badge tl-keil">V</span></span><span class="tech-name">Keil uVision</span></div>
+            <div class="tech-tile"><span class="tech-logo"><span class="tl-badge tl-mplab">M</span></span><span class="tech-name">MPLAB Harmony</span></div>
+            <div class="tech-tile"><span class="tech-logo"><i class="fa-solid fa-display tl-font" style="color:#22d3ee"></i></span><span class="tech-name">EdSim51</span></div>
+            <div class="tech-tile"><span class="tech-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/cplusplus/cplusplus-original.svg" alt="" loading="lazy" decoding="async"></span><span class="tech-name">C / C++</span></div>
           </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>SEMulator3D</span><span>72%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:72%"></div>
-            </div>
-          </div>
-        </div>
+        </article>
 
-        <div class="skill-category fade-in">
-          <p class="skill-cat-title"><i class="fa-solid fa-database"></i>Hardware & PCB</p>
-          <div class="skill-item">
-            <div class="skill-info"><span>PCB Design</span><span>88%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:88%"></div>
+        <article class="tech-card fade-in" data-cat="data" style="--c:245,158,11">
+          <i class="fa-solid fa-chart-simple tech-card-bg" aria-hidden="true"></i>
+          <div class="tech-card-head">
+            <div class="tech-card-icon"><i class="fa-solid fa-chart-simple"></i></div>
+            <div>
+              <h3>Data Science & Analytics</h3>
+              <p>Data analysis, visualization and machine learning for engineering applications.</p>
             </div>
           </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>Proteus</span><span>78%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:78%"></div>
-            </div>
+          <div class="tech-tiles">
+            <div class="tech-tile"><span class="tech-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/python/python-original.svg" alt="" loading="lazy" decoding="async"></span><span class="tech-name">Python</span></div>
+            <div class="tech-tile"><span class="tech-logo"><span class="tl-mask" style="--src:url(https://cdn.jsdelivr.net/npm/simple-icons@16.33.0/icons/pandas.svg)"></span></span><span class="tech-name">Pandas</span></div>
+            <div class="tech-tile"><span class="tech-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/numpy/numpy-original.svg" alt="" loading="lazy" decoding="async"></span><span class="tech-name">NumPy</span></div>
+            <div class="tech-tile"><span class="tech-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/sqlite/sqlite-original.svg" alt="" loading="lazy" decoding="async"></span><span class="tech-name">SQL / SQLite</span></div>
+            <div class="tech-tile"><span class="tech-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/r/r-original.svg" alt="" loading="lazy" decoding="async"></span><span class="tech-name">R</span></div>
+            <div class="tech-tile"><span class="tech-logo"><i class="fa-solid fa-chart-pie tl-font" style="color:#fb923c"></i></span><span class="tech-name">Data Visualization</span></div>
           </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>MATLAB</span><span>30%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:30%"></div>
-            </div>
-          </div>
-        </div>
+        </article>
 
-        <div class="skill-category fade-in">
-          <p class="skill-cat-title"><i class="fa-solid fa-users"></i>Core Domains</p>
-          <div class="skill-item">
-            <div class="skill-info"><span>VLSI</span><span>50%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:50%"></div>
+        <article class="tech-card fade-in" data-cat="electronics" style="--c:168,85,247">
+          <i class="fa-solid fa-layer-group tech-card-bg" aria-hidden="true"></i>
+          <div class="tech-card-head">
+            <div class="tech-card-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <div>
+              <h3>Semiconductor & VLSI</h3>
+              <p>Device modelling, VLSI tools and semiconductor process simulation.</p>
             </div>
           </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>MEMS</span><span>20%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:20%"></div>
+          <div class="tech-tiles">
+            <div class="tech-tile"><span class="tech-logo"><i class="ri-flower-fill tl-font" style="color:#f5c518"></i></span><span class="tech-name">SEMulator<wbr>3D</span></div>
+            <div class="tech-tile"><span class="tech-logo"><span class="tl-text tl-xil">Σ</span></span><span class="tech-name">Xilinx (HDL)</span></div>
+            <div class="tech-tile"><span class="tech-logo"><span class="tl-text tl-lt">LT</span></span><span class="tech-name">LTspice (Device)</span></div>
+            <div class="tech-tile"><span class="tech-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/matlab/matlab-original.svg" alt="" loading="lazy" decoding="async"></span><span class="tech-name">MATLAB (Modelling)</span></div>
+            <div class="tech-tile"><span class="tech-logo"><i class="fa-solid fa-microchip tl-font"></i></span><span class="tech-name">VLSI Design</span></div>
+            <div class="tech-tile"><span class="tech-logo"><i class="fa-solid fa-layer-group tl-font" style="color:#a78bfa"></i></span><span class="tech-name">Lithography & Process</span></div>
+          </div>
+        </article>
+
+        <article class="tech-card fade-in" data-cat="development" style="--c:59,130,246">
+          <i class="fa-solid fa-code tech-card-bg" aria-hidden="true"></i>
+          <div class="tech-card-head">
+            <div class="tech-card-icon"><i class="fa-solid fa-code"></i></div>
+            <div>
+              <h3>Development & Software</h3>
+              <p>Software development, web, Android and database applications.</p>
             </div>
           </div>
-          <div class="skill-item">
-            <div class="skill-info"><span>Semiconductor Devices</span><span>90%</span></div>
-            <div class="skill-bar">
-              <div class="skill-fill" style="width:90%"></div>
+          <div class="tech-tiles">
+            <div class="tech-tile"><span class="tech-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/cplusplus/cplusplus-original.svg" alt="" loading="lazy" decoding="async"></span><span class="tech-name">C / C++</span></div>
+            <div class="tech-tile"><span class="tech-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/kotlin/kotlin-original.svg" alt="" loading="lazy" decoding="async"></span><span class="tech-name">Kotlin</span></div>
+            <div class="tech-tile"><span class="tech-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/androidstudio/androidstudio-original.svg" alt="" loading="lazy" decoding="async"></span><span class="tech-name">Android Studio</span></div>
+            <div class="tech-tile"><span class="tech-logo"><span class="tl-duo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/html5/html5-original.svg" alt="" loading="lazy" decoding="async"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/css3/css3-original.svg" alt="" loading="lazy" decoding="async"></span></span><span class="tech-name">HTML / CSS</span></div>
+            <div class="tech-tile"><span class="tech-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/javascript/javascript-original.svg" alt="" loading="lazy" decoding="async"></span><span class="tech-name">JavaScript</span></div>
+            <div class="tech-tile"><span class="tech-logo"><span class="tl-mask" style="--src:url(https://cdn.jsdelivr.net/npm/simple-icons@16.33.0/icons/github.svg)"></span></span><span class="tech-name">Git / GitHub</span></div>
+          </div>
+        </article>
+
+        <article class="tech-card fade-in" data-cat="design" style="--c:236,72,153">
+          <i class="fa-solid fa-wrench tech-card-bg" aria-hidden="true"></i>
+          <div class="tech-card-head">
+            <div class="tech-card-icon"><i class="fa-solid fa-wrench"></i></div>
+            <div>
+              <h3>Tools, Design & Others</h3>
+              <p>Supporting tools for simulation, design, documentation and project development.</p>
             </div>
           </div>
-        </div>
+          <div class="tech-tiles">
+            <div class="tech-tile"><span class="tech-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.17.0/icons/figma/figma-original.svg" alt="" loading="lazy" decoding="async"></span><span class="tech-name">Figma</span></div>
+            <div class="tech-tile"><span class="tech-logo"><span class="tl-badge tl-office">O</span></span><span class="tech-name">MS Office</span></div>
+            <div class="tech-tile"><span class="tech-logo"><span class="tl-mask" style="--src:url(https://cdn.jsdelivr.net/npm/simple-icons@16.33.0/icons/wix.svg)"></span></span><span class="tech-name">Wix</span></div>
+            <div class="tech-tile"><span class="tech-logo"><span class="tl-mask" style="--src:url(https://cdn.jsdelivr.net/npm/simple-icons@16.33.0/icons/vercel.svg)"></span></span><span class="tech-name">Vercel</span></div>
+            <div class="tech-tile"><span class="tech-logo"><span class="tl-text tl-latex">LaTeX</span></span><span class="tech-name">LaTeX</span></div>
+            <div class="tech-tile"><span class="tech-logo"><span class="tl-badge tl-canva">C</span></span><span class="tech-name">Canva</span></div>
+          </div>
+        </article>
 
       </div>
+
+      <div class="tech-stats">
+        <div class="tech-stat fade-in" style="--c:59,130,246">
+          <div class="tech-stat-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div class="tech-stat-top"><strong>20+</strong><span>Tools & Technologies</span></div>
+          <p>Used across academics, projects and self-learning.</p>
+        </div>
+        <div class="tech-stat fade-in" style="--c:236,72,153">
+          <div class="tech-stat-icon"><i class="fa-solid fa-book-open"></i></div>
+          <div class="tech-stat-top"><strong>4+</strong><span>Domains</span></div>
+          <p>Electronics, Embedded, Data Science & Development.</p>
+        </div>
+        <div class="tech-stat fade-in" style="--c:20,184,166">
+          <div class="tech-stat-icon"><i class="fa-solid fa-gear"></i></div>
+          <div class="tech-stat-top"><strong>Hands-on</strong><span>Experience</span></div>
+          <p>Through projects, simulations and real-world applications.</p>
+        </div>
+        <div class="tech-stat fade-in" style="--c:168,85,247">
+          <div class="tech-stat-icon"><i class="fa-solid fa-rocket"></i></div>
+          <div class="tech-stat-top"><strong>Always</strong><span>Learning</span></div>
+          <p>Exploring new tools and technologies.</p>
+        </div>
+      </div>
+
     </div>
   </section>
   <!-- ══ CORE SPECIALIZATIONS ══ -->

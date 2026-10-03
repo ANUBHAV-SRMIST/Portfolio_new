@@ -1187,3 +1187,51 @@ if (lastUpdatedEl) {
 
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 })();
+/* ══════════════════════════════════════════════════════════
+   SKILLS SECTION — category filter tabs
+   Paste at the very END of script.js
+══════════════════════════════════════════════════════════ */
+(function () {
+  function initTechFilter() {
+    var tabsWrap = document.getElementById('techTabs');
+    var grid = document.getElementById('techGrid');
+    if (!tabsWrap || !grid) return;
+
+    var tabs = tabsWrap.querySelectorAll('.tech-tab');
+    var cards = grid.querySelectorAll('.tech-card');
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var filter = tab.getAttribute('data-filter');
+
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.classList.toggle('active', on);
+          t.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+
+        var i = 0;
+        cards.forEach(function (card) {
+          var show = filter === 'all' || card.getAttribute('data-cat') === filter;
+          card.classList.remove('tech-pop');
+          if (show) {
+            card.classList.remove('is-hidden');
+            card.classList.add('visible');          // reuse site's fade-in state
+            card.style.animationDelay = (i * 70) + 'ms';
+            void card.offsetWidth;                  // restart animation
+            card.classList.add('tech-pop');
+            i++;
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTechFilter);
+  } else {
+    initTechFilter();
+  }
+})();
