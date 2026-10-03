@@ -7362,3 +7362,24 @@ html .reveal.in {
   overflow: visible;
   bottom: 1.2rem;
 }
+/* ══ Keep badges rotating on mobile ══ */
+
+/* 1. Always rotate, even if the phone has "reduce motion" on */
+@media (prefers-reduced-motion: reduce) {
+  .hero-orbit       { animation: heroOrbitSpin var(--spin) linear infinite; }
+  .hero-orbit-badge { animation: heroOrbitCounter var(--spin) linear infinite; }
+}
+
+/* 2. Touch screens: never pause on tap */
+@media (hover: none) {
+  .hero-img-wrap:hover .hero-orbit,
+  .hero-img-wrap:hover .hero-orbit-badge {
+    animation-play-state: running;
+  }
+}
+
+/* 3. Smoother rotation on mobile browsers */
+.hero-orbit,
+.hero-orbit-badge {
+  will-change: transform;
+}
