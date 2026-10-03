@@ -1235,3 +1235,28 @@ if (lastUpdatedEl) {
     initTechFilter();
   }
 })();
+/* ══════════════════════════════════════════════════════════
+   GLASS EFFECT — light follows the cursor on the new cards
+   Paste at the very END of script.js
+══════════════════════════════════════════════════════════ */
+(() => {
+  if (!window.matchMedia('(hover: hover)').matches) return;
+
+  const sel = '.tech-card, .tech-stat, .sp-card';
+
+  document.addEventListener('pointermove', e => {
+    const card = e.target.closest(sel);
+    if (!card) return;
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }, { passive: true });
+
+  document.addEventListener('pointerout', e => {
+    const card = e.target.closest && e.target.closest(sel);
+    if (card && !card.contains(e.relatedTarget)) {
+      card.style.removeProperty('--mx');
+      card.style.removeProperty('--my');
+    }
+  });
+})();
