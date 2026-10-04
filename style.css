@@ -9950,3 +9950,34 @@ html .reveal.in {
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 220px, #000 calc(100% - 160px), transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0, #000 220px, #000 calc(100% - 160px), transparent 100%);
 }
+/* ═══════════════════════════════════════════════════════
+   SMOOTH FILTER-TAB ROWS ON PHONES
+   (Projects, plus the Skills and Publications tabs if you added them)
+   Paste at the very bottom of style.css
+═══════════════════════════════════════════════════════ */
+@media (max-width: 700px) {
+  .pj-tabs,
+  .tech-filters,
+  .pb-filters {
+    scroll-snap-type: none;               /* snapping is what made the swipe feel jerky */
+    scroll-behavior: smooth;              /* tap-to-center glides instead of jumping */
+    overscroll-behavior-x: contain;       /* no accidental page bounce / back-swipe */
+    -webkit-overflow-scrolling: touch;
+
+    /* pills fade out softly at the screen edges instead of being cut off */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 5vw, #000 calc(100% - 5vw), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 5vw, #000 calc(100% - 5vw), transparent 100%);
+  }
+
+  .pj-tab,
+  .tech-filter,
+  .pb-filter {
+    scroll-snap-align: none;
+    transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease,
+                box-shadow 0.35s ease, transform 0.25s ease;
+  }
+}
+/* hero name: "Anubhav" on the first line, "Mishra" on the second (all screen sizes) */
+.hero-name .nm-first,
+.hero-name .nm-last { display: block; }
+.hero-name .nm-first { color: inherit; }   /* only "Mishra" gets the accent color */

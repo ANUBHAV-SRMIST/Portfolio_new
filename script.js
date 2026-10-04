@@ -1552,3 +1552,66 @@ if (lastUpdatedEl) {
   [0, 300, 900, 1800].forEach(ms => setTimeout(queue, ms));   // after the entrance animation
   queue();
 })();
+// ══ SMOOTH FILTER TABS — tapped pill glides to the middle of the row (phones) ══
+(() => {
+  const SEL = '.pj-tab, .tech-filter, .pb-filter';
+  document.addEventListener('click', e => {
+    const tab = e.target.closest(SEL);
+    if (!tab) return;
+    const row = tab.parentElement;
+    if (!row || row.scrollWidth <= row.clientWidth + 2) return;      // row isn't scrollable → nothing to do
+    const rr = row.getBoundingClientRect();
+    const tr = tab.getBoundingClientRect();
+    const left = row.scrollLeft + (tr.left - rr.left) - (row.clientWidth - tr.width) / 2;
+    row.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+  });
+})();
+// ── TYPEWRITER EFFECT (Hero Name, looping) — "Anubhav" on line 1, "Mishra" on line 2 ──
+function typeWriterLoop() {
+  const target = document.getElementById('typed-name');
+  if (!target) return;
+
+  const first = "Anubhav";
+  const last = "Mishra";
+  const total = first.length + last.length;
+
+  // two separate lines, so they can never end up side by side on wide screens
+  target.setAttribute('aria-label', first + ' ' + last);
+  target.innerHTML =
+    '<span class="nm-first" aria-hidden="true"></span>' +
+    '<span class="nm-last" aria-hidden="true"></span>';
+  const elFirst = target.querySelector('.nm-first');
+  const elLast = target.querySelector('.nm-last');
+
+  let i = 0;
+  let deleting = false;
+
+  function render(n) {
+    elFirst.textContent = first.slice(0, Math.min(n, first.length));
+    elLast.textContent = n > first.length ? last.slice(0, n - first.length) : '';
+  }
+
+  function tick() {
+    if (!deleting) {
+      i++;
+      render(i);
+      if (i === total) {
+        deleting = true;
+        setTimeout(tick, 1800); // pause before erasing
+        return;
+      }
+      setTimeout(tick, 100); // typing speed
+    } else {
+      i--;
+      render(i);
+      if (i === 0) {
+        deleting = false;
+        setTimeout(tick, 500); // pause before retyping
+        return;
+      }
+      setTimeout(tick, 50); // erasing speed
+    }
+  }
+
+  tick();
+}
