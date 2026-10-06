@@ -490,20 +490,21 @@ const expData = [
       "Currently in progress"
     ]
   },
-  {
+    {
     title: "Zscaler Zero Trust Cloud Security",
     org: "Zscaler",
     icon: "fa-shield-halved",
     duration: "Aug - Oct 2026",
+    grade: "O",
     type: "Virtual Internship",
-    badgeColor: "green",
-    ongoing: true,
+    badgeColor: "blue",
+       link: "AICTE/Zero-Trust-Cloud-Security-Virtual-Internship.pdf",
     offerLetter: "offer-letters/zscaler-zero-trust-offer.pdf",
-    desc: "Currently pursuing an 8-week virtual internship on Zero Trust cloud security architecture, supported by Zscaler, through the AICTE EduSkills National Internship Portal.",
+    desc: "Completed an 8-week virtual internship on Zero Trust cloud security architecture, supported by Zscaler, through the AICTE EduSkills National Internship Portal.",
     tags: ["Zero Trust Architecture", "Cloud Security", "Identity Verification", "Access Control", "AICTE · EduSkills"],
     learnings: [
-      "Studying Zero Trust Exchange principles and Zero Trust Cyber Associate (ZTCA) fundamentals",
-      "Learning identity verification, access control, and policy enforcement",
+      "Studied Zero Trust Exchange principles and Zero Trust Cyber Associate (ZTCA) fundamentals",
+      "Learned identity verification, access control, and policy enforcement",
       "Completed the program with an Outstanding (O) grade"
     ]
   },
