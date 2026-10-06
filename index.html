@@ -39,7 +39,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <link rel="stylesheet" href="style.css?v=15" />
+  <link rel="stylesheet" href="style.css?v=23" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
@@ -1176,7 +1176,7 @@
     <div class="ip-stage fade-in">
       <div class="ip-grid" id="ipGrid">
 
-                <article class="ip-card" data-cat="technology" data-title="Technology" tabindex="0" role="button"
+        <article class="ip-card" data-cat="technology" data-title="Technology" tabindex="0" role="button"
           data-desc="Exploring Electronics, Embedded Systems, VLSI and Data Science to build real-world solutions.">
           <div class="ip-card-media">
             <i class="fa-solid fa-code ip-card-bgicon"></i>
@@ -1280,7 +1280,7 @@
       </div>
     </div>
   </div>
-   <script>
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
       const grid = document.getElementById('ipGrid');
       if (!grid) return;
@@ -1464,6 +1464,32 @@
   </footer>
 
   <script src="script.js?v=5"></script>
+  <script>
+    /* Footer: show instantly when it scrolls into view */
+    (() => {
+      const footer = document.querySelector('footer');
+      if (!footer) return;
+
+      // remove the slow page-wide reveal from footer items
+      Array.from(footer.children).forEach((el, i) => {
+        el.classList.remove('reveal', 'reveal-left', 'reveal-right', 'reveal-zoom', 'in');
+        el.style.removeProperty('--rd');
+        el.style.setProperty('--n', i);
+      });
+
+      if (!('IntersectionObserver' in window) ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      footer.classList.add('footer-armed');
+      new IntersectionObserver((entries, io) => {
+        if (!entries[0].isIntersecting) return;
+        footer.classList.add('footer-in');
+        io.disconnect();
+        // clean up afterwards so hover effects work normally
+        setTimeout(() => footer.classList.remove('footer-armed', 'footer-in'), 900);
+      }, { threshold: 0 }).observe(footer);
+    })();
+  </script>
   <!-- ══ SCROLL UP ══ -->
   <a href="#" class="scrollup" id="scroll-up" aria-label="Scroll to top">
     <i class="ri-arrow-up-line"></i>

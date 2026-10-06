@@ -9981,3 +9981,61 @@ html .reveal.in {
 .hero-name .nm-first,
 .hero-name .nm-last { display: block; }
 .hero-name .nm-first { color: inherit; }   /* only "Mishra" gets the accent color */
+/* ══════════════════════════════════════════════
+   FOOTER — tighter spacing + fast reveal
+══════════════════════════════════════════════ */
+footer {
+  padding: 2.4rem 1.2rem 1.8rem;
+}
+
+footer p {
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.footer-projects { margin-top: 14px; }
+
+.footer-love {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+/* heart: red + gentle heartbeat */
+.footer-love i {
+  color: #f43f5e;
+  font-size: 0.95em;
+  filter: drop-shadow(0 0 6px rgba(244, 63, 94, 0.6));
+  animation: footerHeart 1.8s ease-in-out infinite;
+}
+@keyframes footerHeart {
+  0%, 100% { transform: scale(1); }
+  15%      { transform: scale(1.25); }
+  30%      { transform: scale(1); }
+  45%      { transform: scale(1.18); }
+}
+
+.footer-updated {
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* quick reveal: appears the moment the footer comes into view */
+footer.footer-armed > * {
+  opacity: 0;
+  transform: translateY(16px);
+}
+footer.footer-armed.footer-in > * {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  transition-delay: calc(var(--n, 0) * 70ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-love i { animation: none; }
+}
