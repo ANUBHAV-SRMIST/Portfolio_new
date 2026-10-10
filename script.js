@@ -831,11 +831,32 @@ function renderExpDetail(exp) {
       .catch(show);
   }
 }
+// ── COMPANY LOGOS for the internship list ──
+// put the logo files in  images/logos/  (names below). Missing file = the old coloured icon shows.
+const xpLogos = {
+  'srm technologies': 'images/srmtech-logo.png',
+  'google':           'images/logos/google.png',
+  'zscaler':          'images/logos/zscaler.png',
+  'fortinet':         'images/logos/fortinet.png',
+  'eduskills':        'images/logos/eduskills.png',
+  'microchip':        'images/logos/microchip.png',
+  'ansys':            'images/logos/ansys.png',
+  'aws':              'images/logos/aws.png',
+  'dell':             'images/logos/dell.png',
+  'juniper':          'images/logos/juniper.png',
+  'saraswati':        'images/logos/school.png'
+};
+function xpLogo(exp) {
+  if (exp.logo) return exp.logo;
+  const org = (exp.org || '').toLowerCase();
+  const key = Object.keys(xpLogos).find(k => org.includes(k));
+  return key ? xpLogos[key] : '';
+}
 
 function renderExpList() {
   expList.innerHTML = expData.map((exp, i) => `
     <div class="xp-item ${i === 0 ? 'active' : ''}" data-index="${i}" role="button" tabindex="0" style="--ic:${xpColor(exp)}">
-      <div class="xp-item-icon"><i class="${xpIconClass(exp)}"></i></div>
+            <div class="xp-item-icon${xpLogo(exp) ? ' has-logo' : ''}"><i class="${xpIconClass(exp)}"></i>${xpLogo(exp) ? `<img src="${xpLogo(exp)}" alt="${exp.org} logo" loading="lazy" onerror="this.parentElement.classList.remove('has-logo');this.remove()">` : ''}</div>
       <div class="xp-item-text">
         <div class="xp-item-title">${exp.title}</div>
         <div class="xp-item-org">${exp.org}</div>
@@ -1264,7 +1285,7 @@ if (lastUpdatedEl) {
     ['.membership-list li', 'reveal-left'],
     ['.badges-more-wrap, .gallery-toggle-btn', ''],
     ['.coverflow', 'reveal-zoom']
-  
+
   ];
 
   const seen = new Set();
@@ -1729,7 +1750,7 @@ function typeWriterLoop() {
 (() => {
   const footer = document.querySelector('footer');
   if (!footer || !('IntersectionObserver' in window) ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   footer.classList.add('footer-anim');
   const show = () => footer.classList.add('footer-in');
@@ -1827,7 +1848,7 @@ function typeWriterLoop() {
     if (moreM.classList.contains('has-active')) setSub(true);
   });
 
-    /* ── scroll-spy: which link gets the underline ── */
+  /* ── scroll-spy: which link gets the underline ── */
   const MORE_UNDERLINE = ['gallery', 'interests'];                              // underline goes to "More" only here
   const PARENT = { specializations: 'skills', membership: 'certifications' };   // underline stays on these links
   const isDesktop = () => window.innerWidth > 1100;

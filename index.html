@@ -156,7 +156,7 @@
     </div>
     <div class="nav-overlay" id="navOverlay"></div>
   </nav>
-    <!-- ══ NAV "MORE" DROPDOWN (desktop) ══ -->
+  <!-- ══ NAV "MORE" DROPDOWN (desktop) ══ -->
   <div class="nav-dropdown" id="navDropdown" role="menu" aria-hidden="true">
     <a href="#specializations" role="menuitem" style="--nc: 163, 230, 53">
       <span class="nd-icon"><i class="ri-focus-3-line"></i></span>
@@ -1691,32 +1691,6 @@
   </footer>
 
   <script src="script.js?v=6"></script>
-  <script>
-    /* Footer: show instantly when it scrolls into view */
-    (() => {
-      const footer = document.querySelector('footer');
-      if (!footer) return;
-
-      // remove the slow page-wide reveal from footer items
-      Array.from(footer.children).forEach((el, i) => {
-        el.classList.remove('reveal', 'reveal-left', 'reveal-right', 'reveal-zoom', 'in');
-        el.style.removeProperty('--rd');
-        el.style.setProperty('--n', i);
-      });
-
-      if (!('IntersectionObserver' in window) ||
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-      footer.classList.add('footer-armed');
-      new IntersectionObserver((entries, io) => {
-        if (!entries[0].isIntersecting) return;
-        footer.classList.add('footer-in');
-        io.disconnect();
-        // clean up afterwards so hover effects work normally
-        setTimeout(() => footer.classList.remove('footer-armed', 'footer-in'), 900);
-      }, { threshold: 0 }).observe(footer);
-    })();
-  </script>
   <!-- ══ SCROLL UP ══ -->
   <a href="#" class="scrollup" id="scroll-up" aria-label="Scroll to top">
     <i class="ri-arrow-up-line"></i>
