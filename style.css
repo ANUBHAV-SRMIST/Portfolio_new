@@ -12670,3 +12670,96 @@ body.ft-in-view .scrollup {
     justify-content: center;
   }
 }
+/* ── PRO FOOTER — better layouts for in-between screen widths ── */
+
+/* 1024–1199px: keep the full 4-column footer */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .site-footer .ft-main {
+    grid-template-columns: 1.15fr 0.8fr 1fr 1.3fr;
+    gap: 0;
+    padding: 3rem 1.5rem 2.4rem;
+  }
+
+  .site-footer .ft-col {
+    padding: 0 1.1rem;
+  }
+
+  .site-footer .ft-col+.ft-col {
+    border-left: 1px solid var(--ft-line);
+  }
+
+  .site-footer .ft-brand {
+    grid-column: auto;
+    padding-left: 0;
+  }
+
+  .site-footer .ft-links {
+    padding-left: 1.1rem;
+  }
+
+  .site-footer .ft-side {
+    grid-column: auto;
+    align-items: stretch;
+    padding: 0 0 0 1.1rem;
+    border-top: 0;
+  }
+
+  .site-footer .ft-built {
+    max-width: none;
+    text-align: left;
+  }
+
+  .site-footer .ft-tech,
+  .site-footer .ft-features {
+    justify-content: flex-start;
+  }
+}
+
+/* 768–1023px: 3 columns, status + built-with row underneath */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .site-footer .ft-main {
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 2.4rem 1.5rem;
+  }
+
+  .site-footer .ft-brand {
+    grid-column: auto;
+  }
+
+  .site-footer .ft-explore {
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--ft-line);
+  }
+
+  .site-footer .ft-links {
+    padding-left: 1.5rem;
+  }
+
+  .site-footer .ft-social {
+    gap: 0.6rem;
+  }
+
+  .site-footer .ft-social-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    font-size: 1.45rem;
+  }
+}
+
+/* 640–767px: centred brand, two link columns below */
+@media (min-width: 640px) and (max-width: 767px) {
+  .site-footer .ft-brand {
+    align-items: center;
+    text-align: center;
+  }
+
+  .site-footer .ft-role,
+  .site-footer .ft-social {
+    justify-content: center;
+  }
+
+  .site-footer .ft-meta li {
+    justify-content: center;
+  }
+}
