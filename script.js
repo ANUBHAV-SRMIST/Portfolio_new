@@ -490,7 +490,24 @@ const expData = [
       "Currently in progress"
     ]
   },
-    {
+  {
+    title: "Google AI-ML",
+    org: "Google for Developers",
+    icon: "fa-brain",
+    duration: "Oct - Dec 2026",
+    type: "Virtual Internship",
+    badgeColor: "green",
+    ongoing: true,
+    offerLetter: "offer-letters/google_ai_al_OfferLetter.pdf",
+    desc: "Currently pursuing an 8-week Google AI-ML virtual internship, supported by Google for Developers, through the AICTE EduSkills National Internship Portal.",
+    tags: ["TensorFlow", "Machine Learning", "Object Detection", "Image Classification", "AICTE · EduSkills"],
+    learnings: [
+      "Building and training neural networks with TensorFlow, including convolutional networks for image recognition",
+      "Creating object-detection and product image search features with TensorFlow Lite on-device",
+      "Currently in progress"
+    ]
+  },
+  {
     title: "Zscaler Zero Trust Cloud Security",
     org: "Zscaler",
     icon: "fa-shield-halved",
@@ -498,7 +515,7 @@ const expData = [
     grade: "O",
     type: "Virtual Internship",
     badgeColor: "blue",
-       link: "AICTE/Zero-Trust-Cloud-Security-Virtual-Internship.pdf",
+    link: "AICTE/Zero-Trust-Cloud-Security-Virtual-Internship.pdf",
     offerLetter: "offer-letters/zscaler-zero-trust-offer.pdf",
     desc: "Completed an 8-week virtual internship on Zero Trust cloud security architecture, supported by Zscaler, through the AICTE EduSkills National Internship Portal.",
     tags: ["Zero Trust Architecture", "Cloud Security", "Identity Verification", "Access Control", "AICTE · EduSkills"],
@@ -572,6 +589,7 @@ const expData = [
     grade: "O",
     type: "Virtual Internship",
     badgeColor: "blue",
+    link: "AICTE/7.pdf",
     desc: "Completed a 10-week virtual internship on structural analysis, supported by Ansys, part of Synopsys, via the AICTE EduSkills National Internship Portal.",
     tags: ["Structural Analysis", "ANSYS", "Simulation", "AICTE · EduSkills"],
     learnings: [
@@ -588,6 +606,7 @@ const expData = [
     grade: "O",
     type: "Virtual Internship",
     badgeColor: "blue",
+    link: "AICTE/6.pdf",
     desc: "Completed a 10-week virtual internship exploring generative AI on cloud infrastructure, with curriculum provided by AWS Academy.",
     tags: ["Generative AI", "AWS", "Cloud Computing", "AICTE · EduSkills"],
     learnings: [
@@ -604,6 +623,7 @@ const expData = [
     grade: "P",
     type: "Virtual Internship",
     badgeColor: "blue",
+    link: "AICTE/5.pdf",
     desc: "Completed a 10-week virtual internship on full-stack development using Python, delivered via the AICTE EduSkills National Internship Portal.",
     tags: ["Python", "Full-Stack Development", "EduSkills", "AICTE"],
     learnings: [
@@ -620,6 +640,7 @@ const expData = [
     grade: "C",
     type: "Virtual Internship",
     badgeColor: "blue",
+    link: "AICTE/4.pdf",
     desc: "Completed a 10-week virtual internship in data engineering with curriculum provided by AWS Academy, through the AICTE EduSkills National Internship Portal.",
     tags: ["Data Engineering", "AWS", "Cloud Computing", "AICTE · EduSkills"],
     learnings: [
@@ -636,6 +657,7 @@ const expData = [
     grade: "C",
     type: "Virtual Internship",
     badgeColor: "blue",
+    link: "AICTE/3.pdf",
     desc: "Completed a 10-week Android Developer virtual internship supported by Google for Developers, under the India Edu Program.",
     tags: ["Android Development", "Google", "Mobile Apps", "AICTE · EduSkills"],
     learnings: [
@@ -651,6 +673,7 @@ const expData = [
     duration: "2024",
     type: "Capstone Program",
     badgeColor: "orange",
+    link: "AICTE/Ansys.jpg",
     leadBy: "Prabhakar Subramaniam (Ex-Intel)",
     desc: "Intensive capstone program on electronics thermal management, led by Prabhakar Subramaniam (Ex-Intel), focusing on CFD simulations and heat dissipation strategies for high-performance computing.",
     tags: ["ANSYS Icepak", "CFD Simulation", "Junction Temp Analysis", "Heat Sink Design", "Thermal Resistance"],
@@ -687,6 +710,7 @@ const expData = [
     grade: "A",
     type: "Virtual Internship",
     badgeColor: "blue",
+    link: "AICTE/2.pdf",
     desc: "Completed a 10-week Networking virtual internship supported by Juniper Networks' Cloud & Automation Academy.",
     tags: ["Networking", "Cloud & Automation", "Juniper Networks", "AICTE · EduSkills"],
     learnings: [
@@ -703,6 +727,7 @@ const expData = [
     grade: "C",
     type: "Virtual Internship",
     badgeColor: "blue",
+    link: "AICTE/1.pdf",
     desc: "Completed a 10-week Embedded System Developer virtual internship supported by Microchip, through the AICTE EduSkills National Internship Portal.",
     tags: ["Embedded Systems", "Microcontrollers", "Microchip", "AICTE · EduSkills"],
     learnings: [
@@ -717,67 +742,144 @@ const expData = [
 const expList = document.getElementById('expList');
 const expDetail = document.getElementById('expDetail');
 
+// colour of each icon tile (r,g,b)
+const xpColors = {
+  'fa-brain': '232,121,249',
+  'fa-car': '251,191,36',
+  'fa-shield-halved': '248,113,113',
+  'fa-database': '34,211,238',
+  'fa-microchip': '74,222,128',
+  'fa-cube': '192,132,252',
+  'fa-cloud': '56,189,248',
+  'fa-python': '250,204,21',
+  'fa-google': '45,212,191',
+  'fa-temperature-half': '251,113,133',
+  'fa-heart': '244,114,182',
+  'fa-network-wired': '129,140,248'
+};
+const xpColor = exp => {
+  const key = Object.keys(xpColors).find(k => exp.icon.includes(k));
+  return key ? xpColors[key] : '79,110,247';
+};
+const xpIconClass = exp => exp.icon.startsWith('fa-brands') ? exp.icon : `fa-solid ${exp.icon}`;
+// photo for each item → images/exposure/<title-as-slug>.jpg   (or set image: "..." on the item)
+const xpSlug = t => t.toLowerCase().replace(/&/g, ' ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+const xpImage = exp => exp.image || `images/exposure/${xpSlug(exp.title)}.jpg`;
+
 function renderExpDetail(exp) {
+  const duration = exp.duration.replace(/\s-\s/g, ' – ');
+  const status = exp.ongoing
+    ? '<span class="xp-status is-live"><i class="fa-regular fa-clock"></i> Ongoing</span>'
+    : '<span class="xp-status"><i class="fa-solid fa-circle-check"></i> Completed</span>';
+
+  const offerBtn = exp.offerLetter
+    ? `<a href="${exp.offerLetter}" target="_blank" rel="noopener noreferrer" class="xp-btn xp-offer-btn" style="display:none"><i class="fa-regular fa-file-lines"></i> View Offer Letter <i class="fa-solid fa-arrow-right"></i></a>`
+    : '';
+  const proofBtn = exp.link
+    ? `<a href="${exp.link}" target="_blank" rel="noopener noreferrer" class="xp-btn ghost"><i class="fa-solid fa-award"></i> View Proof / Certificate</a>`
+    : '';
+
+  expDetail.style.setProperty('--ic', xpColor(exp));
   expDetail.innerHTML = `
-    <div class="exp-detail-top">
-      <span class="exp-badge type-${exp.badgeColor || 'blue'}">${exp.type}</span>
-            <span class="exp-detail-date">${exp.ongoing ? '<span class="exp-ongoing-dot"></span>' : ''}${exp.duration}${exp.ongoing ? ' · Ongoing' : ''}</span>
-      ${exp.grade ? `<span class="exp-grade">Grade ${exp.grade}</span>` : ''}
+    <div class="xp-visual" aria-hidden="true">
+      <span class="xp-visual-stripe"></span>
+            <div class="xp-visual-shape has-img">
+        <img src="${xpImage(exp)}" alt="" onerror="this.parentNode.classList.remove('has-img');this.remove()">
+        <i class="${xpIconClass(exp)} xp-visual-icon"></i>
+      </div>
     </div>
-    <h3 class="exp-detail-title">${exp.title}</h3>
-    <div class="exp-detail-org"><i class="fa-solid fa-building"></i> ${exp.org}</div>
-    ${exp.leadBy ? `<div class="exp-detail-lead">Led by ${exp.leadBy}</div>` : ''}
-    <p class="exp-detail-desc">${exp.desc}</p>
-    <div class="exp-detail-tags">
-      ${exp.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+
+    <div class="xp-detail-body">
+      <div class="xp-meta">
+        <span class="xp-badge type-${exp.badgeColor || 'blue'}">${exp.type}</span>
+        ${exp.ongoing ? '<span class="xp-dot"></span>' : ''}
+        <span class="xp-date"><i class="fa-regular fa-calendar"></i> ${duration}</span>
+        <span class="xp-sep"></span>
+        ${status}
+        ${exp.grade ? `<span class="xp-grade">Grade ${exp.grade}</span>` : ''}
+      </div>
+
+      <h3 class="xp-detail-title">${exp.title}</h3>
+      <div class="xp-org"><i class="fa-solid fa-building"></i> ${exp.org}</div>
+      ${exp.leadBy ? `<div class="xp-lead">Led by ${exp.leadBy}</div>` : ''}
+      <p class="xp-desc">${exp.desc}</p>
+
+      <div class="xp-tags">${exp.tags.map(t => `<span>${t}</span>`).join('')}</div>
+
+      <div class="xp-divider"></div>
+
+      <div class="xp-learn-head">
+        <span class="xp-learn-icon"><i class="fa-regular fa-lightbulb"></i></span>
+        <h4>Key Learnings</h4>
+      </div>
+      <ul class="xp-learn">${exp.learnings.map(l => `<li>${l}</li>`).join('')}</ul>
+
+      ${(offerBtn || proofBtn) ? `<div class="xp-actions">${offerBtn}${proofBtn}</div>` : ''}
     </div>
-    <div class="exp-learnings-title">Key Learnings</div>
-    <ul class="exp-learnings">
-      ${exp.learnings.map(l => `<li>${l}</li>`).join('')}
-    </ul>
-    ${exp.link ? `<a href="${exp.link}" target="_blank" rel="noopener noreferrer" class="exp-proof-btn"><i class="fa-solid fa-file-lines"></i> View Proof / Certificate</a>` : ''}
-        ${exp.offerLetter ? `<a href="${exp.offerLetter}" target="_blank" rel="noopener noreferrer" class="exp-proof-btn exp-offer-btn" style="display:none"><i class="fa-solid fa-file-pdf"></i> View Offer Letter</a>` : ''}
   `;
 
   // show the offer-letter button only when the PDF file really exists
-  const offerBtn = expDetail.querySelector('.exp-offer-btn');
-  if (offerBtn) {
-    const show = () => { offerBtn.style.display = ''; };
+  const btn = expDetail.querySelector('.xp-offer-btn');
+  if (btn) {
+    const show = () => { btn.style.display = ''; };
     fetch(exp.offerLetter, { method: 'HEAD' })
       .then(r => { if (r.ok && !(r.headers.get('content-type') || '').includes('text/html')) show(); })
-      .catch(show);   // can't check (offline / opened as a file) -> just show it
+      .catch(show);
   }
 }
 
 function renderExpList() {
   expList.innerHTML = expData.map((exp, i) => `
-    <div class="exp-item ${i === 0 ? 'active' : ''}" data-index="${i}">
-      <div class="exp-item-icon"><i class="fa-solid ${exp.icon.includes('fa-') && !exp.icon.startsWith('fa-brands') ? exp.icon : ''}"></i></div>
-      <div>
-        <div class="exp-item-title">${exp.title}</div>
-        <div class="exp-item-org">${exp.org}</div>
+    <div class="xp-item ${i === 0 ? 'active' : ''}" data-index="${i}" role="button" tabindex="0" style="--ic:${xpColor(exp)}">
+      <div class="xp-item-icon"><i class="${xpIconClass(exp)}"></i></div>
+      <div class="xp-item-text">
+        <div class="xp-item-title">${exp.title}</div>
+        <div class="xp-item-org">${exp.org}</div>
       </div>
+      <i class="fa-solid fa-chevron-right xp-item-chev"></i>
     </div>
   `).join('');
 
-  // Fix icon classes properly (handles both fa-solid and fa-brands icons)
-  document.querySelectorAll('.exp-item').forEach((item, i) => {
-    const iconEl = item.querySelector('.exp-item-icon i');
-    iconEl.className = expData[i].icon.startsWith('fa-brands') ? expData[i].icon : `fa-solid ${expData[i].icon}`;
+  const items = expList.querySelectorAll('.xp-item');
+  const select = (item, i) => {
+    items.forEach(el => el.classList.remove('active'));
+    item.classList.add('active');
 
-    item.addEventListener('click', () => {
-      document.querySelectorAll('.exp-item').forEach(el => el.classList.remove('active'));
-      item.classList.add('active');
+    const icon = item.querySelector('.xp-item-icon');
+    icon.classList.remove('xp-pop');
+    void icon.offsetWidth;            // restart animation
+    icon.classList.add('xp-pop');
 
-      const icon = item.querySelector('.exp-item-icon');
-      icon.classList.remove('bounce');
-      void icon.offsetWidth; // restart animation
-      icon.classList.add('bounce');
+    renderExpDetail(expData[i]);
 
-      renderExpDetail(expData[i]);
+    if (window.matchMedia('(max-width: 1000px)').matches) {
+      // phones: keep the chosen card centred in the swipe strip
+      expList.scrollTo({ left: item.offsetLeft - (expList.clientWidth - item.offsetWidth) / 2, behavior: 'smooth' });
+    } else {
+      // desktop: bring a half-hidden card fully into view
+      const r = item.getBoundingClientRect(), l = expList.getBoundingClientRect();
+      if (r.top < l.top + 10) expList.scrollBy({ top: r.top - l.top - 16, behavior: 'smooth' });
+      else if (r.bottom > l.bottom - 30) expList.scrollBy({ top: r.bottom - l.bottom + 36, behavior: 'smooth' });
+    }
+  };
+
+  items.forEach((item, i) => {
+    item.addEventListener('click', () => select(item, i));
+    item.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(item, i); }
     });
   });
+  // soft fade only on the side that still has more to scroll
+  const updateFade = () => {
+    const max = expList.scrollHeight - expList.clientHeight;
+    expList.classList.toggle('xp-scrolled', expList.scrollTop > 6);
+    expList.classList.toggle('xp-end', max <= 2 || expList.scrollTop >= max - 6);
+  };
+  expList.addEventListener('scroll', updateFade, { passive: true });
+  window.addEventListener('resize', updateFade);
+  updateFade();
 }
+
 
 renderExpList();
 renderExpDetail(expData[0]);
