@@ -1103,50 +1103,201 @@
       </div>
     </div>
   </div>
-  <!-- ══ GALLERY ══ -->
+    <!-- ══ GALLERY ══ -->
   <section id="gallery">
-    <div class="gallery-inner">
-      <div class="section-label fade-in"><i class="fa-solid fa-images"></i> Moments</div>
-      <h2 class="section-title fade-in">Gallery</h2>
-      <div class="section-underline fade-in"></div>
+    <div class="gl-inner">
 
-      <div class="gallery-grid">
-        <div class="gallery-item fade-in" data-full="images/p1.jpg">
-          <img src="images/p1.jpg" alt="Gallery photo 1" loading="lazy">
-          <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+      <div class="gl-head">
+        <div class="gl-head-text fade-in">
+          <span class="gl-eyebrow">Gallery</span>
+          <h2 class="gl-title">Moments<br>That <em>Matter</em></h2>
+          <p class="gl-sub">A glimpse of my journey, experiences and the people who make it special.</p>
         </div>
-        <div class="gallery-item fade-in" data-full="images/p2.jpg">
-          <img src="images/p2.jpg" alt="Gallery photo 2" loading="lazy">
-          <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
-        </div>
-        <div class="gallery-item fade-in" data-full="images/p3.jpg">
-          <img src="images/p3.jpg" alt="Gallery photo 3" loading="lazy">
-          <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
-        </div>
-        <div class="gallery-item fade-in" data-full="images/p4.jpg">
-          <img src="images/p4.jpg" alt="Gallery photo 4" loading="lazy">
-          <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
-        </div>
-        <div class="gallery-item gallery-extra fade-in" data-full="images/p5.jpg">
-          <img src="images/p5.jpg" alt="Gallery photo 5" loading="lazy">
-          <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
-        </div>
-        <div class="gallery-item gallery-extra fade-in" data-full="images/p6.jpg">
-          <img src="images/p6.jpg" alt="Gallery photo 6" loading="lazy">
-          <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
-        </div>
-        <div class="gallery-item gallery-extra fade-in" data-full="images/p7.jpg">
-          <img src="images/p7.jpg" alt="Gallery photo 7" loading="lazy">
-          <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+
+        <div class="gl-tabs fade-in" role="tablist">
+          <button class="gl-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="gl-tab" data-filter="work" role="tab" aria-selected="false">Work</button>
+          <button class="gl-tab" data-filter="events" role="tab" aria-selected="false">Events</button>
+          <button class="gl-tab" data-filter="teaching" role="tab" aria-selected="false">Teaching</button>
+          <button class="gl-tab" data-filter="community" role="tab" aria-selected="false">Community</button>
         </div>
       </div>
 
-      <button class="gallery-toggle-btn" id="galleryToggleBtn">
+      <div class="gl-stage" id="glStage">
+
+        <!-- main 4 photos: the numbered layout -->
+        <div class="gl-bento">
+          <figure class="gl-card gl-c1" data-cat="work" data-full="images/p1.jpg" data-title="At the Workplace" tabindex="0" role="button">
+            <img src="images/p1.jpg" alt="At the Workplace" loading="lazy" style="--pos:center top" onerror="this.style.display='none'">
+            <figcaption>
+              <span class="gl-num">01</span><span class="gl-bar"></span>
+              <h3>At the Workplace</h3>
+              <p>Internship &amp; Professional Experience</p>
+            </figcaption>
+            <span class="gl-zoom"><i class="fa-solid fa-expand"></i></span>
+          </figure>
+
+          <figure class="gl-card gl-c2" data-cat="work" data-full="images/p2.jpg" data-title="Mentorship &amp; Guidance" tabindex="0" role="button">
+            <img src="images/p2.jpg" alt="Mentorship and Guidance" loading="lazy" onerror="this.style.display='none'">
+            <figcaption>
+              <span class="gl-num">02</span><span class="gl-bar"></span>
+              <h3>Mentorship &amp; Guidance</h3>
+              <p>Learning from Experienced Mentors</p>
+            </figcaption>
+            <span class="gl-zoom"><i class="fa-solid fa-expand"></i></span>
+          </figure>
+
+          <figure class="gl-card gl-c3" data-cat="events" data-full="images/p3.jpg" data-title="Talks &amp; Events" tabindex="0" role="button">
+            <img src="images/p3.jpg" alt="Talks and Events" loading="lazy" onerror="this.style.display='none'">
+            <figcaption>
+              <span class="gl-num">03</span><span class="gl-bar"></span>
+              <h3>Talks &amp; Events</h3>
+              <p>Sharing Knowledge, Building Communities</p>
+            </figcaption>
+            <span class="gl-zoom"><i class="fa-solid fa-expand"></i></span>
+          </figure>
+
+          <figure class="gl-card gl-c4" data-cat="teaching community" data-full="images/p4.jpg" data-title="Community Connect" tabindex="0" role="button">
+            <img src="images/p4.jpg" alt="Community Connect" loading="lazy" onerror="this.style.display='none'">
+            <figcaption>
+              <span class="gl-num">04</span><span class="gl-bar"></span>
+              <h3>Community Connect</h3>
+              <p>Learning, Teaching &amp; Giving Back</p>
+            </figcaption>
+            <span class="gl-zoom"><i class="fa-solid fa-expand"></i></span>
+          </figure>
+        </div>
+
+        <!-- more photos (shown with "Show More") -->
+        <div class="gl-more">
+          <figure class="gl-card gl-c5" data-cat="events" data-full="images/p5.jpg" data-title="Beyond the Classroom" tabindex="0" role="button">
+            <img src="images/p5.jpg" alt="Beyond the Classroom" loading="lazy" onerror="this.style.display='none'">
+            <figcaption>
+              <span class="gl-num">05</span>
+              <h3>Beyond the Classroom</h3>
+              <p>Moments of learning and growth</p>
+            </figcaption>
+            <span class="gl-zoom"><i class="fa-solid fa-expand"></i></span>
+          </figure>
+
+          <figure class="gl-card gl-c6" data-cat="community" data-full="images/p6.jpg" data-title="Giving Back" tabindex="0" role="button">
+            <img src="images/p6.jpg" alt="Giving Back" loading="lazy" onerror="this.style.display='none'">
+            <figcaption>
+              <span class="gl-num">06</span>
+              <h3>Giving Back</h3>
+              <p>Serving the community</p>
+            </figcaption>
+            <span class="gl-zoom"><i class="fa-solid fa-expand"></i></span>
+          </figure>
+
+          <figure class="gl-card gl-c7" data-cat="work" data-full="images/p7.jpg" data-title="Behind the Scenes" tabindex="0" role="button">
+            <img src="images/p7.jpg" alt="Behind the Scenes" loading="lazy" onerror="this.style.display='none'">
+            <figcaption>
+              <span class="gl-num">07</span>
+              <h3>Behind the Scenes</h3>
+              <p>Everyday work and teamwork</p>
+            </figcaption>
+            <span class="gl-zoom"><i class="fa-solid fa-expand"></i></span>
+          </figure>
+        </div>
+      </div>
+
+      <button class="gl-toggle" id="glToggle">
         <span>Show More</span> <i class="fa-solid fa-chevron-down"></i>
       </button>
     </div>
   </section>
-  <!-- ══ INTERESTS & PASSIONS (3D drag carousel) ══ -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const stage = document.getElementById('glStage');
+      if (!stage) return;
+      const cards = [...stage.querySelectorAll('.gl-card')];
+      const tabs = document.querySelectorAll('.gl-tab');
+      const toggle = document.getElementById('glToggle');
+      const more = stage.querySelector('.gl-more');
+
+      cards.forEach((c, i) => c.style.setProperty('--i', i));
+
+      /* ── entrance when the section scrolls into view ── */
+      stage.classList.add('gl-armed');
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((e, io) => {
+          if (e[0].isIntersecting) { stage.classList.add('gl-ready'); io.disconnect(); }
+        }, { threshold: 0.12 }).observe(stage);
+      } else { stage.classList.add('gl-ready'); }
+
+      /* ── filter tabs ── */
+      tabs.forEach(tab => tab.addEventListener('click', () => {
+        const f = tab.dataset.filter;
+        tabs.forEach(t => { const on = t === tab; t.classList.toggle('active', on); t.setAttribute('aria-selected', on); });
+        stage.classList.toggle('gl-filtered', f !== 'all');
+        cards.forEach(c => {
+          const show = f === 'all' || c.dataset.cat.split(' ').includes(f);
+          c.classList.toggle('gl-hide', !show);
+          if (show) { c.classList.remove('gl-pop'); void c.offsetWidth; c.classList.add('gl-pop'); }
+        });
+        if (toggle) toggle.hidden = f !== 'all';
+      }));
+
+      /* ── show more / less ── */
+      if (toggle) toggle.addEventListener('click', () => {
+        const open = more.classList.toggle('gl-open');
+        toggle.classList.toggle('expanded', open);
+        toggle.querySelector('span').textContent = open ? 'Show Less' : 'Show More';
+        if (!open) document.getElementById('gallery').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      /* ── lightbox: reuses your existing one, adds arrows, swipe and caption ── */
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightboxImg');
+      if (!lb || !lbImg) return;
+
+      const mk = (cls, html) => {
+        const b = document.createElement('button');
+        b.type = 'button'; b.className = cls; b.innerHTML = html;
+        lb.appendChild(b); return b;
+      };
+      const prev = mk('gl-lb-nav gl-lb-prev', '<i class="fa-solid fa-chevron-left"></i>');
+      const next = mk('gl-lb-nav gl-lb-next', '<i class="fa-solid fa-chevron-right"></i>');
+      const cap = document.createElement('div');
+      cap.className = 'gl-lb-cap';
+      lb.appendChild(cap);
+
+      let list = [], idx = 0;
+      const show = i => {
+        idx = (i + list.length) % list.length;
+        const c = list[idx];
+        lbImg.src = c.dataset.full;
+        cap.innerHTML = `<b>${c.dataset.title}</b><span>${idx + 1} / ${list.length}</span>`;
+      };
+      const open = c => {
+        list = cards.filter(x => x.offsetParent !== null);   // only the photos currently visible
+        show(list.indexOf(c));
+        lb.classList.add('active');
+      };
+      const nav = d => { if (lb.classList.contains('active') && list.length) show(idx + d); };
+
+      cards.forEach(c => {
+        c.addEventListener('click', () => open(c));
+        c.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(c); }
+        });
+      });
+      prev.addEventListener('click', e => { e.stopPropagation(); nav(-1); });
+      next.addEventListener('click', e => { e.stopPropagation(); nav(1); });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') nav(-1);
+        if (e.key === 'ArrowRight') nav(1);
+      });
+      let sx = 0;
+      lb.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+      lb.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - sx;
+        if (Math.abs(dx) > 50) nav(dx < 0 ? 1 : -1);
+      });
+    });
+  </script>
   <!-- ══ INTERESTS & PASSIONS ══ -->
   <section id="interests">
     <div class="ip-inner">
