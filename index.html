@@ -92,6 +92,29 @@
         <li><a href="#badges" class="nav-link"><span class="nav-icon"><i
                 class="ri-medal-line"></i></span><span>Badges</span><i class="ri-arrow-right-s-line nav-arrow"></i></a>
         </li>
+        <!-- More: desktop button (hidden on mobile) -->
+        <li class="nav-more-d">
+          <button type="button" class="nav-more-btn" id="navMoreBtn" aria-haspopup="true" aria-expanded="false"
+            aria-controls="navDropdown">More <i class="ri-arrow-down-s-line"></i></button>
+        </li>
+        <!-- More: mobile expandable row (hidden on desktop) -->
+        <li class="nav-more-m" id="navMoreM">
+          <a href="#" class="nav-link nav-more-toggle" role="button" aria-expanded="false" aria-controls="navSub"><span
+              class="nav-icon" style="--nc: 167, 139, 250"><i class="ri-apps-2-line"></i></span><span>More</span><i
+              class="ri-arrow-right-s-line nav-arrow"></i></a>
+          <div class="nav-sub" id="navSub">
+            <ul class="nav-sub-inner">
+              <li><a href="#specializations" class="nav-link"><span class="nav-icon" style="--nc: 163, 230, 53"><i
+                      class="ri-focus-3-line"></i></span><span>Specializations</span></a></li>
+              <li><a href="#membership" class="nav-link"><span class="nav-icon" style="--nc: 129, 140, 248"><i
+                      class="ri-team-line"></i></span><span>Membership</span></a></li>
+              <li><a href="#gallery" class="nav-link"><span class="nav-icon" style="--nc: 45, 212, 191"><i
+                      class="ri-gallery-line"></i></span><span>Gallery</span></a></li>
+              <li><a href="#interests" class="nav-link"><span class="nav-icon" style="--nc: 232, 121, 249"><i
+                      class="ri-heart-3-line"></i></span><span>Interests</span></a></li>
+            </ul>
+          </div>
+        </li>
         <li><a href="#contact" class="nav-link"><span class="nav-icon"><i
                 class="ri-mail-line"></i></span><span>Contact</span><i class="ri-arrow-right-s-line nav-arrow"></i></a>
         </li>
@@ -133,6 +156,25 @@
     </div>
     <div class="nav-overlay" id="navOverlay"></div>
   </nav>
+    <!-- ══ NAV "MORE" DROPDOWN (desktop) ══ -->
+  <div class="nav-dropdown" id="navDropdown" role="menu" aria-hidden="true">
+    <a href="#specializations" role="menuitem" style="--nc: 163, 230, 53">
+      <span class="nd-icon"><i class="ri-focus-3-line"></i></span>
+      <span class="nd-text"><b>Specializations</b><small>Core focus areas</small></span>
+    </a>
+    <a href="#membership" role="menuitem" style="--nc: 129, 140, 248">
+      <span class="nd-icon"><i class="ri-team-line"></i></span>
+      <span class="nd-text"><b>Membership</b><small>Societies &amp; clubs</small></span>
+    </a>
+    <a href="#gallery" role="menuitem" style="--nc: 45, 212, 191">
+      <span class="nd-icon"><i class="ri-gallery-line"></i></span>
+      <span class="nd-text"><b>Gallery</b><small>Moments &amp; memories</small></span>
+    </a>
+    <a href="#interests" role="menuitem" style="--nc: 232, 121, 249">
+      <span class="nd-icon"><i class="ri-heart-3-line"></i></span>
+      <span class="nd-text"><b>Interests</b><small>Life beyond the code</small></span>
+    </a>
+  </div>
 
   <!-- ══ HERO ══ -->
   <section id="home">

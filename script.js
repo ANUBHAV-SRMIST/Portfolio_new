@@ -1747,3 +1747,125 @@ function typeWriterLoop() {
   window.addEventListener('scroll', atBottom, { passive: true });
   atBottom();
 })();
+
+// ── NAV "MORE" MENU (desktop dropdown + mobile expandable row) ──
+(function () {
+  const MORE = ['specializations', 'membership', 'gallery', 'interests'];
+  const navLinksEl = document.getElementById('navLinks');
+  const moreBtn = document.getElementById('navMoreBtn');
+  const dropdown = document.getElementById('navDropdown');
+  const moreM = document.getElementById('navMoreM');
+  const hamburgerEl = document.getElementById('hamburger');
+  if (!navLinksEl || !moreBtn || !dropdown || !moreM) return;
+
+  const moreToggle = moreM.querySelector('.nav-more-toggle');
+  const canHover = window.matchMedia('(hover: hover)').matches;
+  let closeTimer;
+
+  /* ── desktop dropdown ── */
+  function positionDropdown() {
+    const r = moreBtn.getBoundingClientRect();
+    const w = dropdown.offsetWidth;
+    let left = r.left + r.width / 2 - w / 2;
+    left = Math.max(12, Math.min(left, window.innerWidth - w - 12));
+    dropdown.style.left = left + 'px';
+    dropdown.style.top = (r.bottom + 16) + 'px';
+  }
+  function openDropdown() {
+    clearTimeout(closeTimer);
+    positionDropdown();
+    dropdown.classList.add('open');
+    dropdown.setAttribute('aria-hidden', 'false');
+    moreBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closeDropdown() {
+    clearTimeout(closeTimer);
+    dropdown.classList.remove('open');
+    dropdown.setAttribute('aria-hidden', 'true');
+    moreBtn.setAttribute('aria-expanded', 'false');
+  }
+  function closeSoon() { clearTimeout(closeTimer); closeTimer = setTimeout(closeDropdown, 180); }
+
+  moreBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    (dropdown.classList.contains('open') && !canHover) ? closeDropdown() : openDropdown();
+  });
+  if (canHover) {
+    moreBtn.addEventListener('mouseenter', openDropdown);
+    moreBtn.addEventListener('mouseleave', closeSoon);
+    dropdown.addEventListener('mouseenter', () => clearTimeout(closeTimer));
+    dropdown.addEventListener('mouseleave', closeSoon);
+  }
+  dropdown.addEventListener('click', e => { if (e.target.closest('a')) closeDropdown(); });
+  document.addEventListener('click', e => {
+    if (!dropdown.contains(e.target) && !moreBtn.contains(e.target)) closeDropdown();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDropdown(); });
+  window.addEventListener('resize', closeDropdown);
+  window.addEventListener('scroll', () => { if (dropdown.classList.contains('open')) closeDropdown(); }, { passive: true });
+
+  /* ── mobile expandable row ── */
+  function setSub(open) {
+    moreM.classList.toggle('open', open);
+    moreToggle.setAttribute('aria-expanded', String(open));
+    if (open) {
+      setTimeout(() => {
+        const last = moreM.querySelector('.nav-sub-inner li:last-child');
+        if (last) last.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }, 360);
+    }
+  }
+  // capture phase: handled before the "close menu on link click" code runs
+  navLinksEl.addEventListener('click', e => {
+    if (!e.target.closest('.nav-more-toggle')) return;
+    e.preventDefault();
+    e.stopPropagation();
+    setSub(!moreM.classList.contains('open'));
+  }, true);
+  // open the list automatically when you're inside one of its sections
+  if (hamburgerEl) hamburgerEl.addEventListener('click', () => {
+    if (moreM.classList.contains('has-active')) setSub(true);
+  });
+
+    /* ── scroll-spy: which link gets the underline ── */
+  const MORE_UNDERLINE = ['gallery', 'interests'];                              // underline goes to "More" only here
+  const PARENT = { specializations: 'skills', membership: 'certifications' };   // underline stays on these links
+  const isDesktop = () => window.innerWidth > 1100;
+
+  function syncNav() {
+    let current = '';
+    document.querySelectorAll('section[id]').forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+
+    // mobile drawer + dropdown highlight
+    moreM.classList.toggle('has-active', MORE.includes(current));
+    dropdown.querySelectorAll('a').forEach(a =>
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+
+    if (!isDesktop()) { moreBtn.classList.remove('active'); return; }
+
+    // desktop: the hidden mobile rows must not steer the underline
+    moreM.querySelectorAll('a.active').forEach(a => a.classList.remove('active'));
+
+    const underMore = MORE_UNDERLINE.includes(current);
+    moreBtn.classList.toggle('active', underMore);
+
+    const parentId = PARENT[current];
+    if (parentId) {
+      const p = navLinksEl.querySelector(':scope > li > a[href="#' + parentId + '"]');
+      if (p) p.classList.add('active');
+    }
+    const target = underMore ? moreBtn : navLinksEl.querySelector(':scope > li > a.active');
+    if (target && typeof moveIndicator === 'function') moveIndicator(target);
+  }
+  window.addEventListener('scroll', syncNav, { passive: true });
+  window.addEventListener('resize', syncNav);
+  window.addEventListener('DOMContentLoaded', syncNav);
+
+  // hovering "More" slides the underline to it; leaving puts it back
+  moreBtn.addEventListener('mouseenter', () => { if (isDesktop() && typeof moveIndicator === 'function') moveIndicator(moreBtn); });
+  const wrapEl = document.querySelector('.nav-wrap');
+  if (wrapEl) wrapEl.addEventListener('mouseleave', syncNav);
+  syncNav();
+})();
