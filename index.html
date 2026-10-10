@@ -39,7 +39,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <link rel="stylesheet" href="style.css?v=31" />
+  <link rel="stylesheet" href="style.css?v=35" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
@@ -1657,40 +1657,143 @@
       </div>
     </a>
   </div>
-
   <!-- ══ FOOTER ══ -->
+  <footer class="site-footer" id="siteFooter">
 
-  <footer>
+    <div class="ft-main">
 
-    <div class="system-status">
-      <span class="status-dot"></span>
-      <span class="status-text">System Online</span>
+      <!-- Column 1: Brand -->
+      <div class="ft-col ft-brand">
+        <a href="#home" class="ft-logo" aria-label="Anubhav Mishra - home">
+          <span class="ft-logo-box">AM</span>
+          <span class="ft-logo-code">&lt;<span class="ft-logo-name">Anubhav</span> /&gt;</span>
+        </a>
+        <p class="ft-role">ECE <span class="ft-dot">•</span> Data Science <span class="ft-dot">•</span></p>
+        <p class="ft-tagline">Building ideas into real-world technology.</p>
+
+        <ul class="ft-meta">
+          <li><i class="ri-map-pin-line"></i><span>Chennai, India</span></li>
+          <li><i class="ri-graduation-cap-line"></i><span>SRM Institute of Science and Technology</span></li>
+        </ul>
+
+        <div class="ft-social">
+          <a href="https://github.com/ANUBHAV-SRMIST" target="_blank" rel="noopener noreferrer" class="ft-social-btn"
+            aria-label="GitHub" title="GitHub"><i class="ri-github-fill"></i></a>
+          <a href="https://www.linkedin.com/in/anubhav-shrijan" target="_blank" rel="noopener noreferrer"
+            class="ft-social-btn" aria-label="LinkedIn" title="LinkedIn"><i class="ri-linkedin-box-fill"></i></a>
+          <a href="mailto:helloanubhav2@gmail.com" class="ft-social-btn" aria-label="Email" title="Email"><i
+              class="ri-mail-line"></i></a>
+          <a href="resume/core_resume.pdf" target="_blank" rel="noopener noreferrer" class="ft-social-btn"
+            aria-label="Resume" title="Resume"><i class="ri-file-text-line"></i></a>
+        </div>
+      </div>
+
+      <!-- Column 2: Explore -->
+      <div class="ft-col ft-explore" role="navigation" aria-label="Footer navigation">
+        <h3 class="ft-title">Explore</h3>
+        <ul class="ft-list">
+          <li><a href="#home"><i class="ri-home-4-line"></i><span>Home</span></a></li>
+          <li><a href="#about"><i class="ri-user-3-line"></i><span>About</span></a></li>
+          <li><a href="#skills"><i class="ri-bar-chart-2-line"></i><span>Skills</span></a></li>
+          <li><a href="#projects"><i class="ri-stack-line"></i><span>Projects</span></a></li>
+          <li><a href="#internships"><i class="ri-briefcase-4-line"></i><span>Internships</span></a></li>
+          <li><a href="#publications"><i class="ri-file-text-line"></i><span>Publications</span></a></li>
+          <li><a href="#certifications"><i class="ri-shield-star-line"></i><span>Certifications</span></a></li>
+          <li class="ft-more">
+            <button type="button" class="ft-more-btn" id="ftMoreBtn" aria-expanded="false" aria-controls="ftMorePanel">
+              <i class="ri-apps-2-line"></i><span>More</span><i class="ri-arrow-down-s-line ft-chev"></i>
+            </button>
+            <div class="ft-more-panel" id="ftMorePanel">
+              <div class="ft-more-inner">
+                <ul class="ft-sublist">
+                  <li><a href="#specializations"><i class="ri-focus-3-line"></i><span>Specializations</span></a></li>
+                  <li><a href="#membership"><i class="ri-team-line"></i><span>Membership</span></a></li>
+                  <li><a href="#badges"><i class="ri-medal-line"></i><span>Badges</span></a></li>
+                  <li><a href="#gallery"><i class="ri-gallery-line"></i><span>Gallery</span></a></li>
+                  <li><a href="#interests"><i class="ri-heart-3-line"></i><span>Interests</span></a></li>
+                  <li><a href="#contact"><i class="ri-mail-line"></i><span>Contact</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Quick links + Connect -->
+      <div class="ft-col ft-links">
+        <h3 class="ft-title">Quick Links</h3>
+        <ul class="ft-list">
+          <li><a href="resume/core_resume.pdf" target="_blank" rel="noopener noreferrer"><i
+                class="ri-file-text-line"></i><span>Resume</span><i class="ri-external-link-line ft-ext"></i></a></li>
+          <li><a href="https://job-schedular-c12w.onrender.com/" target="_blank" rel="noopener noreferrer"><i
+                class="ri-calendar-schedule-line"></i><span>Job Scheduler</span><i
+                class="ri-external-link-line ft-ext"></i></a></li>
+          <li><a href="https://ak-pdf-search.streamlit.app/" target="_blank" rel="noopener noreferrer"><i
+                class="ri-file-search-line"></i><span>PDF Search</span><i class="ri-external-link-line ft-ext"></i></a>
+          </li>
+        </ul>
+
+        <div class="ft-divider"></div>
+
+        <h3 class="ft-title">Let's Connect</h3>
+        <ul class="ft-list">
+          <li><a href="https://github.com/ANUBHAV-SRMIST" target="_blank" rel="noopener noreferrer"><i
+                class="ri-github-fill"></i><span>GitHub</span><i class="ri-external-link-line ft-ext"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/anubhav-shrijan" target="_blank" rel="noopener noreferrer"><i
+                class="ri-linkedin-box-fill"></i><span>LinkedIn</span><i class="ri-external-link-line ft-ext"></i></a>
+          </li>
+          <li><a href="mailto:helloanubhav2@gmail.com"><i class="ri-mail-line"></i><span>Email Me</span><i
+                class="ri-external-link-line ft-ext"></i></a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Status, live projects, built with -->
+      <div class="ft-col ft-side">
+        <div class="ft-status"><span class="ft-status-dot"></span><span>System Online</span></div>
+
+        <div class="ft-projects">
+          <a href="privacy.html" class="ft-chip"><i class="ri-shield-check-line"></i><span>Privacy Policy</span></a>
+        </div>
+
+        <div class="ft-built">
+          <h3 class="ft-title ft-title-sm">Built With</h3>
+          <ul class="ft-tech">
+            <li><i class="fa-brands fa-html5 ft-t-html"></i><span>HTML5</span></li>
+            <li><i class="fa-brands fa-css3-alt ft-t-css"></i><span>CSS3</span></li>
+            <li><i class="fa-brands fa-js ft-t-js"></i><span>JavaScript</span></li>
+            <li><svg class="ft-t-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3 22.5 21h-21z" fill="currentColor" />
+              </svg><span>Vercel</span></li>
+            <li><i class="fa-brands fa-github"></i><span>GitHub</span></li>
+          </ul>
+        </div>
+
+        <ul class="ft-features">
+          <li><i class="ri-flashlight-fill"></i><span>Performance</span></li>
+          <li><i class="ri-shield-fill"></i><span>Secure</span></li>
+          <li><i class="ri-smartphone-line"></i><span>Responsive</span></li>
+        </ul>
+      </div>
     </div>
 
-    <div class="footer-projects">
-      <a href="https://job-schedular-c12w.onrender.com/" target="_blank" rel="noopener noreferrer"
-        class="footer-project-chip">
-        <span class="chip-dot"></span>
-        <i class="fa-solid fa-diagram-project"></i>
-        <span>Job Scheduler</span>
-        <i class="fa-solid fa-arrow-up-right-from-square chip-arrow"></i>
-      </a>
-      <a href="https://ak-pdf-search.streamlit.app/" target="_blank" rel="noopener noreferrer"
-        class="footer-project-chip">
-        <span class="chip-dot"></span>
-        <i class="fa-solid fa-file-magnifying-glass"></i>
-        <span>PDF Search</span>
-        <i class="fa-solid fa-arrow-up-right-from-square chip-arrow"></i>
-      </a>
+    <!-- Bottom bar -->
+    <div class="ft-bottom">
+      <div class="ft-bottom-in">
+        <div class="ft-copy">
+          <p class="ft-copyright">© 2026 <span>Anubhav Mishra</span></p>
+          <p class="footer-love ft-love">Made with <i class="fa-solid fa-heart"></i> and endless support from my Wife
+          </p>
+        </div>
+        <p class="ft-updated">Last updated: <span id="lastUpdated">—</span></p>
+        <a href="#" class="ft-top" id="ftTop" aria-label="Back to top">
+          <span class="ft-top-btn"><i class="ri-arrow-up-line"></i></span>
+          <span class="ft-top-text">Back to top</span>
+        </a>
+      </div>
     </div>
-
-    <p>© 2026 <span>Anubhav Mishra</span></p>
-    <p class="footer-love">Made with <i class="fa-solid fa-heart"></i> and endless support from my Wife</p>
-    <p class="footer-updated">Last updated: <span id="lastUpdated">—</span></p>
 
   </footer>
-
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
   <!-- ══ SCROLL UP ══ -->
   <a href="#" class="scrollup" id="scroll-up" aria-label="Scroll to top">
     <i class="ri-arrow-up-line"></i>

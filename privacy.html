@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Anubhav Mishra</title>
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0c14; --card: rgba(255, 255, 255, 0.05); --bd: rgba(111, 140, 255, 0.28);
+      --text: #c3caea; --strong: #f1f3ff; --accent: #6f8cff;
+    }
+    [data-theme="light"] {
+      --bg: #f5f6fb; --card: #ffffff; --bd: rgba(79, 110, 247, 0.25);
+      --text: #3a3f63; --strong: #14162b; --accent: #3d5ce0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 2rem 1.25rem 4rem; }
+    .wrap { max-width: 760px; margin: 0 auto; }
+    .back { display: inline-block; margin-bottom: 1.5rem; color: var(--accent); text-decoration: none; font-weight: 500; }
+    .back:hover { text-decoration: underline; }
+    h1 { font-family: 'Syne', sans-serif; color: var(--strong); font-size: clamp(1.8rem, 5vw, 2.4rem); margin-bottom: .4rem; }
+    .updated { font-size: .9rem; margin-bottom: 2rem; }
+    section { background: var(--card); border: 1px solid var(--bd); border-radius: 16px; padding: 1.3rem 1.4rem; margin-bottom: 1rem; }
+    h2 { font-family: 'Syne', sans-serif; color: var(--accent); font-size: 1.05rem; margin-bottom: .5rem; }
+    ul { padding-left: 1.2rem; }
+    a { color: var(--accent); }
+  </style>
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('portfolio-theme'); } catch (e) { }
+      if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to portfolio</a>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: October 11, 2026</p>
+
+    <section>
+      <h2>Overview</h2>
+      <p>This is the personal portfolio website of Anubhav Mishra (anubhav-mishra.vercel.app). I collect as little
+        information as possible. The site has no user accounts, no advertising and no analytics trackers.</p>
+    </section>
+
+    <section>
+      <h2>Information you send me</h2>
+      <p>If you use the contact form, the details you enter (your name, email address, subject and message) are sent
+        to me by email through the EmailJS service. I use them only to reply to you, and I do not sell or share them.</p>
+    </section>
+
+    <section>
+      <h2>Stored on your device</h2>
+      <p>The site saves your light/dark theme choice in your browser's local storage so it is remembered on your next
+        visit. It stays on your device, and you can clear it any time from your browser settings. The site may also
+        cache its own files for faster loading and offline use.</p>
+    </section>
+
+    <section>
+      <h2>Third-party services</h2>
+      <p>To work, the site loads resources from or connects to these services, which may receive your IP address and
+        browser details under their own policies:</p>
+      <ul>
+        <li>Vercel (website hosting)</li>
+        <li>Google Fonts, Font Awesome (cdnjs), jsDelivr (fonts, icons and scripts)</li>
+        <li>GitHub (public profile statistics shown on the page)</li>
+        <li>EmailJS (delivering contact form messages)</li>
+      </ul>
+      <p style="margin-top:.6rem">External links (GitHub, LinkedIn, certificates, project demos) lead to sites I do
+        not control, and their privacy practices apply there.</p>
+    </section>
+
+    <section>
+      <h2>Your choices</h2>
+      <p>You can ask me to delete any message you sent through the contact form by emailing me at the address below.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Questions about this policy: <a href="mailto:helloanubhav2@gmail.com">helloanubhav2@gmail.com</a></p>
+    </section>
+  </div>
+</body>
+
+</html>

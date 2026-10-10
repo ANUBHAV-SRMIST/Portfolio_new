@@ -1890,3 +1890,33 @@ function typeWriterLoop() {
   if (wrapEl) wrapEl.addEventListener('mouseleave', syncNav);
   syncNav();
 })();
+/* ══════════════════════════════════════════════════════════
+   PRO FOOTER — "More" toggle, Back to top, hide floating
+   scroll-up button while the footer is on screen
+══════════════════════════════════════════════════════════ */
+(() => {
+  const moreBtn = document.getElementById('ftMoreBtn');
+  const morePanel = document.getElementById('ftMorePanel');
+  if (moreBtn && morePanel) {
+    moreBtn.addEventListener('click', () => {
+      const open = moreBtn.getAttribute('aria-expanded') === 'true';
+      moreBtn.setAttribute('aria-expanded', String(!open));
+      morePanel.classList.toggle('open', !open);
+    });
+  }
+
+  const topBtn = document.getElementById('ftTop');
+  if (topBtn) {
+    topBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  const footer = document.getElementById('siteFooter');
+  if (footer && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      document.body.classList.toggle('ft-in-view', entry.isIntersecting);
+    }, { threshold: 0.15 }).observe(footer);
+  }
+})();
