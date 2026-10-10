@@ -1263,8 +1263,8 @@ if (lastUpdatedEl) {
     ['.pub-tags, .pub-actions', ''],
     ['.membership-list li', 'reveal-left'],
     ['.badges-more-wrap, .gallery-toggle-btn', ''],
-    ['.coverflow', 'reveal-zoom'],
-    ['footer > *', '']
+    ['.coverflow', 'reveal-zoom']
+  
   ];
 
   const seen = new Set();
@@ -1722,3 +1722,28 @@ function typeWriterLoop() {
 
   tick();
 }
+/* ══════════════════════════════════════════════════════════
+   FOOTER — reveal as soon as you scroll near it
+   Paste at the very END of script.js
+══════════════════════════════════════════════════════════ */
+(() => {
+  const footer = document.querySelector('footer');
+  if (!footer || !('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  footer.classList.add('footer-anim');
+  const show = () => footer.classList.add('footer-in');
+
+  // fires a little BEFORE the footer is on screen, so it is already there when you arrive
+  const io = new IntersectionObserver(entries => {
+    if (entries.some(e => e.isIntersecting)) { show(); io.disconnect(); }
+  }, { threshold: 0, rootMargin: '0px 0px 160px 0px' });
+  io.observe(footer);
+
+  // safety net: at the very bottom of the page, always show it
+  const atBottom = () => {
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 6) show();
+  };
+  window.addEventListener('scroll', atBottom, { passive: true });
+  atBottom();
+})();
