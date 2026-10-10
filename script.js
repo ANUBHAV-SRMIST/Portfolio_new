@@ -193,7 +193,6 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 // ── THEME TOGGLE ──
 const themeToggle = document.getElementById('themeToggle');
-const themeIcon = themeToggle.querySelector('i');
 
 function getSystemTheme() {
   return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
@@ -201,7 +200,7 @@ function getSystemTheme() {
 
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
-  themeIcon.className = theme === 'light' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+  themeToggle.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
 }
 
 // If the user has manually toggled before, respect that choice.
@@ -217,12 +216,17 @@ systemThemeQuery.addEventListener('change', (e) => {
   }
 });
 
-// Manual toggle now counts as an explicit override, saved for future visits
+// Manual toggle counts as an explicit override, saved for future visits
 themeToggle.addEventListener('click', () => {
   const current = document.documentElement.getAttribute('data-theme');
   const newTheme = current === 'light' ? 'dark' : 'light';
   applyTheme(newTheme);
   localStorage.setItem('portfolio-theme', newTheme);
+
+  // little glow burst on every switch
+  themeToggle.classList.remove('tt-burst');
+  void themeToggle.offsetWidth;
+  themeToggle.classList.add('tt-burst');
 });
 // ── CLICK EFFECT (particle burst) ──
 function createClickEffect(x, y) {

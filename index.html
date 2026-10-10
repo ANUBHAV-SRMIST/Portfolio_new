@@ -39,7 +39,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <link rel="stylesheet" href="style.css?v=23" />
+  <link rel="stylesheet" href="style.css?v=30" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
@@ -98,8 +98,28 @@
       </ul>
       <span class="nav-indicator" id="navIndicator"></span>
     </div>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-      <i class="fa-solid fa-moon"></i>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Switch theme">
+      <span class="tt-stars"><span></span><span></span><span></span></span>
+
+      <svg class="tt-sun" viewBox="0 0 24 24" aria-hidden="true">
+        <g class="tt-rays" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="12" y1="1.6" x2="12" y2="4.2" />
+          <line x1="12" y1="1.6" x2="12" y2="4.2" transform="rotate(45 12 12)" />
+          <line x1="12" y1="1.6" x2="12" y2="4.2" transform="rotate(90 12 12)" />
+          <line x1="12" y1="1.6" x2="12" y2="4.2" transform="rotate(135 12 12)" />
+          <line x1="12" y1="1.6" x2="12" y2="4.2" transform="rotate(180 12 12)" />
+          <line x1="12" y1="1.6" x2="12" y2="4.2" transform="rotate(225 12 12)" />
+          <line x1="12" y1="1.6" x2="12" y2="4.2" transform="rotate(270 12 12)" />
+          <line x1="12" y1="1.6" x2="12" y2="4.2" transform="rotate(315 12 12)" />
+        </g>
+        <circle class="tt-core" cx="12" cy="12" r="4.8" fill="currentColor" />
+      </svg>
+
+      <svg class="tt-moon" viewBox="0 0 24 24" aria-hidden="true">
+        <g class="tt-moon-in">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" />
+        </g>
+      </svg>
     </button>
     <div class="hamburger" id="hamburger" onclick="toggleNav()">
       <span></span><span></span><span></span>
@@ -1103,7 +1123,7 @@
       </div>
     </div>
   </div>
-    <!-- ══ GALLERY ══ -->
+  <!-- ══ GALLERY ══ -->
   <section id="gallery">
     <div class="gl-inner">
 
@@ -1127,8 +1147,10 @@
 
         <!-- main 4 photos: the numbered layout -->
         <div class="gl-bento">
-          <figure class="gl-card gl-c1" data-cat="work" data-full="images/p1.jpg" data-title="At the Workplace" tabindex="0" role="button">
-            <img src="images/p1.jpg" alt="At the Workplace" loading="lazy" style="--pos:center top" onerror="this.style.display='none'">
+          <figure class="gl-card gl-c1" data-cat="work" data-full="images/p1.jpg" data-title="At the Workplace"
+            tabindex="0" role="button">
+            <img src="images/p1.jpg" alt="At the Workplace" loading="lazy" style="--pos:center top"
+              onerror="this.style.display='none'">
             <figcaption>
               <span class="gl-num">01</span><span class="gl-bar"></span>
               <h3>At the Workplace</h3>
@@ -1137,7 +1159,8 @@
             <span class="gl-zoom"><i class="fa-solid fa-expand"></i></span>
           </figure>
 
-          <figure class="gl-card gl-c2" data-cat="work" data-full="images/p2.jpg" data-title="Mentorship &amp; Guidance" tabindex="0" role="button">
+          <figure class="gl-card gl-c2" data-cat="work" data-full="images/p2.jpg" data-title="Mentorship &amp; Guidance"
+            tabindex="0" role="button">
             <img src="images/p2.jpg" alt="Mentorship and Guidance" loading="lazy" onerror="this.style.display='none'">
             <figcaption>
               <span class="gl-num">02</span><span class="gl-bar"></span>
@@ -1147,7 +1170,8 @@
             <span class="gl-zoom"><i class="fa-solid fa-expand"></i></span>
           </figure>
 
-          <figure class="gl-card gl-c3" data-cat="events" data-full="images/p3.jpg" data-title="Talks &amp; Events" tabindex="0" role="button">
+          <figure class="gl-card gl-c3" data-cat="events" data-full="images/p3.jpg" data-title="Talks &amp; Events"
+            tabindex="0" role="button">
             <img src="images/p3.jpg" alt="Talks and Events" loading="lazy" onerror="this.style.display='none'">
             <figcaption>
               <span class="gl-num">03</span><span class="gl-bar"></span>
@@ -1157,7 +1181,8 @@
             <span class="gl-zoom"><i class="fa-solid fa-expand"></i></span>
           </figure>
 
-          <figure class="gl-card gl-c4" data-cat="teaching community" data-full="images/p4.jpg" data-title="Community Connect" tabindex="0" role="button">
+          <figure class="gl-card gl-c4" data-cat="teaching community" data-full="images/p4.jpg"
+            data-title="Community Connect" tabindex="0" role="button">
             <img src="images/p4.jpg" alt="Community Connect" loading="lazy" onerror="this.style.display='none'">
             <figcaption>
               <span class="gl-num">04</span><span class="gl-bar"></span>
@@ -1170,7 +1195,8 @@
 
         <!-- more photos (shown with "Show More") -->
         <div class="gl-more">
-          <figure class="gl-card gl-c5" data-cat="events" data-full="images/p5.jpg" data-title="Beyond the Classroom" tabindex="0" role="button">
+          <figure class="gl-card gl-c5" data-cat="events" data-full="images/p5.jpg" data-title="Beyond the Classroom"
+            tabindex="0" role="button">
             <img src="images/p5.jpg" alt="Beyond the Classroom" loading="lazy" onerror="this.style.display='none'">
             <figcaption>
               <span class="gl-num">05</span>
@@ -1180,7 +1206,8 @@
             <span class="gl-zoom"><i class="fa-solid fa-expand"></i></span>
           </figure>
 
-          <figure class="gl-card gl-c6" data-cat="community" data-full="images/p6.jpg" data-title="Giving Back" tabindex="0" role="button">
+          <figure class="gl-card gl-c6" data-cat="community" data-full="images/p6.jpg" data-title="Giving Back"
+            tabindex="0" role="button">
             <img src="images/p6.jpg" alt="Giving Back" loading="lazy" onerror="this.style.display='none'">
             <figcaption>
               <span class="gl-num">06</span>
@@ -1190,7 +1217,8 @@
             <span class="gl-zoom"><i class="fa-solid fa-expand"></i></span>
           </figure>
 
-          <figure class="gl-card gl-c7" data-cat="work" data-full="images/p7.jpg" data-title="Behind the Scenes" tabindex="0" role="button">
+          <figure class="gl-card gl-c7" data-cat="work" data-full="images/p7.jpg" data-title="Behind the Scenes"
+            tabindex="0" role="button">
             <img src="images/p7.jpg" alt="Behind the Scenes" loading="lazy" onerror="this.style.display='none'">
             <figcaption>
               <span class="gl-num">07</span>

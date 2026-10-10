@@ -10843,3 +10843,140 @@ footer.footer-armed.footer-in > * {
   .gl-stage.gl-armed:not(.gl-ready) .gl-card { opacity: 1; }
   .gl-card img { transition: none; }
 }
+/* ══════════════════════════════════════════════
+   THEME TOGGLE — animated sun / moon
+══════════════════════════════════════════════ */
+.theme-toggle {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  /* dark mode: night sky */
+  background: radial-gradient(circle at 30% 25%, #2a3a8c, #0e1330 78%);
+  border: 1px solid rgba(123, 147, 255, 0.5);
+  box-shadow: 0 0 16px rgba(79, 110, 247, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition: background 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease, transform 0.3s ease;
+}
+/* light mode: warm sunshine */
+[data-theme="light"] .theme-toggle {
+  background: linear-gradient(145deg, #fffdf1, #ffeeb0);
+  border-color: rgba(255, 176, 0, 0.75);
+  box-shadow: 0 0 20px rgba(255, 190, 40, 0.6), inset 0 1px 0 #fff;
+  animation: ttSunGlow 2.8s ease-in-out infinite;
+}
+.theme-toggle:hover { transform: scale(1.1); border-color: #7b93ff; color: inherit; }
+[data-theme="light"] .theme-toggle:hover { border-color: #ffb000; }
+.theme-toggle:active { transform: scale(0.92); }
+
+/* both icons sit on top of each other and swap */
+.tt-sun, .tt-moon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+}
+.tt-sun {
+  color: #ffb000;
+  opacity: 0;
+  transform: rotate(-120deg) scale(0.2);
+  filter: drop-shadow(0 0 5px rgba(255, 170, 0, 0.8));
+}
+.tt-moon {
+  color: #ffe7a3;
+  opacity: 1;
+  transform: none;
+  filter: drop-shadow(0 0 6px rgba(255, 231, 163, 0.7));
+}
+[data-theme="light"] .tt-sun  { opacity: 1; transform: none; }
+[data-theme="light"] .tt-moon { opacity: 0; transform: rotate(120deg) scale(0.2); }
+
+/* idle animations */
+.tt-rays    { transform-box: fill-box; transform-origin: center; animation: ttSpin 14s linear infinite; }
+.tt-core    { transform-box: fill-box; transform-origin: center; animation: ttPulse 2.4s ease-in-out infinite; }
+.tt-moon-in { transform-box: fill-box; transform-origin: center; animation: ttRock 5s ease-in-out infinite; }
+
+/* twinkling stars (dark mode only) */
+.tt-stars { position: absolute; inset: 0; pointer-events: none; }
+.tt-stars span {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 5px #fff;
+  opacity: 0.9;
+  animation: ttTwinkle 2.2s ease-in-out infinite;
+  transition: opacity 0.5s ease;
+}
+.tt-stars span:nth-child(1) { width: 3px; height: 3px; top: 9px;    right: 8px; }
+.tt-stars span:nth-child(2) { width: 2px; height: 2px; bottom: 9px; left: 9px;  animation-delay: 0.7s; }
+.tt-stars span:nth-child(3) { width: 2px; height: 2px; top: 11px;   left: 10px; animation-delay: 1.3s; }
+[data-theme="light"] .tt-stars span { opacity: 0; animation: none; }
+
+/* glow burst when you click */
+.theme-toggle.tt-burst { animation: ttBurstDark 0.7s ease-out; }
+[data-theme="light"] .theme-toggle.tt-burst { animation: ttBurstLight 0.7s ease-out; }
+
+@keyframes ttSpin  { to { transform: rotate(360deg); } }
+@keyframes ttPulse { 50% { transform: scale(1.12); } }
+@keyframes ttRock  { 0%, 100% { transform: rotate(-9deg); } 50% { transform: rotate(9deg); } }
+@keyframes ttTwinkle { 0%, 100% { opacity: 0.2; transform: scale(0.7); } 50% { opacity: 1; transform: scale(1.25); } }
+@keyframes ttSunGlow {
+  0%, 100% { box-shadow: 0 0 16px rgba(255, 190, 40, 0.5), inset 0 1px 0 #fff; }
+  50%      { box-shadow: 0 0 30px rgba(255, 190, 40, 0.9), inset 0 1px 0 #fff; }
+}
+@keyframes ttBurstDark {
+  from { box-shadow: 0 0 0 0 rgba(123, 147, 255, 0.8), 0 0 16px rgba(79, 110, 247, 0.4); }
+  to   { box-shadow: 0 0 0 20px rgba(123, 147, 255, 0), 0 0 16px rgba(79, 110, 247, 0.4); }
+}
+@keyframes ttBurstLight {
+  from { box-shadow: 0 0 0 0 rgba(255, 190, 40, 0.85), 0 0 20px rgba(255, 190, 40, 0.6); }
+  to   { box-shadow: 0 0 0 20px rgba(255, 190, 40, 0), 0 0 20px rgba(255, 190, 40, 0.6); }
+}
+
+@media (max-width: 600px) {
+  .theme-toggle { width: 38px; height: 38px; margin-left: 1rem; }
+  .tt-sun, .tt-moon { width: 21px; height: 21px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tt-rays, .tt-core, .tt-moon-in, .tt-stars span,
+  [data-theme="light"] .theme-toggle { animation: none; }
+}
+/* ══ THEME TOGGLE — simple + softer (overrides the earlier block) ══ */
+
+/* no idle movement: nothing spins, pulses, glows or twinkles */
+.tt-rays, .tt-core, .tt-moon-in, .tt-stars span,
+[data-theme="light"] .theme-toggle,
+.theme-toggle.tt-burst,
+[data-theme="light"] .theme-toggle.tt-burst { animation: none; }
+
+/* softer dark button */
+.theme-toggle {
+  background: radial-gradient(circle at 30% 25%, #1c2559, #0c1128 80%);
+  border-color: rgba(123, 147, 255, 0.3);
+  box-shadow: 0 0 8px rgba(79, 110, 247, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.theme-toggle:hover { border-color: rgba(123, 147, 255, 0.55); }
+
+/* softer light button */
+[data-theme="light"] .theme-toggle {
+  background: linear-gradient(145deg, #fffef8, #fdf0c8);
+  border-color: rgba(230, 170, 40, 0.45);
+  box-shadow: 0 2px 8px rgba(220, 160, 40, 0.18), inset 0 1px 0 #fff;
+}
+[data-theme="light"] .theme-toggle:hover { border-color: rgba(230, 170, 40, 0.7); }
+
+/* calmer icon colours, no glow */
+.tt-sun  { color: #f0ab25; filter: none; }
+.tt-moon { color: #d6dcf2; filter: none; }
+
+/* stars: still, small and dim (dark mode only) */
+.tt-stars span { opacity: 0.55; box-shadow: none; }
+
+/* the only animation: sun and moon swapping when you switch */
+.tt-sun, .tt-moon {
+  transition: transform 0.55s ease, opacity 0.35s ease;
+}
