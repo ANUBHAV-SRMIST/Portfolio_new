@@ -12763,3 +12763,385 @@ body.ft-in-view .scrollup {
     justify-content: center;
   }
 }
+/* ══════════════════════════════════════════════
+   THEME TOGGLE — compact, professional (final override)
+   Keep this block at the END of style.css
+══════════════════════════════════════════════ */
+html[data-theme] .theme-toggle {
+  position: relative;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  margin-left: 1rem;
+  padding: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  animation: none;
+  transition: background 0.25s ease, border-color 0.25s ease,
+              box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+/* bigger invisible tap area for fingers */
+html[data-theme] .theme-toggle::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+}
+
+/* dark mode: clean glass chip */
+html[data-theme="dark"] .theme-toggle {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+}
+html[data-theme="dark"] .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(123, 147, 255, 0.55);
+}
+
+/* light mode: clean white chip */
+html[data-theme="light"] .theme-toggle {
+  background: #ffffff;
+  border: 1px solid rgba(79, 110, 247, 0.22);
+  box-shadow: 0 1px 3px rgba(20, 22, 43, 0.08);
+}
+html[data-theme="light"] .theme-toggle:hover {
+  background: #f4f6ff;
+  border-color: rgba(79, 110, 247, 0.5);
+}
+
+html[data-theme] .theme-toggle:hover  { transform: none; }
+html[data-theme] .theme-toggle:active { transform: scale(0.92); }
+
+/* keyboard focus ring */
+html[data-theme] .theme-toggle:focus-visible {
+  outline: 2px solid #4f6ef7;
+  outline-offset: 2px;
+}
+
+/* smaller icons, no glow */
+html[data-theme] .tt-sun,
+html[data-theme] .tt-moon {
+  width: 17px;
+  height: 17px;
+  filter: none;
+}
+html[data-theme] .tt-sun  { color: #f59e0b; }
+html[data-theme] .tt-moon { color: #c7d0f5; }
+html[data-theme="light"] .tt-moon { color: #4f6ef7; }
+
+/* remove the little stars and click burst */
+html[data-theme] .tt-stars { display: none; }
+html[data-theme] .theme-toggle.tt-burst { animation: none; }
+
+/* ── Tablet / mobile ── */
+@media (max-width: 1100px) {
+  html[data-theme] .theme-toggle { margin-left: 0.75rem; }
+}
+
+@media (max-width: 600px) {
+  html[data-theme] .theme-toggle {
+    width: 32px;
+    height: 32px;
+    margin-left: 0.6rem;
+  }
+  html[data-theme] .tt-sun,
+  html[data-theme] .tt-moon { width: 16px; height: 16px; }
+}
+
+@media (max-width: 380px) {
+  html[data-theme] .theme-toggle {
+    width: 30px;
+    height: 30px;
+    margin-left: 0.45rem;
+  }
+  html[data-theme] .tt-sun,
+  html[data-theme] .tt-moon { width: 15px; height: 15px; }
+}
+/* ══════════════════════════════════════════════
+   NAV "MORE" DROPDOWN — clean, matches theme (final override)
+   Keep this block at the END of style.css
+══════════════════════════════════════════════ */
+@media (min-width: 1101px) {
+
+  /* "More" button: same look as the other nav links */
+  .nav-more-btn { font-weight: 500; }
+
+  /* card */
+  html[data-theme] .nav-dropdown {
+    width: 270px;
+    padding: 0.4rem;
+    border-radius: 16px;
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    backdrop-filter: blur(16px) saturate(1.2);
+  }
+  html[data-theme="light"] .nav-dropdown {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(79, 110, 247, 0.16);
+    box-shadow: 0 12px 32px rgba(20, 22, 43, 0.12);
+  }
+  html[data-theme="dark"] .nav-dropdown {
+    background: rgba(14, 19, 48, 0.94);
+    border: 1px solid rgba(123, 147, 255, 0.2);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+  }
+
+  /* one single blue accent for every icon (no more 4 colours) */
+  html[data-theme] .nav-dropdown a { --nc: 79, 110, 247 !important; }
+
+  /* rows */
+  html[data-theme] .nav-dropdown a {
+    gap: 0.75rem;
+    padding: 0.5rem 0.6rem;
+    border-radius: 12px;
+  }
+  html[data-theme="light"] .nav-dropdown a:hover,
+  html[data-theme="light"] .nav-dropdown a:focus-visible {
+    background: rgba(79, 110, 247, 0.07);
+    border-color: rgba(79, 110, 247, 0.14);
+    box-shadow: none;
+    transform: none;
+  }
+  html[data-theme="dark"] .nav-dropdown a:hover,
+  html[data-theme="dark"] .nav-dropdown a:focus-visible {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(123, 147, 255, 0.2);
+    box-shadow: none;
+    transform: none;
+  }
+
+  /* icon chips: small, flat, one colour */
+  html[data-theme] .nd-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    box-shadow: none;
+  }
+  html[data-theme="light"] .nd-icon {
+    background: rgba(79, 110, 247, 0.09);
+    border: 1px solid rgba(79, 110, 247, 0.2);
+    color: #4f6ef7;
+  }
+  html[data-theme="dark"] .nd-icon {
+    background: rgba(123, 147, 255, 0.12);
+    border: 1px solid rgba(123, 147, 255, 0.28);
+    color: #9db0ff;
+  }
+  html[data-theme] .nd-icon i { filter: none; }
+
+  /* hover: icon fills with the accent */
+  html[data-theme] .nav-dropdown a:hover .nd-icon {
+    background: #4f6ef7;
+    border-color: #4f6ef7;
+    color: #fff;
+    transform: none;
+  }
+
+  /* text */
+  html[data-theme] .nd-text b     { font-size: 0.88rem; font-weight: 600; }
+  html[data-theme] .nd-text small { font-size: 0.74rem; }
+}
+/* ══════════════════════════════════════════════
+   MOBILE MENU — clean, matches desktop dropdown (final override)
+   Keep this block at the END of style.css
+══════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+
+  /* ───────── PANEL ───────── */
+  html[data-theme] .nav-links {
+    width: 72%;
+    max-width: 255px;
+    gap: 0.1rem;
+    border-radius: 24px 0 0 24px;
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    backdrop-filter: blur(18px) saturate(1.2);
+  }
+  html[data-theme="light"] .nav-links {
+    background: rgba(255, 255, 255, 0.96);
+    border-left: 1px solid rgba(79, 110, 247, 0.16);
+  }
+  html[data-theme="dark"] .nav-links {
+    background: rgba(12, 17, 40, 0.96);
+    border-left: 1px solid rgba(123, 147, 255, 0.2);
+  }
+  html[data-theme="light"] .nav-links.open { box-shadow: -14px 0 40px rgba(20, 22, 43, 0.16); }
+  html[data-theme="dark"]  .nav-links.open { box-shadow: -14px 0 40px rgba(0, 0, 0, 0.5); }
+
+  /* ───────── HEADER ───────── */
+  html[data-theme] .nav-mobile-header { padding: 1.3rem 1.1rem 1rem; }
+  html[data-theme="light"] .nav-mobile-header::after { background: rgba(79, 110, 247, 0.14); height: 1px; }
+  html[data-theme="dark"]  .nav-mobile-header::after { background: rgba(255, 255, 255, 0.1);  height: 1px; }
+
+  html[data-theme] .nav-avatar { width: 54px; height: 54px; }
+  html[data-theme="light"] .nav-avatar { box-shadow: 0 0 0 2px #fff, 0 0 0 3px rgba(79, 110, 247, 0.4); }
+  html[data-theme="dark"]  .nav-avatar { box-shadow: 0 0 0 2px #0c1128, 0 0 0 3px rgba(123, 147, 255, 0.5); }
+
+  html[data-theme] .nav-profile-name { font-size: 1rem; font-weight: 600; }
+  html[data-theme] .nav-profile-role { font-size: 0.76rem; }
+  html[data-theme="light"] .nav-profile-name { color: #14162b; }
+  html[data-theme="light"] .nav-profile-role { color: #5d6798; }
+  html[data-theme="dark"]  .nav-profile-name { color: #f1f3ff; }
+  html[data-theme="dark"]  .nav-profile-role { color: #9aa5d6; }
+
+  /* close button = same flat chip as the theme button */
+  html[data-theme] .nav-close {
+    top: 0.95rem;
+    right: 0.9rem;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    box-shadow: none;
+  }
+  html[data-theme="light"] .nav-close {
+    background: #fff;
+    border: 1px solid rgba(79, 110, 247, 0.22);
+    color: #3a3f63;
+  }
+  html[data-theme="dark"] .nav-close {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #c3caea;
+  }
+
+  /* ───────── LINK ROWS ───────── */
+  html[data-theme] .nav-links a.nav-link {
+    gap: 0.8rem;
+      margin: 0.06rem 0.55rem;
+    padding: 0.4rem 0.5rem 0.4rem 0.4rem;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    box-shadow: none;
+  }
+  html[data-theme="light"] .nav-links a.nav-link { color: #2a3158; }
+  html[data-theme="dark"]  .nav-links a.nav-link { color: #c3caea; }
+
+  html[data-theme="light"] .nav-links a.nav-link:hover {
+    background: rgba(79, 110, 247, 0.07);
+    border-color: rgba(79, 110, 247, 0.12);
+    box-shadow: none;
+  }
+  html[data-theme="dark"] .nav-links a.nav-link:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(123, 147, 255, 0.18);
+    box-shadow: none;
+  }
+
+  /* one blue accent for every icon (no more rainbow) */
+  html[data-theme] .nav-links .nav-icon { --nc: 79, 110, 247 !important; }
+
+  html[data-theme] .nav-links a.nav-link .nav-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    box-shadow: none;
+  }
+  html[data-theme="light"] .nav-links a.nav-link .nav-icon {
+    background: rgba(79, 110, 247, 0.09);
+    border: 1px solid rgba(79, 110, 247, 0.2);
+    color: #4f6ef7;
+  }
+  html[data-theme="dark"] .nav-links a.nav-link .nav-icon {
+    background: rgba(123, 147, 255, 0.12);
+    border: 1px solid rgba(123, 147, 255, 0.28);
+    color: #9db0ff;
+  }
+  html[data-theme] .nav-links a.nav-link .nav-icon i { filter: none; }
+
+  html[data-theme] .nav-links a.nav-link:hover .nav-icon {
+    background: #4f6ef7;
+    border-color: #4f6ef7;
+    color: #fff;
+  }
+
+  /* arrows */
+  html[data-theme] .nav-arrow { font-size: 1.2rem; opacity: 0.7; }
+  html[data-theme="light"] .nav-arrow { color: #7b86bb; }
+  html[data-theme="dark"]  .nav-arrow { color: #8f9bd0; }
+  html[data-theme] .nav-links a.nav-link:hover .nav-arrow { opacity: 1; color: #4f6ef7; }
+
+  /* ───────── SELECTED ROW: flat solid blue ───────── */
+  html[data-theme] .nav-links a.nav-link.active {
+    background: linear-gradient(135deg, #4f6ef7, #6a86ff);
+    border: 1px solid transparent;
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(79, 110, 247, 0.35);
+  }
+  html[data-theme] .nav-links a.nav-link.active .nav-icon {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #fff;
+    box-shadow: none;
+  }
+  html[data-theme] .nav-links a.nav-link.active .nav-arrow { color: #fff; opacity: 0.9; }
+
+  /* "More" row when one of its pages is open */
+  html[data-theme="light"] .nav-links .nav-more-m.has-active:not(.open) a.nav-more-toggle {
+    background: rgba(79, 110, 247, 0.07);
+    border-color: rgba(79, 110, 247, 0.14);
+    box-shadow: none;
+  }
+  html[data-theme="dark"] .nav-links .nav-more-m.has-active:not(.open) a.nav-more-toggle {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(123, 147, 255, 0.2);
+    box-shadow: none;
+  }
+
+  /* sub-menu rows (inside "More") */
+  html[data-theme] .nav-links .nav-sub a.nav-link {
+    margin: 0.04rem 0.7rem 0.04rem 1.6rem;
+    font-size: 0.9rem;
+  }
+  html[data-theme] .nav-links .nav-sub a.nav-link .nav-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    font-size: 1rem;
+  }
+
+  /* ───────── FOOTER SOCIAL BUTTONS ───────── */
+  html[data-theme] .nav-mobile-footer {
+    gap: 0.8rem;
+    margin: 0.4rem 1.1rem 0;
+    padding: 1rem 0 1.4rem;
+  }
+  html[data-theme="light"] .nav-mobile-footer { border-top: 1px solid rgba(79, 110, 247, 0.14); }
+  html[data-theme="dark"]  .nav-mobile-footer { border-top: 1px solid rgba(255, 255, 255, 0.1); }
+
+  html[data-theme] .nav-social {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+    box-shadow: none;
+  }
+  html[data-theme="light"] .nav-social {
+    background: #fff;
+    border: 1px solid rgba(79, 110, 247, 0.22);
+    color: #3a3f63;
+  }
+    html[data-theme="dark"] .nav-social {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #c3caea;
+  }
+  html[data-theme] .nav-social:hover {
+    background: #4f6ef7;
+    border-color: #4f6ef7;
+    color: #fff;
+  }
+}
+
+/* short phones: keep everything on screen without scrolling */
+@media (max-width: 1100px) and (max-height: 760px) {
+  html[data-theme] .nav-mobile-header { padding-top: 1rem; padding-bottom: 0.7rem; }
+  html[data-theme] .nav-avatar { width: 48px; height: 48px; }
+  html[data-theme] .nav-links a.nav-link { padding-top: 0.28rem; padding-bottom: 0.28rem; font-size: 0.92rem; }
+  html[data-theme] .nav-links a.nav-link .nav-icon { width: 32px; height: 32px; font-size: 1rem; }
+  html[data-theme] .nav-social { width: 38px; height: 38px; font-size: 1.1rem; }
+}
