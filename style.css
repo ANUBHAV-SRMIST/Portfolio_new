@@ -13168,3 +13168,60 @@ body.nav-open {
     touch-action: pan-y;
   }
 }
+/* remove the whole click effect */
+.click-ripple,
+.click-particle { display: none !important; }
+/* ══════════════════════════════════════════════
+   MOBILE MENU HEADER — single ring avatar + no text wrap (final override)
+══════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+
+  /* avatar: ONE clean ring only */
+  html[data-theme] .nav-links .nav-avatar {
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
+  html[data-theme="light"] .nav-links .nav-avatar img {
+    border: 2px solid rgba(79, 110, 247, 0.55);
+    background: #dfe5ff;
+  }
+  html[data-theme="dark"] .nav-links .nav-avatar img {
+    border: 2px solid rgba(123, 147, 255, 0.6);
+    background: #1a2250;
+  }
+
+  /* green online dot, smaller */
+  html[data-theme] .nav-links .nav-avatar::after {
+    width: 11px;
+    height: 11px;
+    right: -1px;
+    bottom: 0;
+    box-shadow: none;
+  }
+  html[data-theme="light"] .nav-links .nav-avatar::after { border: 2px solid #fff; }
+  html[data-theme="dark"]  .nav-links .nav-avatar::after { border: 2px solid #0c1128; }
+
+  /* more space for the name, so it stays on one line */
+  html[data-theme] .nav-profile { gap: 0.65rem; padding-right: 2.1rem; }
+  html[data-theme] .nav-links .nav-profile-name {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+  html[data-theme] .nav-links .nav-profile-role {
+    font-size: 0.72rem;
+    line-height: 1.35;
+    white-space: nowrap;
+  }
+
+  /* close button a bit smaller */
+  html[data-theme] .nav-close {
+    top: 0.9rem;
+    right: 0.7rem;
+    width: 30px;
+    height: 30px;
+    font-size: 1.05rem;
+  }
+}

@@ -1,4 +1,4 @@
-const CACHE_NAME = "anubhav-portfolio-v10";
+const CACHE_NAME = "anubhav-portfolio-v12";
 
 const urlsToCache = [
   "/",
