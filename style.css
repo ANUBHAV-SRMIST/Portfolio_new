@@ -13011,7 +13011,7 @@ html[data-theme] .theme-toggle.tt-burst { animation: none; }
   /* ───────── LINK ROWS ───────── */
   html[data-theme] .nav-links a.nav-link {
     gap: 0.8rem;
-      margin: 0.06rem 0.55rem;
+    margin: 0.06rem 0.55rem;
     padding: 0.4rem 0.5rem 0.4rem 0.4rem;
     border-radius: 14px;
     font-size: 0.95rem;
