@@ -854,7 +854,7 @@ function renderExpDetail(exp) {
 // ── COMPANY LOGOS for the internship list ──
 // put the logo files in  images/logos/  (names below). Missing file = the old coloured icon shows.
 const xpLogos = {
-    'iljin':            'images/logos/iljin.png',
+  'iljin':            'images/logos/iljin.png',
   'srm technologies': 'images/srmtech-logo.png',
   'google':           'images/logos/google.png',
   'zscaler':          'images/logos/zscaler.png',
