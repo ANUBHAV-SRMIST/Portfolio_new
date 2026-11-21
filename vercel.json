@@ -1,4 +1,6 @@
 {
+  "buildCommand": "node update-date.js",
+  "outputDirectory": ".",
   "headers": [
     {
       "source": "/service-worker.js",

@@ -1238,15 +1238,7 @@ document.addEventListener('keydown', (e) => {
 
   pubObserver.observe(pubCard);
 })();
-// ── FOOTER: LAST UPDATED DATE ──
-const lastUpdatedEl = document.getElementById('lastUpdated');
-if (lastUpdatedEl) {
-  lastUpdatedEl.textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-}
+
 // ══ GLASS — light follows the cursor ══
 (() => {
   if (!window.matchMedia('(hover: hover)').matches) return;
