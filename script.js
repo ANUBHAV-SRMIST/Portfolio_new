@@ -481,6 +481,22 @@ if (badgeGrid) {
 }
 // ── INDUSTRY EXPOSURE DATA (sorted: most recent first) ──
 const expData = [
+    {
+    title: "Graduate Engineering Trainee",
+    org: "ILJIN Electronics India Ltd",
+    icon: "fa-microchip",
+    duration: "12 Nov 2026 - Present",
+    type: "Graduate Trainee · On-site",
+    badgeColor: "green",
+    ongoing: true,
+    desc: "Working as a Graduate Engineering Trainee at ILJIN Electronics India Ltd (an Amber Group company), Chennai, applying my ECE background in a professional electronics manufacturing environment.",
+    tags: ["Electronics Manufacturing", "Graduate Trainee", "ILJIN Electronics", "Amber Group", "Professional Experience"],
+    learnings: [
+      "Working alongside professional engineers in an electronics manufacturing environment",
+      "Applying core ECE concepts to real-world industry processes",
+      "Currently in progress"
+    ]
+  },
   {
     title: "Intern – Drive Next Automotive Lab",
     org: "SRM Technologies Pvt Ltd",
@@ -838,6 +854,7 @@ function renderExpDetail(exp) {
 // ── COMPANY LOGOS for the internship list ──
 // put the logo files in  images/logos/  (names below). Missing file = the old coloured icon shows.
 const xpLogos = {
+    'iljin':            'images/logos/iljin.png',
   'srm technologies': 'images/srmtech-logo.png',
   'google':           'images/logos/google.png',
   'zscaler':          'images/logos/zscaler.png',
