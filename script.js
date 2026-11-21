@@ -11,6 +11,10 @@ function toggleNav() {
   document.getElementById('hamburger').classList.toggle('active');
   document.body.classList.toggle('nav-open');
 }
+// ── STOP PAGE SCROLLING BEHIND THE MENU (iPhone / Safari) ──
+document.getElementById('navOverlay').addEventListener('touchmove', e => {
+  e.preventDefault();
+}, { passive: false });
 // ── CLOSE NAV WHEN TAPPING OVERLAY ──
 document.getElementById('navOverlay').addEventListener('click', () => {
   document.getElementById('navLinks').classList.remove('open');
