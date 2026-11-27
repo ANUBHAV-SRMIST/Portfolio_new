@@ -13225,3 +13225,73 @@ body.nav-open {
     font-size: 1.05rem;
   }
 }
+/* ══════════════════════════════════════════════════════════
+   PROJECT CARD — "View Report" buttons
+   Paste at the very END of style.css
+══════════════════════════════════════════════════════════ */
+.pj-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: -0.15rem 0 1.25rem;
+}
+
+.pj-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 40px;
+  padding: 0.55rem 1.05rem;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(var(--c2), 0.95), rgba(var(--c), 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 8px 22px rgba(var(--c), 0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, gap 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.pj-link i { font-size: 0.9rem; }
+.pj-link .pj-ext { font-size: 0.7rem; opacity: 0.85; }
+
+.pj-link:hover {
+  transform: translateY(-2px);
+  gap: 0.7rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 12px 28px rgba(var(--c), 0.55);
+}
+.pj-link:active { transform: translateY(0) scale(0.98); }
+.pj-link:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* second button: quiet glass (same recipe as your tags) */
+.pj-link.pj-ghost {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+.pj-link.pj-ghost:hover {
+  background: rgba(var(--c), 0.22);
+  border-color: rgba(var(--k), 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 10px 24px rgba(var(--c), 0.3);
+}
+
+[data-theme="light"] .pj-link { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 8px 20px rgba(var(--c), 0.32); }
+[data-theme="light"] .pj-link.pj-ghost {
+  color: #2a3158;
+  background: rgba(20, 22, 43, 0.05);
+  border-color: rgba(20, 22, 43, 0.16);
+  box-shadow: none;
+}
+[data-theme="light"] .pj-link.pj-ghost:hover { color: rgb(var(--c)); background: rgba(var(--c), 0.1); border-color: rgba(var(--c), 0.45); }
+
+/* narrow cards (phones): full-width text, so buttons can use the whole row */
+@container (max-width: 399px) {
+  .pj-link { font-size: 0.8rem; padding: 0.5rem 0.95rem; }
+}
+/* ═════════ END REPORT BUTTON ═════════ */
